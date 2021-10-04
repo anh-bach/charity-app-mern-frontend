@@ -1,7 +1,7 @@
 import React from 'react';
 import { Form, Input, Button, Checkbox } from 'antd';
 
-const LoginForm = () => {
+const RegisterForm = () => {
   const onFinish = (values) => {
     console.log('Success:', values);
   };
@@ -12,7 +12,7 @@ const LoginForm = () => {
 
   return (
     <Form
-      name='loginForm'
+      name='registerForm'
       labelCol={{
         span: 24,
       }}
@@ -26,18 +26,18 @@ const LoginForm = () => {
       onFinishFailed={onFinishFailed}
       autoComplete='off'
     >
-      <h2>Sign In To Your Account</h2>
+      <h2>Register An Account</h2>
       <p>
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloremque,
         ratione.
       </p>
       <Form.Item
-        label='Email Address'
-        name='email'
+        label='Fullname'
+        name='fullname'
         rules={[
           {
             required: true,
-            message: 'Please input your username!',
+            message: 'Please input your fullname!',
           },
         ]}
       >
@@ -45,12 +45,38 @@ const LoginForm = () => {
       </Form.Item>
 
       <Form.Item
-        label='Password'
+        label='Email Address'
+        name='email'
+        rules={[
+          {
+            required: true,
+            message: 'Please input your email!',
+          },
+        ]}
+      >
+        <Input />
+      </Form.Item>
+
+      <Form.Item
+        label='Create Password'
         name='password'
         rules={[
           {
             required: true,
             message: 'Please input your password!',
+          },
+        ]}
+      >
+        <Input.Password />
+      </Form.Item>
+
+      <Form.Item
+        label='Confirm Password'
+        name='passwordConfirm'
+        rules={[
+          {
+            required: true,
+            message: 'Please confirm your password!',
           },
         ]}
       >
@@ -64,7 +90,7 @@ const LoginForm = () => {
           span: 24,
         }}
       >
-        <Checkbox>Remember me</Checkbox>
+        <Checkbox>I agree to terms & conditions</Checkbox>
       </Form.Item>
 
       <Form.Item
@@ -89,4 +115,4 @@ const LoginForm = () => {
   );
 };
 
-export default LoginForm;
+export default RegisterForm;

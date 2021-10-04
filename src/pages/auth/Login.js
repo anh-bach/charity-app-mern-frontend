@@ -17,7 +17,12 @@ const Login = () => {
             <h1>My Happy Fund</h1>
             <h3>Your Ultimate Solution for Fundraising</h3>
             <LoginForm />
-            <p>
+            <p className='text-center'>
+              <strong>
+                <Link to='/forgot-password'>Forgot Password</Link>
+              </strong>
+            </p>
+            <p className='text-center'>
               Don't have an account yet?{' '}
               <strong>
                 <Link to='/register'>Get Started</Link>
