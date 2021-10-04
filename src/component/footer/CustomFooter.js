@@ -4,7 +4,7 @@ const { Footer } = Layout;
 
 const CustomFooter = () => {
   return (
-    <Footer className='text-center'>
+    <Footer style={{ textAlign: 'center' }}>
       My Happy Fund ©2021 Created by NERDS
     </Footer>
   );

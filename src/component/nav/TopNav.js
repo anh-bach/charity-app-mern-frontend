@@ -1,15 +1,24 @@
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import { Link, useLocation } from 'react-router-dom';
 import Menu from 'antd/lib/menu';
 
 const { Item } = Menu;
 
 const TopNav = () => {
-  const [current, setCurrent] = useState('home');
+  const { pathname } = useLocation();
+  const [current, setCurrent] = useState(pathname.slice(1));
 
   const handleClick = (e) => {
     setCurrent(e.key);
   };
+
+  //setting the top navbar item according to the pathname
+  useEffect(() => {
+    setCurrent(pathname.slice(1));
+    if (current === 'logo' || current === '') {
+      setCurrent('home');
+    }
+  }, [pathname]);
 
   return (
     <Menu onClick={handleClick} selectedKeys={[current]} mode='horizontal'>
