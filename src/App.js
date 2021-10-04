@@ -7,7 +7,8 @@ import About from './pages/About';
 import Campaigns from './pages/Campaigns';
 import Register from './pages/auth/Register';
 import Login from './pages/auth/Login';
-import TopNav from './component/Navigation/TopNav';
+import TopNav from './component/nav/TopNav';
+import CustomFooter from './component/footer/CustomFooter';
 
 const App = () => {
   return (
@@ -20,6 +21,7 @@ const App = () => {
         <Route exact path='/register' component={Register} />
         <Route exact path='/login' component={Login} />
       </Switch>
+      <CustomFooter />
     </Router>
   );
 };
