@@ -1,0 +1,19 @@
+//bootstrap
+@import '~bootstrap/scss/bootstrap';
+
+//fonts
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap');
+
+//General styles
+@import './styles/custom';
+@import './styles/variables';
+
+//Components
+
+@import './components/SignInForm/sign-in-form';
+@import './components/SignUpForm/sign-up-form';
+@import './components/Main/HeroBanner/heroBanner';
+
+//pages
+@import './pages/SignInPage/sign-in-page';
+@import './pages/SignUpPage/sign-up-page';

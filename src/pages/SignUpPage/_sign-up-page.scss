@@ -1,0 +1,42 @@
+.sign-up-page {
+  display: -webkit-box !important;
+  display: -ms-flexbox !important;
+  display: flex !important;
+  min-height: 100vh;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+
+  .col-sm-6 {
+    padding: 0 !important;
+  }
+
+  .navbar {
+    margin: 2rem 5rem !important;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+
+    a {
+      text-decoration: none;
+    }
+    .logo {
+      font-size: 2rem;
+      font-weight: bolder;
+      color: white !important;
+      text-transform: uppercase;
+    }
+  }
+}

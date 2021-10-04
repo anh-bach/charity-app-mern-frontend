@@ -1,0 +1,12 @@
+@import "../../styles/variables";
+
+.sign-in-form {
+  width: 25rem;
+  margin: 0 auto;
+
+  .error {
+    font-size: 0.8rem;
+    color: $color-error;
+    margin-top: 0.25rem;
+  }
+}
