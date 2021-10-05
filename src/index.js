@@ -1,7 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter as Router } from 'react-router-dom';
-import { CookiesProvider } from 'react-cookie';
 import thunk from 'redux-thunk';
 import { Provider } from 'react-redux';
 import { createStore, applyMiddleware } from 'redux';
@@ -22,9 +21,7 @@ const store = createStore(
 ReactDOM.render(
   <Provider store={store}>
     <Router>
-      <CookiesProvider>
-        <App />
-      </CookiesProvider>
+      <App />
     </Router>
   </Provider>,
   document.getElementById('root')
