@@ -1,11 +1,21 @@
-import React, { useState, useEffect } from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import React, { useState, useEffect, Fragment } from 'react';
+import { Link, useLocation, useHistory } from 'react-router-dom';
+import { useSelector, useDispatch } from 'react-redux';
+import { toast } from 'react-toastify';
 import Menu from 'antd/lib/menu';
+import Avatar from 'antd/lib/avatar';
+import { LogoutOutlined, UserOutlined } from '@ant-design/icons';
+import { logout } from '../../actions/auth';
+import { LOGOUT } from '../../actions/types';
 
-const { Item } = Menu;
+const { SubMenu, Item } = Menu;
 
 const TopNav = () => {
   const { pathname } = useLocation();
+  const history = useHistory();
+  const dispatch = useDispatch();
+  const user = useSelector((state) => state.user);
+  const [currentUser, setCurrentUser] = useState(null);
   const [current, setCurrent] = useState(pathname.slice(1));
 
   const handleClick = (e) => {
@@ -19,6 +29,28 @@ const TopNav = () => {
       setCurrent('home');
     }
   }, [pathname]);
+
+  //load user if there is current logged in user
+  useEffect(() => {
+    setCurrentUser(user);
+  }, [user]);
+
+  //logout Handler
+  const handleLogoutClick = async () => {
+    try {
+      await logout();
+      //clear redux store
+      dispatch({ type: LOGOUT });
+      //toastify
+      toast('You are logged out!', {
+        position: 'top-center',
+      });
+      //redirect to homepage
+      history.push('/');
+    } catch (error) {
+      console.log('From loggout', error);
+    }
+  };
 
   return (
     <Menu onClick={handleClick} selectedKeys={[current]} mode='horizontal'>
@@ -34,12 +66,33 @@ const TopNav = () => {
       <Item key='about'>
         <Link to='/about'>About</Link>
       </Item>
-      <Item key='register'>
-        <Link to='/register'>Register</Link>
-      </Item>
-      <Item key='login'>
-        <Link to='/login'>Login</Link>
-      </Item>
+      {currentUser ? (
+        <SubMenu
+          key='SubMenu'
+          icon={
+            <Avatar
+              style={{
+                backgroundColor: '#87d068',
+              }}
+              icon={<UserOutlined />}
+            />
+          }
+          title={currentUser && currentUser.name}
+        >
+          <Item key='logout' onClick={handleLogoutClick}>
+            <LogoutOutlined /> Logout
+          </Item>
+        </SubMenu>
+      ) : (
+        <Fragment>
+          <Item key='register'>
+            <Link to='/register'>Register</Link>
+          </Item>
+          <Item key='login'>
+            <Link to='/login'>Login</Link>
+          </Item>
+        </Fragment>
+      )}
     </Menu>
   );
 };
