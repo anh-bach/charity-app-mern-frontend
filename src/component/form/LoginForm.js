@@ -34,12 +34,13 @@ const LoginForm = () => {
   //form submit
   const onFinish = async (values) => {
     try {
+      setLoading(true);
       //save email in localStorage then user could use it later on without having to re-type it
       localStorage.setItem(
         'happyFund',
         JSON.stringify({ user: { email: values.email } })
       );
-      setLoading(true);
+
       const res = await login(values);
       const {
         data: { user },
