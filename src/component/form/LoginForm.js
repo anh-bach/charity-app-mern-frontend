@@ -1,35 +1,43 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { useHistory, useLocation } from 'react-router';
-import { useDispatch, useSelector } from 'react-redux';
-import { LoadingOutlined, LockOutlined, UserOutlined } from '@ant-design/icons';
+import { useDispatch } from 'react-redux';
+import { LoadingOutlined, LockOutlined, MailOutlined } from '@ant-design/icons';
 import { Form, Input, Button, Checkbox } from 'antd';
 import { toast } from 'react-toastify';
 import { login } from '../../actions/auth';
 import { LOGGED_IN_USER } from '../../actions/types';
-import { roleBasedRedirect } from '../../utils/redirect';
 
 const LoginForm = () => {
+  const [form] = Form.useForm(); // to use form method
   const dispatch = useDispatch();
-  const user = useSelector((state) => state.user);
   const location = useLocation();
   const history = useHistory();
 
   const [loading, setLoading] = useState(false);
 
+  //take the email from localStorage if exists
   let email = '';
   if (localStorage.getItem('happyFund')) {
     const happyFundObj = JSON.parse(localStorage.getItem('happyFund'));
-    if (happyFundObj.user && happyFundObj.user.email) {
-      email = happyFundObj.user.email;
+    if (happyFundObj.email) {
+      email = happyFundObj.email;
     }
   }
+  //helper function to redirect user after login
+  const roleBasedRedirect = (role) => {
+    //check if intended path from history location state
+    const intended = location.state;
 
-  //if user logged in, push user back to home page
-  useEffect(() => {
-    if (user && user.token) {
-      history.push('/');
+    if (intended) {
+      history.push(intended.from);
+    } else {
+      if (role === 'admin') {
+        history.push('/admin/dashboard');
+      } else if (role === 'user') {
+        history.push('/user/history');
+      }
     }
-  }, [user, history]);
+  };
 
   //form submit
   const onFinish = async (values) => {
@@ -38,11 +46,12 @@ const LoginForm = () => {
       //save email in localStorage then user could use it later on without having to re-type it
       localStorage.setItem(
         'happyFund',
-        JSON.stringify({ user: { email: values.email } })
+        JSON.stringify({ email: values.email })
       );
-
+      //try to log user in
       const res = await login(values);
       const {
+        token,
         data: { user },
       } = res.data;
 
@@ -50,6 +59,7 @@ const LoginForm = () => {
       dispatch({
         type: LOGGED_IN_USER,
         payload: {
+          token,
           name: user.name,
           email: user.email,
           role: user.role,
@@ -58,9 +68,14 @@ const LoginForm = () => {
       });
 
       //toastify
-      toast('You are logged in!', { position: 'top-center' });
-      //roleBasedRedirect
-      roleBasedRedirect(location, history, user.role, setLoading);
+      toast('Successfully logged in!', { position: 'top-center' });
+
+      //redirect user -> if user in login page -> redirect to user page
+      //redirect user -> if user in other page -> redirect to the previous page
+      roleBasedRedirect(user.role);
+      setLoading(false);
+
+      console.log('location', location);
     } catch (error) {
       console.log('from login-->', error.response);
       //toastify
@@ -74,14 +89,13 @@ const LoginForm = () => {
     //save email in localStorage then user could use it later on without having to re-type it
     localStorage.setItem(
       'happyFund',
-      JSON.stringify({ user: { email: errorInfo.values.email } })
+      JSON.stringify({ email: errorInfo.values.email })
     );
-
-    console.log('Failed:', errorInfo);
   };
 
   return (
     <Form
+      form={form}
       name='loginForm'
       labelCol={{
         span: 24,
@@ -115,8 +129,9 @@ const LoginForm = () => {
             message: 'Please input your email!',
           },
         ]}
+        validateTrigger='onBlur'
       >
-        <Input prefix={<UserOutlined />} placeholder='Email' />
+        <Input prefix={<MailOutlined />} />
       </Form.Item>
 
       <Form.Item
@@ -128,12 +143,9 @@ const LoginForm = () => {
             message: 'Please input your password!',
           },
         ]}
+        validateTrigger='onBlur'
       >
-        <Input.Password
-          prefix={<LockOutlined className='site-form-item-icon' />}
-          type='password'
-          placeholder='Password'
-        />
+        <Input.Password prefix={<LockOutlined />} />
       </Form.Item>
 
       <Form.Item

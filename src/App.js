@@ -2,6 +2,7 @@ import React, { Fragment, useEffect } from 'react';
 import { Route, Switch } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { ToastContainer } from 'react-toastify';
+import { useLocation } from 'react-router';
 import 'antd/dist/antd.css';
 import 'react-toastify/dist/ReactToastify.css';
 
@@ -17,6 +18,9 @@ import { LOGGED_IN_USER } from './actions/types';
 
 const App = () => {
   const dispatch = useDispatch();
+  const location = useLocation();
+
+  console.log('location from App', location);
 
   useEffect(() => {
     //get the current loggedin user
@@ -27,6 +31,7 @@ const App = () => {
     try {
       const res = await getCurrentUser();
       const {
+        token,
         data: { user },
       } = res.data;
 
@@ -34,6 +39,7 @@ const App = () => {
       dispatch({
         type: LOGGED_IN_USER,
         payload: {
+          token,
           name: user.name,
           email: user.email,
           role: user.role,

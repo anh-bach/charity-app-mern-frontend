@@ -1,11 +1,17 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { useSelector } from 'react-redux';
+import { useHistory } from 'react-router';
+import { Link } from 'react-router-dom';
 import Row from 'antd/lib/row';
 import Col from 'antd/lib/col';
 import Galaxy from '../../assets/images/galaxy.jpg';
 import RegisterForm from '../../component/form/RegisterForm';
-import { Link } from 'react-router-dom';
 
 const Register = () => {
+  const user = useSelector((state) => state.user);
+  const history = useHistory();
+  //if user logged in, push user back to home page
+
   return (
     <Row>
       <Col sm={24} md={12}>

@@ -1,4 +1,6 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { useSelector } from 'react-redux';
+import { useHistory } from 'react-router';
 import Row from 'antd/lib/row';
 import Col from 'antd/lib/col';
 import StarryNight from '../../assets/images/starry_night.jpg';
@@ -6,6 +8,10 @@ import LoginForm from '../../component/form/LoginForm';
 import { Link } from 'react-router-dom';
 
 const Login = () => {
+  const user = useSelector((state) => state.user);
+  const history = useHistory();
+  //if user logged in, push user back to home page
+
   return (
     <Row>
       <Col sm={24} md={12}>
