@@ -1,8 +1,7 @@
 import React, { Fragment, useState, useEffect } from 'react';
-import { Route, Switch } from 'react-router-dom';
+import { Switch } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { ToastContainer } from 'react-toastify';
-import { useLocation } from 'react-router';
 import 'antd/dist/antd.css';
 import 'react-toastify/dist/ReactToastify.css';
 
@@ -11,16 +10,18 @@ import About from './pages/About';
 import Campaigns from './pages/Campaigns';
 import Register from './pages/auth/Register';
 import Login from './pages/auth/Login';
-import TopNav from './component/nav/TopNav';
 import CustomFooter from './component/footer/CustomFooter';
 import ForgotPassword from './pages/auth/ForgotPassword';
 import ResetPassWord from './pages/auth/ResetPassword';
 import { getCurrentUser } from './actions/auth';
 import { LOGGED_IN_USER } from './actions/types';
+import UserRoute from './component/route/UserRoute';
+import AdminRoute from './component/route/AdminRoute';
+import UserDashboard from './pages/user/UserDashboard';
+import RouteWithTopNav from './component/route/RouteWithTopNav';
 
 const App = () => {
   const dispatch = useDispatch();
-  const location = useLocation();
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
@@ -67,19 +68,27 @@ const App = () => {
         </div>
       ) : (
         <Fragment>
-          <TopNav />
           <ToastContainer />
           <Switch>
-            <Route exact path='/' component={Home} />
-            <Route exact path='/about' component={About} />
-            <Route exact path='/campaigns' component={Campaigns} />
-            <Route exact path='/register' component={Register} />
-            <Route exact path='/login' component={Login} />
-            <Route exact path='/forgot-password' component={ForgotPassword} />
-            <Route
+            <RouteWithTopNav exact path='/' component={Home} />
+            <RouteWithTopNav exact path='/about' component={About} />
+            <RouteWithTopNav exact path='/campaigns' component={Campaigns} />
+            <RouteWithTopNav exact path='/register' component={Register} />
+            <RouteWithTopNav exact path='/login' component={Login} />
+            <RouteWithTopNav
+              exact
+              path='/forgot-password'
+              component={ForgotPassword}
+            />
+            <RouteWithTopNav
               exact
               path='/reset-password/:resetToken'
               component={ResetPassWord}
+            />
+            <UserRoute
+              exact
+              path='/me/:userId/dashboard'
+              component={UserDashboard}
             />
           </Switch>
           <CustomFooter />

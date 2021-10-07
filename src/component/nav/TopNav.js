@@ -4,7 +4,16 @@ import { useSelector, useDispatch } from 'react-redux';
 import { toast } from 'react-toastify';
 import Menu from 'antd/lib/menu';
 import Avatar from 'antd/lib/avatar';
-import { LogoutOutlined, UserOutlined } from '@ant-design/icons';
+import {
+  DashboardFilled,
+  HistoryOutlined,
+  HomeFilled,
+  LoginOutlined,
+  LogoutOutlined,
+  ProjectFilled,
+  UserAddOutlined,
+  UserOutlined,
+} from '@ant-design/icons';
 import { logout } from '../../actions/auth';
 import { LOGOUT } from '../../actions/types';
 
@@ -42,7 +51,7 @@ const TopNav = () => {
       //clear redux store
       dispatch({ type: LOGOUT });
       //toastify
-      toast('You are logged out!', {
+      toast.success('You are logged out!', {
         position: 'top-center',
       });
       //redirect to homepage
@@ -57,13 +66,13 @@ const TopNav = () => {
       <Item key='logo' style={{ marginRight: 'auto' }}>
         <Link to='/'>Happy Fund</Link>
       </Item>
-      <Item key='home'>
+      <Item key='home' icon={<HomeFilled />}>
         <Link to='/'>Home</Link>
       </Item>
-      <Item key='campaigns'>
+      <Item key='campaigns' icon={<ProjectFilled />}>
         <Link to='/campaigns'>Campaigns</Link>
       </Item>
-      <Item key='about'>
+      <Item key='about' icon={<HistoryOutlined />}>
         <Link to='/about'>About</Link>
       </Item>
       {currentUser ? (
@@ -79,16 +88,23 @@ const TopNav = () => {
           }
           title={currentUser && currentUser.name}
         >
-          <Item key='logout' onClick={handleLogoutClick}>
-            <LogoutOutlined /> Logout
+          <Item key='dashboard' icon={<DashboardFilled />}>
+            <Link to={`/me/${currentUser._id ?? ''}/dashboard`}>Dashboard</Link>
+          </Item>
+          <Item
+            key='logout'
+            icon={<LogoutOutlined />}
+            onClick={handleLogoutClick}
+          >
+            Sign Out
           </Item>
         </SubMenu>
       ) : (
         <Fragment>
-          <Item key='register'>
+          <Item key='register' icon={<UserAddOutlined />}>
             <Link to='/register'>Register</Link>
           </Item>
-          <Item key='login'>
+          <Item key='login' icon={<LoginOutlined />}>
             <Link to='/login'>Login</Link>
           </Item>
         </Fragment>

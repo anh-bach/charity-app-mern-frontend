@@ -13,7 +13,7 @@ const ForgotPasswordForm = () => {
       setLoading(true);
       const res = await requestNewPassword(values.email);
       //toastify
-      toast(res.data.message, { position: 'top-center' });
+      toast.success(res.data.message, { position: 'top-center' });
       setLoading(false);
     } catch (error) {
       console.log('From forgot password', error);

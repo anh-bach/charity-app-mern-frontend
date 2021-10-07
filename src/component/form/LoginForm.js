@@ -6,6 +6,7 @@ import { Form, Input, Button, Checkbox } from 'antd';
 import { toast } from 'react-toastify';
 import { login } from '../../actions/auth';
 import { LOGGED_IN_USER } from '../../actions/types';
+import { roleBasedRedirect } from '../../utils/redirect';
 
 const LoginForm = () => {
   const [form] = Form.useForm(); // to use form method
@@ -23,21 +24,6 @@ const LoginForm = () => {
       email = happyFundObj.email;
     }
   }
-  //helper function to redirect user after login
-  const roleBasedRedirect = (role) => {
-    //check if intended path from history location state
-    const intended = location.state;
-
-    if (intended) {
-      history.push(intended.from);
-    } else {
-      if (role === 'admin') {
-        history.push('/admin/dashboard');
-      } else if (role === 'user') {
-        history.push('/user/history');
-      }
-    }
-  };
 
   //form submit
   const onFinish = async (values) => {
@@ -68,12 +54,12 @@ const LoginForm = () => {
       });
 
       //toastify
-      toast('Successfully logged in!', { position: 'top-center' });
+      toast.success('Successfully logged in!', { position: 'top-center' });
 
       //redirect user -> if user in login page -> redirect to user page
       //redirect user -> if user in other page -> redirect to the previous page
       //history.goBack();
-      roleBasedRedirect(user.role);
+      roleBasedRedirect(location, history, user.role, user._id);
       setLoading(false);
 
       console.log('location', location);

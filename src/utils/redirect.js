@@ -1,4 +1,4 @@
-export const roleBasedRedirect = (location, history, role) => {
+export const roleBasedRedirect = (location, history, role, userId) => {
   //check if intended path from history location state
   const intended = location.state;
 
@@ -8,7 +8,7 @@ export const roleBasedRedirect = (location, history, role) => {
     if (role === 'admin') {
       history.push('/admin/dashboard');
     } else if (role === 'user') {
-      history.push('/user/history');
+      history.push(`/me/${userId}/dashboard`);
     }
   }
 };

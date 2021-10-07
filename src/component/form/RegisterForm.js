@@ -59,8 +59,8 @@ const RegisterForm = () => {
       });
 
       //toastify
-      toast(
-        'Your new account has been created! Please check your email and login!',
+      toast.success(
+        "Your new account has been created! Please check your email. If it's not in the inbox, please check the promotion/spam section!",
         {
           position: 'top-center',
         }
