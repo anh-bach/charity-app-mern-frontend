@@ -65,9 +65,9 @@ const RegisterForm = () => {
           position: 'top-center',
         }
       );
-      //redirect user to login page
-      history.push('/login');
       setLoading(false);
+      //redirect user
+      history.push('/');
     } catch (error) {
       console.log('from register-->', error.response);
       //toastify

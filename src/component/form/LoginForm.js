@@ -72,6 +72,7 @@ const LoginForm = () => {
 
       //redirect user -> if user in login page -> redirect to user page
       //redirect user -> if user in other page -> redirect to the previous page
+      //history.goBack();
       roleBasedRedirect(user.role);
       setLoading(false);
 

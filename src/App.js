@@ -1,4 +1,4 @@
-import React, { Fragment, useEffect } from 'react';
+import React, { Fragment, useState, useEffect } from 'react';
 import { Route, Switch } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { ToastContainer } from 'react-toastify';
@@ -13,14 +13,15 @@ import Register from './pages/auth/Register';
 import Login from './pages/auth/Login';
 import TopNav from './component/nav/TopNav';
 import CustomFooter from './component/footer/CustomFooter';
+import ForgotPassword from './pages/auth/ForgotPassword';
+import ResetPassWord from './pages/auth/ResetPassword';
 import { getCurrentUser } from './actions/auth';
 import { LOGGED_IN_USER } from './actions/types';
 
 const App = () => {
   const dispatch = useDispatch();
   const location = useLocation();
-
-  console.log('location from App', location);
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     //get the current loggedin user
@@ -29,6 +30,7 @@ const App = () => {
 
   const loadCurrentUser = async () => {
     try {
+      setLoading(true);
       const res = await getCurrentUser();
       const {
         token,
@@ -46,23 +48,43 @@ const App = () => {
           _id: user._id,
         },
       });
+      setLoading(false);
     } catch (error) {
       console.log('From load current user', error);
+      setLoading(false);
     }
   };
 
   return (
     <Fragment>
-      <TopNav />
-      <ToastContainer />
-      <Switch>
-        <Route exact path='/' component={Home} />
-        <Route exact path='/about' component={About} />
-        <Route exact path='/campaigns' component={Campaigns} />
-        <Route exact path='/register' component={Register} />
-        <Route exact path='/login' component={Login} />
-      </Switch>
-      <CustomFooter />
+      {loading ? (
+        <div
+          style={{
+            height: '100vh',
+          }}
+        >
+          ...loading
+        </div>
+      ) : (
+        <Fragment>
+          <TopNav />
+          <ToastContainer />
+          <Switch>
+            <Route exact path='/' component={Home} />
+            <Route exact path='/about' component={About} />
+            <Route exact path='/campaigns' component={Campaigns} />
+            <Route exact path='/register' component={Register} />
+            <Route exact path='/login' component={Login} />
+            <Route exact path='/forgot-password' component={ForgotPassword} />
+            <Route
+              exact
+              path='/reset-password/:resetToken'
+              component={ResetPassWord}
+            />
+          </Switch>
+          <CustomFooter />
+        </Fragment>
+      )}
     </Fragment>
   );
 };

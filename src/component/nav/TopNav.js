@@ -46,7 +46,7 @@ const TopNav = () => {
         position: 'top-center',
       });
       //redirect to homepage
-      history.push('/');
+      history.push('/login');
     } catch (error) {
       console.log('From loggout', error);
     }
