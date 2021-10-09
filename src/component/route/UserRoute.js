@@ -22,7 +22,7 @@ const UserRoute = ({ component: Component, ...rest }) => {
       )}
     />
   ) : (
-    <LoadingToRedirect path='/' />
+    <LoadingToRedirect />
   );
 };
 

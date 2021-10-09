@@ -1,15 +1,11 @@
-import React, { useEffect } from 'react';
-import { useSelector } from 'react-redux';
-import { useHistory } from 'react-router';
+import React from 'react';
 import Row from 'antd/lib/row';
 import Col from 'antd/lib/col';
 import StarryNight from '../../assets/images/starry_night.jpg';
 import LoginForm from '../../component/form/LoginForm';
 import { Link } from 'react-router-dom';
 
-const Login = () => {
-  const user = useSelector((state) => state.user);
-  const history = useHistory();
+const Login = ({ prevUrl }) => {
   //if user logged in, push user back to home page
 
   return (
@@ -22,7 +18,7 @@ const Login = () => {
           <Col span={18} offset={3}>
             <h1>My Happy Fund</h1>
             <h3>Your Ultimate Solution for Fundraising</h3>
-            <LoginForm />
+            <LoginForm prevUrl={prevUrl} />
             <p className='text-center'>
               <strong>
                 <Link to='/forgot-password'>Forgot Password</Link>

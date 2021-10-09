@@ -29,7 +29,7 @@ const AdminRoute = ({ component: Component, ...rest }) => {
       )}
     />
   ) : (
-    <LoadingToRedirect path='/' />
+    <LoadingToRedirect />
   );
 };
 

@@ -1,4 +1,5 @@
 import React, { Fragment, useState, useEffect } from 'react';
+import { useLocation } from 'react-router';
 import { Switch } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { ToastContainer } from 'react-toastify';
@@ -23,12 +24,23 @@ import RouteWithTopNav from './component/route/RouteWithTopNav';
 
 const App = () => {
   const dispatch = useDispatch();
+  const location = useLocation();
+  const [curUrl, setCurUrl] = useState(null);
+  const [prevUrl, setPrevUrl] = useState(null);
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     //get the current loggedin user
     loadCurrentUser();
   }, []);
+
+  useEffect(() => {
+    //saving the previous url -> to redirect the user after loggin
+    if (location.pathname !== curUrl) {
+      setPrevUrl(curUrl);
+      setCurUrl(location.pathname);
+    }
+  }, [location.pathname]);
 
   const loadCurrentUser = async () => {
     try {
@@ -75,7 +87,12 @@ const App = () => {
             <RouteWithTopNav exact path='/about' component={About} />
             <RouteWithTopNav exact path='/campaigns' component={Campaigns} />
             <RouteWithTopNav exact path='/register' component={Register} />
-            <RouteWithTopNav exact path='/login' component={Login} />
+            <RouteWithTopNav
+              exact
+              path='/login'
+              component={Login}
+              prevUrl={prevUrl}
+            />
             <RouteWithTopNav
               exact
               path='/forgot-password'

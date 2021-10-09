@@ -8,7 +8,7 @@ import { login } from '../../actions/auth';
 import { LOGGED_IN_USER } from '../../actions/types';
 import { roleBasedRedirect } from '../../utils/redirect';
 
-const LoginForm = () => {
+const LoginForm = ({ prevUrl }) => {
   const [form] = Form.useForm(); // to use form method
   const dispatch = useDispatch();
   const location = useLocation();
@@ -55,14 +55,13 @@ const LoginForm = () => {
 
       //toastify
       toast.success('Successfully logged in!', { position: 'top-center' });
+      setLoading(false);
 
       //redirect user -> if user in login page -> redirect to user page
       //redirect user -> if user in other page -> redirect to the previous page
       //history.goBack();
-      roleBasedRedirect(location, history, user.role, user._id);
-      setLoading(false);
 
-      console.log('location', location);
+      roleBasedRedirect(prevUrl, history, user.role, user._id);
     } catch (error) {
       console.log('from login-->', error.response);
       //toastify
