@@ -79,6 +79,8 @@ const UserNav = () => {
         <Link to='#'>Campaign Contributors</Link>
       </Item>
 
+      <Menu.Divider />
+
       <SubMenu key='settings' icon={<SettingFilled />} title='Settings'>
         <Menu.Item key='myAccount' icon={<ProfileFilled />}>
           My Account

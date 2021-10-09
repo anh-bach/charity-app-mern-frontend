@@ -21,6 +21,7 @@ import AdminRoute from './component/route/AdminRoute';
 import UserDashboard from './pages/user/UserDashboard';
 import AdminDashboard from './pages/admin/AdminDashboard';
 import RouteWithTopNav from './component/route/RouteWithTopNav';
+import Category from './pages/admin/Category';
 
 const App = () => {
   const dispatch = useDispatch();
@@ -110,8 +111,13 @@ const App = () => {
             />
             <AdminRoute
               exact
-              path='/admin/dashboard'
+              path='/admin/dashboard/overview'
               component={AdminDashboard}
+            />
+            <AdminRoute
+              exact
+              path='/admin/dashboard/category'
+              component={Category}
             />
           </Switch>
           <CustomFooter />

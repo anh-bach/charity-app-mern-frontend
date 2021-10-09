@@ -64,10 +64,10 @@ const AdminNav = () => {
         <Link to='/'>My Happy Fund</Link>
       </Item>
       <Item key='overview' icon={<DashboardFilled />}>
-        <Link to='#'>Overview</Link>
+        <Link to='/admin/dashboard/overview'>Overview</Link>
       </Item>
       <Item key='campaigns' icon={<ProjectFilled />}>
-        <Link to='#'>Category</Link>
+        <Link to='/admin/dashboard/category'>Category</Link>
       </Item>
       <Item key='saved' icon={<SaveFilled />}>
         <Link to='#'>Sub Category</Link>
@@ -78,6 +78,8 @@ const AdminNav = () => {
       <Item key='contributors' icon={<GroupOutlined />}>
         <Link to='#'>Contributors</Link>
       </Item>
+
+      <Menu.Divider />
 
       <SubMenu key='settings' icon={<SettingFilled />} title='Settings'>
         <Menu.Item key='myAccount' icon={<ProfileFilled />}>

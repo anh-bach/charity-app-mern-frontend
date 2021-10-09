@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useHistory, useLocation } from 'react-router';
+import { useHistory } from 'react-router';
 import { useDispatch } from 'react-redux';
 import { LoadingOutlined, LockOutlined, MailOutlined } from '@ant-design/icons';
 import { Form, Input, Button, Checkbox } from 'antd';
@@ -11,7 +11,6 @@ import { roleBasedRedirect } from '../../utils/redirect';
 const LoginForm = ({ prevUrl }) => {
   const [form] = Form.useForm(); // to use form method
   const dispatch = useDispatch();
-  const location = useLocation();
   const history = useHistory();
 
   const [loading, setLoading] = useState(false);
