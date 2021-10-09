@@ -18,6 +18,7 @@ import { LOGGED_IN_USER } from './actions/types';
 import UserRoute from './component/route/UserRoute';
 import AdminRoute from './component/route/AdminRoute';
 import UserDashboard from './pages/user/UserDashboard';
+import AdminDashboard from './pages/admin/AdminDashboard';
 import RouteWithTopNav from './component/route/RouteWithTopNav';
 
 const App = () => {
@@ -89,6 +90,11 @@ const App = () => {
               exact
               path='/me/:userId/dashboard'
               component={UserDashboard}
+            />
+            <AdminRoute
+              exact
+              path='/admin/dashboard'
+              component={AdminDashboard}
             />
           </Switch>
           <CustomFooter />

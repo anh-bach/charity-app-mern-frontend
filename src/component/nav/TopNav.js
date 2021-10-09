@@ -61,6 +61,17 @@ const TopNav = () => {
     }
   };
 
+  //Link to dashboard
+  const linkToDashboard = () => {
+    let link = '';
+    if (currentUser) {
+      currentUser.role === 'admin'
+        ? (link = '/admin/dashboard')
+        : (link = `me/${currentUser._id}/dashboard`);
+    }
+    return link;
+  };
+
   return (
     <Menu onClick={handleClick} selectedKeys={[current]} mode='horizontal'>
       <Item key='logo' style={{ marginRight: 'auto' }}>
@@ -89,7 +100,7 @@ const TopNav = () => {
           title={currentUser && currentUser.name}
         >
           <Item key='dashboard' icon={<DashboardFilled />}>
-            <Link to={`/me/${currentUser._id ?? ''}/dashboard`}>Dashboard</Link>
+            <Link to={linkToDashboard()}>Dashboard</Link>
           </Item>
           <Item
             key='logout'
