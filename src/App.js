@@ -22,6 +22,7 @@ import UserDashboard from './pages/user/UserDashboard';
 import AdminDashboard from './pages/admin/AdminDashboard';
 import RouteWithTopNav from './component/route/RouteWithTopNav';
 import Category from './pages/admin/Category';
+import CategoryUpdate from './pages/admin/CategoryUpdate';
 
 const App = () => {
   const dispatch = useDispatch();
@@ -113,6 +114,11 @@ const App = () => {
               exact
               path='/admin/dashboard/overview'
               component={AdminDashboard}
+            />
+            <AdminRoute
+              exact
+              path='/admin/dashboard/category/:slug'
+              component={CategoryUpdate}
             />
             <AdminRoute
               exact

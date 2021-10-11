@@ -1,19 +1,42 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import { useHistory, useParams } from 'react-router';
 import { Form, Input, Button } from 'antd';
 import { LoadingOutlined } from '@ant-design/icons';
 import { toast } from 'react-toastify';
-import { createCategory } from '../../actions/category';
+import { getCategory, updateCategory } from '../../actions/category';
 
-const CategoryForm = ({ loading, setLoading, loadCategories }) => {
+const CategoryUpdateForm = ({ loading, setLoading, loadCategories }) => {
   const [form] = Form.useForm();
+  const { slug } = useParams();
+  const [category, setCategory] = useState('');
+  const history = useHistory();
+
+  useEffect(() => {
+    loadCategory();
+  }, [slug]);
+
+  const loadCategory = async () => {
+    try {
+      setLoading(true);
+      const res = await getCategory(slug);
+      setCategory(res.data.data.category.name);
+      form.setFieldsValue({ name: res.data.data.category.name });
+      setLoading(false);
+    } catch (error) {
+      console.log('From loadCategory--->', error);
+      setLoading(false);
+    }
+  };
+
   const onFinish = async (values) => {
     try {
       setLoading(true);
-      await createCategory(values.name);
+      const res = await updateCategory(slug, values.name);
       loadCategories();
-      toast.success('Category created');
+      toast.success('Category updated');
       setLoading(false);
       form.resetFields();
+      history.push(`/admin/dashboard/category/${res.data.data.category.slug}`);
     } catch (error) {
       console.log('From create category--->', error);
       toast.error('Failed');
@@ -35,7 +58,7 @@ const CategoryForm = ({ loading, setLoading, loadCategories }) => {
       }}
       onFinish={onFinish}
     >
-      <h3>Creat Category</h3>
+      <h3>Update Category</h3>
       <p>
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloremque,
         ratione.
@@ -51,7 +74,7 @@ const CategoryForm = ({ loading, setLoading, loadCategories }) => {
         ]}
         validateTrigger='onBlur'
       >
-        <Input />
+        <Input value={category} />
       </Form.Item>
       <Form.Item
         wrapperCol={{
@@ -68,11 +91,11 @@ const CategoryForm = ({ loading, setLoading, loadCategories }) => {
             borderRadius: '10rem',
           }}
         >
-          {loading ? <LoadingOutlined /> : 'Create'}
+          {loading ? <LoadingOutlined /> : 'Update'}
         </Button>
       </Form.Item>
     </Form>
   );
 };
 
-export default CategoryForm;
+export default CategoryUpdateForm;

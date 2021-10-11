@@ -1,14 +1,16 @@
 import React, { useState, useEffect } from 'react';
 import { Row, Col } from 'antd';
-import { toast } from 'react-toastify';
-import CategoryForm from '../../component/form/CategoryForm';
+import { useHistory } from 'react-router';
+import CategoryUpdateForm from '../../component/form/CategoryUpdateForm';
 import DashboardHorizontalNav from '../../component/nav/DashboardNav';
 import CategoryList from '../../component/category/CategoryList';
 import { getCategories, deleteCategory } from '../../actions/category';
+import { toast } from 'react-toastify';
 
-const Category = () => {
+const CategoryUpdate = () => {
   const [loading, setLoading] = useState(false);
   const [categoryList, setCategoryList] = useState([]);
+  const history = useHistory();
 
   useEffect(() => {
     loadCategories();
@@ -32,9 +34,10 @@ const Category = () => {
       await deleteCategory(slug);
       toast.success('One category removed!');
       setLoading(false);
-      loadCategories();
+      await loadCategories();
+      history.push('/admin/dashboard/category');
     } catch (error) {
-      console.log('From delete category--->', error);
+      console.log('From delete category update page--->', error);
       setLoading(false);
     }
   };
@@ -44,9 +47,9 @@ const Category = () => {
       <DashboardHorizontalNav />
       <Row gutter={16}>
         <Col span='10'>
-          <CategoryForm
-            title='Create Category'
-            buttonText='Create'
+          <CategoryUpdateForm
+            title='Update Category'
+            buttonText='Update'
             loading={loading}
             setLoading={setLoading}
             loadCategories={loadCategories}
@@ -64,4 +67,4 @@ const Category = () => {
   );
 };
 
-export default Category;
+export default CategoryUpdate;
