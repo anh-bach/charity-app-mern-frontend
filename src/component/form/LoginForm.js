@@ -1,16 +1,16 @@
 import React, { useState } from 'react';
-import { useHistory, useLocation } from 'react-router';
+import { useHistory } from 'react-router';
 import { useDispatch } from 'react-redux';
 import { LoadingOutlined, LockOutlined, MailOutlined } from '@ant-design/icons';
 import { Form, Input, Button, Checkbox } from 'antd';
 import { toast } from 'react-toastify';
 import { login } from '../../actions/auth';
 import { LOGGED_IN_USER } from '../../actions/types';
+import { roleBasedRedirect } from '../../utils/redirect';
 
-const LoginForm = () => {
+const LoginForm = ({ prevUrl }) => {
   const [form] = Form.useForm(); // to use form method
   const dispatch = useDispatch();
-  const location = useLocation();
   const history = useHistory();
 
   const [loading, setLoading] = useState(false);
@@ -23,21 +23,6 @@ const LoginForm = () => {
       email = happyFundObj.email;
     }
   }
-  //helper function to redirect user after login
-  const roleBasedRedirect = (role) => {
-    //check if intended path from history location state
-    const intended = location.state;
-
-    if (intended) {
-      history.push(intended.from);
-    } else {
-      if (role === 'admin') {
-        history.push('/admin/dashboard');
-      } else if (role === 'user') {
-        history.push('/user/history');
-      }
-    }
-  };
 
   //form submit
   const onFinish = async (values) => {
@@ -68,14 +53,14 @@ const LoginForm = () => {
       });
 
       //toastify
-      toast('Successfully logged in!', { position: 'top-center' });
+      toast.success('Successfully logged in!', { position: 'top-center' });
+      setLoading(false);
 
       //redirect user -> if user in login page -> redirect to user page
       //redirect user -> if user in other page -> redirect to the previous page
-      roleBasedRedirect(user.role);
-      setLoading(false);
+      //history.goBack();
 
-      console.log('location', location);
+      roleBasedRedirect(prevUrl, history, user.role, user._id);
     } catch (error) {
       console.log('from login-->', error.response);
       //toastify
