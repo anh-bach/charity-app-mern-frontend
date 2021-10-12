@@ -7,6 +7,7 @@ import Avatar from 'antd/lib/avatar';
 import { LogoutOutlined, UserOutlined } from '@ant-design/icons';
 import { logout } from '../../actions/auth';
 import { LOGOUT } from '../../actions/types';
+import { Header } from 'antd/lib/layout/layout';
 
 const { SubMenu, Item } = Menu;
 
@@ -53,47 +54,51 @@ const TopNav = () => {
   };
 
   return (
-    <Menu onClick={handleClick} selectedKeys={[current]} mode='horizontal'>
-      <Item key='logo' style={{ marginRight: 'auto' }}>
-        <Link to='/'>Happy Fund</Link>
-      </Item>
-      <Item key='home'>
-        <Link to='/'>Home</Link>
-      </Item>
-      <Item key='campaigns'>
-        <Link to='/campaigns'>Campaigns</Link>
-      </Item>
-      <Item key='about'>
-        <Link to='/about'>About</Link>
-      </Item>
-      {currentUser ? (
-        <SubMenu
-          key='SubMenu'
-          icon={
-            <Avatar
-              style={{
-                backgroundColor: '#87d068',
-              }}
-              icon={<UserOutlined />}
-            />
-          }
-          title={currentUser && currentUser.name}
-        >
-          <Item key='logout' onClick={handleLogoutClick}>
-            <LogoutOutlined /> Logout
-          </Item>
-        </SubMenu>
-      ) : (
-        <Fragment>
-          <Item key='register'>
-            <Link to='/register'>Register</Link>
-          </Item>
-          <Item key='login'>
-            <Link to='/login'>Login</Link>
-          </Item>
-        </Fragment>
-      )}
-    </Menu>
+    <Header className="header" style={{ position: 'fixed', top: 0, zIndex: 100, width: '100%' }}>
+      <Menu className="header__nav" onClick={handleClick} selectedKeys={[current]} mode='horizontal'>
+        <Item key='logo' className="header__nav__left" style={{ marginRight: 'auto' }}>
+          <div className="header__nav__left--logo">
+            <Link to='/'>MyHappyFund</Link>
+          </div>
+        </Item>
+        <Item key='home'>
+          <Link to='/'>Home</Link>
+        </Item>
+        <Item key='campaigns'>
+          <Link to='/campaigns'>Campaigns</Link>
+        </Item>
+        <Item key='about'>
+          <Link to='/about'>About</Link>
+        </Item>
+        {currentUser ? (
+          <SubMenu
+            key='SubMenu'
+            icon={
+              <Avatar
+                style={{
+                  backgroundColor: '#87d068',
+                }}
+                icon={<UserOutlined />}
+              />
+            }
+            title={currentUser && currentUser.name}
+          >
+            <Item key='logout' onClick={handleLogoutClick}>
+              <LogoutOutlined /> Logout
+            </Item>
+          </SubMenu>
+        ) : (
+          <Fragment>
+            <Item key='register'>
+              <Link to='/register'>Register</Link>
+            </Item>
+            <Item key='login'>
+              <Link to='/login'>Login</Link>
+            </Item>
+          </Fragment>
+        )}
+      </Menu>
+    </Header>
   );
 };
 
