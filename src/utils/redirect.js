@@ -1,23 +1,13 @@
-export const roleBasedRedirect = (
-  location,
-  history,
-  role,
-  time = 3000,
-  setLoading
-) => {
+export const roleBasedRedirect = (prevUrl, history, role, userId) => {
   //check if intended path from history location state
-  const intended = location.state;
 
-  setTimeout(() => {
-    if (intended) {
-      history.push(intended.from);
-    } else {
-      if (role === 'admin') {
-        history.push('/admin/dashboard');
-      } else if (role === 'user') {
-        history.push('/user/history');
-      }
+  if (prevUrl) {
+    history.push(prevUrl);
+  } else {
+    if (role === 'admin') {
+      history.push('/admin/dashboard');
+    } else if (role === 'user') {
+      history.push(`/me/${userId}/dashboard`);
     }
-  }, time);
-  setLoading && setLoading(false);
+  }
 };

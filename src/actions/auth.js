@@ -35,3 +35,25 @@ export const register = async (user) => {
     withCredentials: true,
   });
 };
+
+//forgot password
+export const requestNewPassword = async (email) => {
+  return await axios.post(`${process.env.REACT_APP_API}/forgotPassword`, {
+    email,
+  });
+};
+
+//create new password
+export const createNewPassword = async (
+  password,
+  passwordConfirm,
+  resetToken
+) => {
+  return await axios.patch(
+    `${process.env.REACT_APP_API}/resetPassword/${resetToken}`,
+    {
+      password,
+      passwordConfirm,
+    }
+  );
+};
