@@ -4,7 +4,16 @@ import { useSelector, useDispatch } from 'react-redux';
 import { toast } from 'react-toastify';
 import Menu from 'antd/lib/menu';
 import Avatar from 'antd/lib/avatar';
-import { LogoutOutlined, UserOutlined } from '@ant-design/icons';
+import {
+  DashboardFilled,
+  HistoryOutlined,
+  HomeFilled,
+  LoginOutlined,
+  LogoutOutlined,
+  ProjectFilled,
+  UserAddOutlined,
+  UserOutlined,
+} from '@ant-design/icons';
 import { logout } from '../../actions/auth';
 import { LOGOUT } from '../../actions/types';
 import { Header } from 'antd/lib/layout/layout';
@@ -43,14 +52,25 @@ const TopNav = () => {
       //clear redux store
       dispatch({ type: LOGOUT });
       //toastify
-      toast('You are logged out!', {
+      toast.success('You are logged out!', {
         position: 'top-center',
       });
       //redirect to homepage
-      history.push('/');
+      history.push('/login');
     } catch (error) {
       console.log('From loggout', error);
     }
+  };
+
+  //Link to dashboard
+  const linkToDashboard = () => {
+    let link = '';
+    if (currentUser) {
+      currentUser.role === 'admin'
+        ? (link = '/admin/dashboard/overview')
+        : (link = `me/${currentUser._id}/dashboard`);
+    }
+    return link;
   };
 
   return (

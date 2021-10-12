@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useHistory } from 'react-router';
 
-const LoadingToRedirect = ({ path }) => {
+const LoadingToRedirect = () => {
   const history = useHistory();
   const [count, setCount] = useState(5);
 
@@ -11,10 +11,10 @@ const LoadingToRedirect = ({ path }) => {
     }, 1000);
 
     //redirect once count == 0
-    count === 0 && history.push(path);
+    count === 0 && history.push('/login');
 
     return () => clearInterval(interval);
-  }, [count, history, path]);
+  }, [count, history]);
 
   return (
     <div className='container p-5 text-center'>
