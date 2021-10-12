@@ -1,0 +1,12 @@
+@import "../variables";
+
+.all-campaigns {
+  margin-top: 5rem !important;
+  &__bottom {
+    &--btn {
+      display: flex !important;
+      justify-content: center;
+      margin-top: 5rem;
+    }
+  }
+}
