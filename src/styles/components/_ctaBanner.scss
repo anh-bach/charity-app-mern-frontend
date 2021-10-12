@@ -1,0 +1,73 @@
+@import "../variables";
+
+.cta-banner {
+  &__area {
+    &-card {
+      background-color: $secondary-color--1 !important;
+      // position: relative;
+      &__body {
+        align-items: center;
+        padding: 2rem !important;
+        &--left {
+          &--heading {
+          }
+          &--sub-heading {
+            font-weight: 300 !important;
+            color: $paragraph-text--2 !important;
+          }
+          &--btn {
+            text-align: left !important;
+            border: none !important;
+            padding: 2rem 0 0 0 !important;
+            &svg {
+              font-size: 1.2rem !important;
+              color: $primary-color !important;
+            }
+          }
+        }
+        &--right {
+          align-self: flex-end;
+          &--img {
+            width: 100%;
+            // position: absolute;
+            // top: -110px;
+            // right: -115px;
+            // transform: translate(-10px, -20px);
+          }
+        }
+      }
+    }
+  }
+}
+
+// .main__section--cta-banner {
+//   padding: 100px;
+//   .cta-banner {
+//     background-color: $secondary-color--1 !important;
+//     &__body {
+//       display: flex;
+//       // flex-direction: row;
+//       align-items: center;
+//       justify-content: center;
+//       &__left {
+//         flex: 1;
+//         &--heading {
+//         }
+//         &--subheading {
+//         }
+//         &--button {
+//           text-align: left !important;
+//           border: none !important;
+//           padding: 2rem 0 0 0 !important;
+//         }
+//       }
+//       &__right {
+//         flex: 1;
+//         align-self: flex-end;
+//         &--img {
+//           width: 100%;
+//         }
+//       }
+//     }
+//   }
+// }
