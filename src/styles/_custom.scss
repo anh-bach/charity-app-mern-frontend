@@ -1,20 +1,92 @@
+@import "./variables";
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: 'Montserrat', sans-serif;
-}
-
-html {
-  font-size: 62.5%;
+  font-family: "Poppins", sans-serif;
 }
 
 body {
-  font-family: 'Montserrat', sans-serif;
   min-height: 100vh;
   background-color: rgb(250, 250, 250);
 }
 
 .text-center {
   text-align: center;
+}
+
+// For sections
+
+.main__section {
+  display: flex !important;
+  max-width: 80% !important;
+  margin: 0 auto !important;
+  padding: 6.25rem 0;
+  &--header {
+    margin-bottom: 2rem !important;
+  }
+}
+
+.heading {
+  color: $primary-color !important;
+  &--1 {
+    font-size: 2.75rem !important;
+  }
+  &--2 {
+    font-size: 2.25rem !important;
+  }
+  &--3 {
+    font-size: 1.5rem !important;
+  }
+  &--4 {
+    font-size: 1.125rem !important;
+  }
+}
+
+.sub-heading {
+  font-weight: 300 !important;
+  font-size: 1rem;
+  color: $paragraph-text--1 !important;
+}
+
+.paragraph {
+  color: $paragraph-text--2 !important;
+  &--1 {
+    font-weight: 300 !important;
+    font-size: 1rem !important;
+  }
+  &--2 {
+    font-weight: 300;
+    font-size: 0.75rem !important;
+  }
+}
+
+.btn {
+  font-size: 1rem !important;
+  padding: 0.75rem 2rem !important;
+  font-weight: 500 !important;
+  text-transform: capitalize;
+  height: auto !important;
+  text-shadow: none !important;
+  box-shadow: 0 37px 20px -20px rgba($primary-color, 0.2) !important;
+
+  &--primary {
+    color: #fff !important;
+    border-color: transparent !important;
+    background-color: $primary-color !important;
+  }
+  &--secondary-one {
+    color: $primary-color !important;
+    background-color: $secondary-color--5 !important;
+    border: none !important;
+  }
+  &--secondary-two {
+    color: #fff !important;
+    background-color: $secondary-color--2 !important;
+  }
+  &--text {
+    color: $primary-color !important;
+    font-size: 1rem !important;
+  }
 }
