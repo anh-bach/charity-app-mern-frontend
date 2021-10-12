@@ -1,0 +1,20 @@
+@import "../variables";
+
+.how-it-works {
+  background-color: $secondary-color--1;
+  &__area {
+    flex-direction: column;
+    &--top {
+      &-text {
+        &--heading {
+        }
+        &--sub-heading {
+        }
+      }
+    }
+    &--bottom {
+      &--col {
+      }
+    }
+  }
+}
