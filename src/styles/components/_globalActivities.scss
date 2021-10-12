@@ -1,0 +1,19 @@
+@import "../variables";
+
+.global-activities {
+  &__area {
+    flex-direction: column;
+    &--top {
+      &-text {
+        &--heading {
+        }
+        &--sub-heading {
+        }
+      }
+    }
+    &--bottom {
+      &--col {
+      }
+    }
+  }
+}
