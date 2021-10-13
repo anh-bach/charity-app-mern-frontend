@@ -12,11 +12,11 @@ import {
   DatabaseFilled,
   DashboardFilled,
   PhoneFilled,
-  SaveFilled,
   GroupOutlined,
   ProjectFilled,
   LockFilled,
   ProfileFilled,
+  UserOutlined,
 } from '@ant-design/icons';
 import { Link } from 'react-router-dom';
 
@@ -69,11 +69,11 @@ const AdminNav = () => {
       <Item key='campaigns' icon={<ProjectFilled />}>
         <Link to='/admin/dashboard/category'>Category</Link>
       </Item>
-      <Item key='saved' icon={<SaveFilled />}>
-        <Link to='#'>Sub Category</Link>
-      </Item>
       <Item key='contributions' icon={<DatabaseFilled />}>
         <Link to='#'>Campaigns</Link>
+      </Item>
+      <Item key='saved' icon={<UserOutlined />}>
+        <Link to='/admin/dashboard/users'>Users</Link>
       </Item>
       <Item key='contributors' icon={<GroupOutlined />}>
         <Link to='#'>Contributors</Link>
@@ -83,7 +83,7 @@ const AdminNav = () => {
 
       <SubMenu key='settings' icon={<SettingFilled />} title='Settings'>
         <Menu.Item key='myAccount' icon={<ProfileFilled />}>
-          My Account
+          <Link to='/admin/dashboard/account'>My Account</Link>
         </Menu.Item>
         <Menu.Item key='updatePassword' icon={<LockFilled />}>
           Update Password

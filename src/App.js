@@ -23,6 +23,8 @@ import AdminDashboard from './pages/admin/AdminDashboard';
 import RouteWithTopNav from './component/route/RouteWithTopNav';
 import Category from './pages/admin/Category';
 import CategoryUpdate from './pages/admin/CategoryUpdate';
+import Users from './pages/admin/Users';
+import AdminAccount from './pages/admin/AdminAccount';
 
 const App = () => {
   const dispatch = useDispatch();
@@ -124,6 +126,12 @@ const App = () => {
               exact
               path='/admin/dashboard/category'
               component={Category}
+            />
+            <AdminRoute exact path='/admin/dashboard/users' component={Users} />
+            <AdminRoute
+              exact
+              path='/admin/dashboard/account'
+              component={AdminAccount}
             />
           </Switch>
           <CustomFooter />
