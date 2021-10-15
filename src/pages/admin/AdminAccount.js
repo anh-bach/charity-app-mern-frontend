@@ -1,17 +1,51 @@
-import React, { Fragment, useState, useEffect } from 'react';
-import { Row, Col, Form, Input, Button, Select, DatePicker } from 'antd';
+import React, { useState, useEffect } from 'react';
+import moment from 'moment';
+import { useSelector, useDispatch } from 'react-redux';
+import { LOGGED_IN_USER } from '../../actions/types';
+import {
+  Row,
+  Col,
+  Form,
+  Input,
+  Button,
+  Select,
+  DatePicker,
+  Upload,
+} from 'antd';
 import {
   UserOutlined,
   MailOutlined,
   LoadingOutlined,
   HomeFilled,
-  PhoneFilled,
+  UploadOutlined,
 } from '@ant-design/icons';
+import { updateUser } from '../../actions/user';
+import { toast } from 'react-toastify';
+import UserPhotoUpload from '../../component/upload/UserPhotoUpload';
 
 const { Option } = Select;
 
 const AdminAccount = () => {
+  const user = useSelector((state) => state.user);
+  const dispatch = useDispatch();
   const [loading, setLoading] = useState(false);
+  const [userPhoto, setUserPhoto] = useState(null);
+  let name, email, gender, dateOfBirth, address, phone, photo;
+  if (user) {
+    name = user.name;
+    email = user.email;
+    gender = user.gender;
+    dateOfBirth = user.dateOfBirth;
+    address = user.address;
+    phone = user.phone;
+    photo = user.photo;
+  }
+
+  useEffect(() => {
+    if (photo) {
+      setUserPhoto(photo);
+    }
+  }, [photo]);
 
   const prefixSelector = (
     <Form.Item name='prefix' noStyle>
@@ -26,7 +60,33 @@ const AdminAccount = () => {
     </Form.Item>
   );
 
-  const onFinish = (values) => {};
+  const onFinish = async (values) => {
+    try {
+      console.log('from finnish', userPhoto);
+      //set photo
+
+      values['photo'] = userPhoto;
+
+      setLoading(true);
+      const res = await updateUser({
+        dateOfBirth: values.dateOfBirth._d,
+        ...values,
+      });
+      const {
+        data: { user },
+      } = res.data;
+      dispatch({
+        type: LOGGED_IN_USER,
+        payload: user,
+      });
+      setLoading(false);
+      toast.success('Your account has been updated!');
+    } catch (error) {
+      console.log('From update admin account', error);
+      setLoading(false);
+      toast.error('Something went wrong! Please try again later!');
+    }
+  };
 
   const onGenderChange = (value) => {};
 
@@ -41,9 +101,17 @@ const AdminAccount = () => {
           wrapperCol={{
             span: 16,
           }}
-          initialValues={{}}
+          initialValues={{
+            name: name || '',
+            email: email || '',
+            gender: gender || '',
+            address: address || '',
+            dateOfBirth: moment(new Date(dateOfBirth)) || '',
+            phone: phone || '',
+          }}
           onFinish={onFinish}
           autoComplete='off'
+          encType='multipart/form-data'
         >
           <h2>Admin Account Settings</h2>
           <p>
@@ -64,7 +132,7 @@ const AdminAccount = () => {
           </Form.Item>
 
           <Form.Item
-            label='Email Address'
+            label='Email'
             name='email'
             rules={[
               {
@@ -89,11 +157,22 @@ const AdminAccount = () => {
             </Select>
           </Form.Item>
 
-          <Form.Item label='Date of Birth'>
-            <DatePicker />
+          <Form.Item name='dateOfBirth' label='Date of Birth'>
+            <DatePicker
+              disabledDate={(current) =>
+                current && current.valueOf() > moment()
+              }
+            />
+          </Form.Item>
+          <Form.Item name='photo' label='User Photo'>
+            <UserPhotoUpload
+              setLoading={setLoading}
+              userPhoto={userPhoto}
+              setUserPhoto={setUserPhoto}
+            />
           </Form.Item>
 
-          <Form.Item label='Address'>
+          <Form.Item name='address' label='Address'>
             <Input prefix={<HomeFilled />} />
           </Form.Item>
 

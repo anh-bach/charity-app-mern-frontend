@@ -42,20 +42,13 @@ const RegisterForm = () => {
       //register an account
       const res = await register(values);
       const {
-        token,
         data: { user },
       } = res.data;
 
       //save user and token in redux store
       dispatch({
         type: LOGGED_IN_USER,
-        payload: {
-          token,
-          name: user.name,
-          email: user.email,
-          role: user.role,
-          _id: user._id,
-        },
+        payload: user,
       });
 
       //toastify
@@ -128,7 +121,7 @@ const RegisterForm = () => {
       </Form.Item>
 
       <Form.Item
-        label='Email Address'
+        label='Email'
         name='email'
         rules={[
           {

@@ -51,20 +51,13 @@ const App = () => {
       setLoading(true);
       const res = await getCurrentUser();
       const {
-        token,
         data: { user },
       } = res.data;
 
       //save user and token in redux store
       dispatch({
         type: LOGGED_IN_USER,
-        payload: {
-          token,
-          name: user.name,
-          email: user.email,
-          role: user.role,
-          _id: user._id,
-        },
+        payload: user,
       });
       setLoading(false);
     } catch (error) {

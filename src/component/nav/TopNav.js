@@ -90,14 +90,15 @@ const TopNav = () => {
         <SubMenu
           key='SubMenu'
           icon={
-            <Avatar
-              style={{
-                backgroundColor: '#87d068',
-              }}
-              icon={<UserOutlined />}
-            />
+            currentUser.photo ? (
+              <Avatar src={currentUser.photo.url} />
+            ) : (
+              <Avatar style={{ backgroundColor: 'green' }}>
+                {currentUser.name.split('')[0]}
+              </Avatar>
+            )
           }
-          title={currentUser && currentUser.name}
+          title={currentUser && currentUser.name.split(' ')[0]}
         >
           <Item key='dashboard' icon={<DashboardFilled />}>
             <Link to={linkToDashboard()}>Dashboard</Link>

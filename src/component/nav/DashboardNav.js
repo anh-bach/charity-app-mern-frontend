@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { Row, Col, Menu, Dropdown, Avatar } from 'antd';
-import { UserOutlined } from '@ant-design/icons';
 
 const DashboardHorizontalNav = () => {
   const [currentUser, setCurrentUser] = useState(null);
@@ -15,7 +14,7 @@ const DashboardHorizontalNav = () => {
   const menu = (
     <Menu>
       <Menu.Item key='0'>
-        <Link to='#'>My Account</Link>
+        <Link to='/admin/dashboard/account'>My Account</Link>
       </Menu.Item>
       <Menu.Item key='1'>
         <Link to='#'>Update Password</Link>
@@ -38,12 +37,7 @@ const DashboardHorizontalNav = () => {
         <Dropdown overlay={menu} trigger={['click']}>
           <Link to='#'>
             {currentUser && currentUser.name}
-            <Avatar
-              style={{
-                backgroundColor: '#87d068',
-              }}
-              icon={<UserOutlined />}
-            />
+            <Avatar src={currentUser && currentUser.photo.url} />
           </Link>
         </Dropdown>
       </Col>
