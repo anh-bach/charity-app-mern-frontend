@@ -1,0 +1,23 @@
+@import "../variables";
+
+.feature-card {
+  min-width: 310px !important;
+  min-height: 225px !important;
+  padding: 0 !important;
+  &__area {
+    padding: 0.5rem;
+    &--key {
+      font-size: 2rem !important;
+      font-weight: 700 !important;
+      color: $primary-color !important;
+      svg {
+        font-size: 2rem !important;
+      }
+    }
+    &--heading {
+      margin: 0.5rem 0 !important;
+    }
+    &--body-text {
+    }
+  }
+}

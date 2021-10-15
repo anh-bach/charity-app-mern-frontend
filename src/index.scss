@@ -1,10 +1,22 @@
 //fonts
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap");
 
 //Universal styles
-@import './styles/custom';
+@import "./styles/custom";
 
 //Component Styles
-@import './styles/components/toast';
+@import "./styles/nav/topNav";
+@import "./styles/components/heroBanner";
+@import "./styles/components/campaignCard";
+@import "./styles/components/campaign";
+@import "./styles/components/featureCard";
+@import "./styles/components/howItWorks";
+@import "./styles/components/globalActivities";
+@import "./styles/components/ctaBanner";
+@import "./styles/components/customFooter";
+@import "./styles/components/teamCard";
+@import "./styles/components/toast";
 
 //Pages Styles
+@import "./styles/pages/campaigns";
+@import "./styles/pages/about";

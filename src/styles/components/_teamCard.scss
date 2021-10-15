@@ -1,0 +1,90 @@
+@import "../variables";
+
+.team-card {
+  min-width: 310px !important;
+  border-radius: 10px !important;
+
+  &__ui {
+    width: 100% !important;
+    padding: 0 !important;
+    border: transparent !important;
+    background-color: $secondary-color--3 !important;
+
+    &-header {
+      justify-content: center;
+      align-items: center;
+      display: block;
+      margin: auto;
+      height: 350px;
+      overflow: hidden;
+      display: flex;
+      align-items: flex-start;
+      border-radius: 10px 10px 0 0 !important;
+
+      &--img {
+        display: block;
+        width: 100%;
+        height: auto;
+      }
+    }
+    &-body {
+      padding: 1rem;
+      position: relative;
+      &--title {
+        font-size: 1rem;
+      }
+      &--connect {
+        ul {
+          list-style-type: none;
+          display: flex;
+          justify-content: space-between;
+          flex-wrap: wrap;
+          margin: 0.8rem 0 0 !important;
+          li {
+            display: flex;
+            background-color: $secondary-color--1;
+            padding: 0.6rem;
+            justify-content: center;
+            border-radius: 5px;
+            margin: 0.5rem 0.5rem 0.5rem 0;
+
+            &:last-child {
+              margin-right: 0rem;
+            }
+
+            a {
+              align-items: center;
+              display: flex;
+              text-decoration: none;
+              color: $primary-color;
+              svg {
+                color: $primary-color;
+                font-size: 1.2rem;
+                padding-right: 0.2rem;
+              }
+            }
+
+            &:hover {
+              background-color: $primary-color;
+              a {
+                color: $secondary-color--1;
+                transition: none !important;
+                -webkit-transition: none !important;
+                -moz-transition: none !important;
+                -ms-transition: none !important;
+                -o-transition: none !important;
+                svg {
+                  color: $secondary-color--1;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+  &:hover {
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 20px 25px -5px,
+      rgba(0, 0, 0, 0.04) 0px 10px 10px -5px;
+  }
+}
