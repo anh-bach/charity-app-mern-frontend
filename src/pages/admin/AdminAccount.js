@@ -167,8 +167,8 @@ const AdminAccount = () => {
           <Form.Item name='photo' label='User Photo'>
             <UserPhotoUpload
               setLoading={setLoading}
-              userPhoto={userPhoto}
-              setUserPhoto={setUserPhoto}
+              photo={userPhoto}
+              setPhoto={setUserPhoto}
             />
           </Form.Item>
 

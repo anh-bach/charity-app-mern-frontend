@@ -25,6 +25,9 @@ import Category from './pages/admin/Category';
 import CategoryUpdate from './pages/admin/CategoryUpdate';
 import Users from './pages/admin/Users';
 import AdminAccount from './pages/admin/AdminAccount';
+import UserAccount from './pages/user/UserAccount';
+import UserStartCampaign from './pages/user/UserStartCampaign';
+import StripeCallback from './pages/stripe/StripeCallback';
 
 const App = () => {
   const dispatch = useDispatch();
@@ -100,11 +103,28 @@ const App = () => {
               path='/reset-password/:resetToken'
               component={ResetPassWord}
             />
+            {/* User routes */}
             <UserRoute
               exact
-              path='/me/:userId/dashboard'
+              path='/me/dashboard/overview'
               component={UserDashboard}
             />
+            <UserRoute
+              exact
+              path='/me/dashboard/account'
+              component={UserAccount}
+            />
+            <UserRoute
+              exact
+              path='/me/dashboard/start-campaign'
+              component={UserStartCampaign}
+            />
+            <UserRoute
+              exact
+              path='/stripe/callback'
+              component={StripeCallback}
+            />
+            {/* Admin routes */}
             <AdminRoute
               exact
               path='/admin/dashboard/overview'

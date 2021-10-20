@@ -1,5 +1,4 @@
 import React, { Fragment } from 'react';
-import { useParams } from 'react-router';
 
 const UserDashboard = () => {
   return (

@@ -41,7 +41,7 @@ const Category = () => {
 
   return (
     <div className='container'>
-      <DashboardHorizontalNav />
+      <DashboardHorizontalNav title='Categories' />
       <Row gutter={16}>
         <Col span='10'>
           <CategoryForm

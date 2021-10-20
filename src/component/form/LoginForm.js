@@ -53,7 +53,7 @@ const LoginForm = ({ prevUrl }) => {
       //redirect user -> if user in other page -> redirect to the previous page
       //history.goBack();
 
-      roleBasedRedirect(prevUrl, history, user.role, user._id);
+      roleBasedRedirect(prevUrl, history, user.role);
     } catch (error) {
       console.log('from login-->', error.response);
       //toastify

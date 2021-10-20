@@ -58,7 +58,7 @@ const TopNav = () => {
     if (currentUser) {
       currentUser.role === 'admin'
         ? (link = '/admin/dashboard/overview')
-        : (link = `me/${currentUser._id}/dashboard`);
+        : (link = `me/dashboard/overview`);
     }
     return link;
   };

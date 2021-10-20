@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { useParams } from 'react-router';
 import { Menu } from 'antd';
 import { toast } from 'react-toastify';
 import { logout } from '../../actions/auth';
@@ -23,7 +22,6 @@ import { Link } from 'react-router-dom';
 const { SubMenu, Item } = Menu;
 
 const UserNav = () => {
-  const { userId } = useParams();
   const [current, setCurrent] = useState('overview');
   const dispatch = useDispatch();
   const history = useHistory();
@@ -76,14 +74,14 @@ const UserNav = () => {
         <Link to='#'>My Contributions</Link>
       </Item>
       <Item key='contributors' icon={<GroupOutlined />}>
-        <Link to='#'>Campaign Contributors</Link>
+        <Link to={`/me/dashboard/start-campaign`}>Start Campaign</Link>
       </Item>
 
       <Menu.Divider />
 
       <SubMenu key='settings' icon={<SettingFilled />} title='Settings'>
         <Menu.Item key='myAccount' icon={<ProfileFilled />}>
-          My Account
+          <Link to='/me/dashboard/account'>My Account</Link>
         </Menu.Item>
         <Menu.Item key='updatePassword' icon={<LockFilled />}>
           Update Password
