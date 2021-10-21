@@ -1,0 +1,125 @@
+@import "../variables";
+
+.login {
+  &__area {
+    width: 100vw;
+    height: 100vh;
+    &__left {
+      display: flex !important;
+      justify-content: center;
+      &-area {
+        overflow: hidden;
+        &--img {
+          height: 100vh;
+          width: auto;
+        }
+      }
+    }
+    &__right {
+      display: flex !important;
+      flex-direction: column !important;
+      justify-content: center;
+      padding: 5rem;
+      &-block {
+        &-top {
+          &--logo {
+          }
+          &--heading {
+          }
+          &--sub-heading {
+          }
+        }
+        &-middle {
+        }
+        &-bottom {
+          a {
+            color: $primary-color !important;
+            font-weight: 600;
+          }
+
+          // &--forgot-password {
+          //   a {
+          //     color: $primary-color !important;
+          //     font-weight: 600;
+          //   }
+          // }
+          // &--new-account {
+          //   a {
+          //     // background-color: red !important;
+          //     color: $primary-color !important;
+          //   }
+          // }
+        }
+      }
+    }
+  }
+
+  @media (max-width: 992px) {
+    .login {
+      &__area {
+        &__left {
+          display: none !important;
+          &-area {
+            // display: none;
+            &--img {
+              //   display: none;
+            }
+          }
+        }
+        &__right {
+          &-block {
+            padding: 2rem;
+            background-color: $secondary-color--3;
+            box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+            &-top {
+              &--logo {
+              }
+              &--heading {
+              }
+              &--sub-heading {
+              }
+            }
+            &-middle {
+            }
+            &-bottom {
+            }
+          }
+        }
+      }
+    }
+  }
+
+  @media (max-width: 576px) {
+    .login {
+      &__area {
+        &__left {
+          display: none !important;
+          &-area {
+            // display: none;
+            &--img {
+              //   display: none;
+            }
+          }
+        }
+        &__right {
+          padding: 5rem 2rem;
+          &-block {
+            padding: 2rem;
+            &-top {
+              &--logo {
+              }
+              &--heading {
+              }
+              &--sub-heading {
+              }
+            }
+            &-middle {
+            }
+            &-bottom {
+            }
+          }
+        }
+      }
+    }
+  }
+}

@@ -75,6 +75,7 @@ const LoginForm = ({ prevUrl }) => {
     <Form
       form={form}
       name='loginForm'
+      className="form"
       labelCol={{
         span: 24,
       }}
@@ -89,14 +90,10 @@ const LoginForm = ({ prevUrl }) => {
       onFinishFailed={onFinishFailed}
       autoComplete='off'
     >
-      <h2>Sign In To Your Account</h2>
-      <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloremque,
-        ratione.
-      </p>
       <Form.Item
         label='Email Address'
         name='email'
+        className="form__label"
         rules={[
           {
             type: 'email',
@@ -109,12 +106,13 @@ const LoginForm = ({ prevUrl }) => {
         ]}
         validateTrigger='onBlur'
       >
-        <Input prefix={<MailOutlined />} />
+        <Input className="form__label--input" prefix={<MailOutlined />} />
       </Form.Item>
 
       <Form.Item
         label='Password'
         name='password'
+        className="form__label"
         rules={[
           {
             required: true,
@@ -123,17 +121,18 @@ const LoginForm = ({ prevUrl }) => {
         ]}
         validateTrigger='onBlur'
       >
-        <Input.Password prefix={<LockOutlined />} />
+        <Input.Password className="form__label--input" prefix={<LockOutlined />} />
       </Form.Item>
 
       <Form.Item
         name='remember'
+        className="form__check-box"
         valuePropName='checked'
         wrapperCol={{
           span: 24,
         }}
       >
-        <Checkbox>Remember me</Checkbox>
+        <Checkbox className="form__check-box--label">Remember me</Checkbox>
       </Form.Item>
 
       <Form.Item
@@ -144,12 +143,8 @@ const LoginForm = ({ prevUrl }) => {
         <Button
           type='primary'
           htmlType='submit'
-          style={{
-            display: 'block',
-            width: '100%',
-            height: '5rem',
-            borderRadius: '10rem',
-          }}
+          shape="round"
+          className="form__btn btn btn--primary"
         >
           {loading ? <LoadingOutlined /> : ' Sign In'}
         </Button>
