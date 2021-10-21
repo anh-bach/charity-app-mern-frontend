@@ -1,5 +1,7 @@
 import React from 'react';
 import CampaignCard from './card/CampaignCard';
+import { Link } from 'react-router-dom';
+
 import HoldLove from '../assets/images/holdlove.jpg';
 import ShareLove from '../assets/images/sharelove.jpg';
 import HoldHand from '../assets/images/holdhand.jpg';
@@ -30,9 +32,11 @@ const Campaign = () => {
             </Row>
             <Row className="latest-campaigns__bottom">
                 <Col span={24} className="latest-campaigns__bottom--btn">
-                    <Button className="btn btn--primary" type="primary" shape="round">
-                        Browse Campaigns
-                    </Button>
+                    <Link to='/campaigns'>
+                        <Button className="btn btn--primary" type="primary" shape="round">
+                            Browse Campaigns
+                        </Button>
+                    </Link>
                 </Col>
             </Row>
         </section>
