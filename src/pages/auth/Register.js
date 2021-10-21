@@ -4,7 +4,7 @@ import { useHistory } from 'react-router';
 import { Link } from 'react-router-dom';
 import Row from 'antd/lib/row';
 import Col from 'antd/lib/col';
-import Galaxy from '../../assets/images/galaxy.jpg';
+import HoldLove from '../../assets/images/holdlove.jpg';
 import RegisterForm from '../../component/form/RegisterForm';
 
 const Register = () => {
@@ -13,26 +13,40 @@ const Register = () => {
   //if user logged in, push user back to home page
 
   return (
-    <Row>
-      <Col sm={24} md={12}>
-        <img src={Galaxy} alt='galaxy' width={'100%'} />
-      </Col>
-      <Col sm={24} md={12}>
-        <Row>
-          <Col span={18} offset={3}>
-            <h1>My Happy Fund</h1>
-            <h3>Your Ultimate Solution for Fundraising</h3>
-            <RegisterForm />
-            <p className='text-center'>
-              Already have an account?{' '}
-              <strong>
-                <Link to='/login'>Sign In</Link>
-              </strong>
-            </p>
-          </Col>
-        </Row>
-      </Col>
-    </Row>
+    <section className="register">
+      <Row className="register-area">
+        <Col className="ant-col-xs-24 ant-col-md-24 ant-col-lg-12 ant-col-xl-12 register__area__left">
+          <div className="register__area__left-area">
+            <img className="register__area__left-area--img" src={HoldLove} alt='starry night' width={'100%'} />
+          </div>
+        </Col>
+        <Col className="ant-col-xs-24 ant-col-md-24 ant-col-lg-12 ant-col-xl-12 register__area__right">
+          <div className="register__area__right-block">
+            <div className="register__area__right-block-top">
+              <h2 className="register__area__right-block-top--logo heading--2">MyHappyFund</h2>
+              <div>
+                <h3 className="register__area__right-block-top--heading heading--3">Sign In To Your Account</h3>
+                <p className="register__area__right-block-top--sub-heading">
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloremque,
+                  ratione.
+                </p>
+              </div>
+            </div>
+            <div className="register__area__right-block-middle">
+              <RegisterForm />
+            </div>
+            <div className="register__area__right-block-bottom">
+              <p className="register__area__right-block-bottom--new-account">
+                Already have an account?{' '}
+                <strong>
+                  <Link to='/login'>Sign In</Link>
+                </strong>
+              </p>
+            </div>
+          </div>
+        </Col>
+      </Row>
+    </section>
   );
 };
 

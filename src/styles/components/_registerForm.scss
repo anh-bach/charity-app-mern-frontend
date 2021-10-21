@@ -1,0 +1,26 @@
+@import "../variables";
+
+.form {
+  &__label {
+    &--input {
+    }
+  }
+  &__check-box {
+    &--agreement-label {
+      span {
+        span {
+          background-color: $primary-color !important;
+          border-color: $primary-color !important;
+        }
+      }
+    }
+    &--agreement-input {
+      span {
+        a {
+          color: $primary-color !important;
+          font-weight: 600;
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,24 @@
+@import "../variables";
+
+// font-size: 1.5rem !important;
+// font-weight: 600;
+
+.form {
+  &__label {
+    &--input {
+    }
+  }
+  &__check-box {
+    &--label {
+      span {
+        span {
+          // background-color: red !important;
+          background-color: $primary-color !important;
+          border-color: transparent !important;
+        }
+      }
+    }
+  }
+  &__btn {
+  }
+}

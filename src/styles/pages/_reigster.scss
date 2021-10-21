@@ -1,0 +1,113 @@
+@import "../variables";
+
+.register {
+  &__area {
+    width: 100vw;
+    height: 100vh;
+    &__left {
+      display: flex !important;
+      justify-content: center;
+      &-area {
+        overflow: hidden;
+        &--img {
+          height: 100vh;
+          width: auto;
+        }
+      }
+    }
+    &__right {
+      display: flex !important;
+      flex-direction: column !important;
+      justify-content: center;
+      padding: 5rem;
+      &-block {
+        &-top {
+          &--logo {
+          }
+          &--heading {
+          }
+          &--sub-heading {
+          }
+        }
+        &-middle {
+        }
+        &-bottom {
+          a {
+            color: $primary-color !important;
+            font-weight: 600;
+          }
+        }
+      }
+    }
+  }
+
+  @media (max-width: 992px) {
+    .register {
+      &__area {
+        &__left {
+          display: none !important;
+          &-area {
+            // display: none;
+            &--img {
+              //   display: none;
+            }
+          }
+        }
+        &__right {
+          padding: 10rem 5rem 5rem 5rem;
+          &-block {
+            padding: 2rem;
+            background-color: $secondary-color--3;
+            box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+            &-top {
+              &--logo {
+              }
+              &--heading {
+              }
+              &--sub-heading {
+              }
+            }
+            &-middle {
+            }
+            &-bottom {
+            }
+          }
+        }
+      }
+    }
+  }
+
+  @media (max-width: 576px) {
+    .register {
+      &__area {
+        &__left {
+          display: none !important;
+          &-area {
+            // display: none;
+            &--img {
+              //   display: none;
+            }
+          }
+        }
+        &__right {
+          padding: 10rem 2rem 5rem;
+          &-block {
+            padding: 2rem;
+            &-top {
+              &--logo {
+              }
+              &--heading {
+              }
+              &--sub-heading {
+              }
+            }
+            &-middle {
+            }
+            &-bottom {
+            }
+          }
+        }
+      }
+    }
+  }
+}

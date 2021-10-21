@@ -1,6 +1,7 @@
 import React from 'react';
 import { Typography, Button, Row, Col } from 'antd';
 import love from '../../assets/images/love.png';
+// import love from '../../assets/images/hero_img.png';
 
 const { Title } = Typography;
 
@@ -16,9 +17,12 @@ const HeroBanner = () => {
                 </Col>
                 <Col span={12} className="hero__content__right ant-col-xs-24 ant-col-md-24 ant-col-lg-12 ant-col-xl-12">
                     <div className="hero__content__right--circle">
-                        <img className="hero__content__right--circle--img" src={love} alt='share love' width={'100%'} />
+                        <img className="hero__content__right--img" src={love} alt='share love' width={'100%'} />
                     </div>
                 </Col>
+                {/* <Col span={12} className="hero__content__right ant-col-xs-24 ant-col-md-24 ant-col-lg-12 ant-col-xl-12">
+                    <img className="hero__content__right--img" src={love} alt='share love' width={'100%'} />
+                </Col> */}
             </Row>
         </section>
     );
