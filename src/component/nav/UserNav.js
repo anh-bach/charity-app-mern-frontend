@@ -62,13 +62,13 @@ const UserNav = () => {
         <Link to='/'>My Happy Fund</Link>
       </Item>
       <Item key='overview' icon={<DashboardFilled />}>
-        <Link to='#'>Overview</Link>
+        <Link to='/me/dashboard/overview'>Overview</Link>
       </Item>
       <Item key='campaigns' icon={<ProjectFilled />}>
-        <Link to='#'>My Campaigns</Link>
+        <Link to='/me/dashboard/campaigns'>My Campaigns</Link>
       </Item>
-      <Item key='saved' icon={<SaveFilled />}>
-        <Link to='#'>Saved Campaigns</Link>
+      <Item key='wishlist' icon={<SaveFilled />}>
+        <Link to='#'>My Wishlist</Link>
       </Item>
       <Item key='contributions' icon={<DatabaseFilled />}>
         <Link to='#'>My Contributions</Link>

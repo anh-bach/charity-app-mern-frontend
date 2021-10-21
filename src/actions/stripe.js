@@ -29,3 +29,20 @@ export const getAccountBalance = async () => {
     }
   );
 };
+
+export const payoutSetting = async () => {
+  return await axios.post(
+    `${process.env.REACT_APP_API}/payout-setting`,
+    {},
+    {
+      withCredentials: true,
+    }
+  );
+};
+
+export const currencyFormatter = (data) => {
+  return (data.amount / 100).toLocaleString(data.currency, {
+    style: 'currency',
+    currency: data.currency,
+  });
+};

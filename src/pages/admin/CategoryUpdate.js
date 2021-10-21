@@ -3,7 +3,7 @@ import { Row, Col } from 'antd';
 import { useHistory } from 'react-router';
 import CategoryUpdateForm from '../../component/form/CategoryUpdateForm';
 import DashboardHorizontalNav from '../../component/nav/DashboardNav';
-import CategoryList from '../../component/category/CategoryList';
+import CategoryList from '../../component/table/CategoryList';
 import { getCategories, deleteCategory } from '../../actions/category';
 import { toast } from 'react-toastify';
 

@@ -100,7 +100,7 @@ const TopNav = () => {
                 <Avatar src={currentUser.photo.url} />
               ) : (
                 <Avatar style={{ backgroundColor: '#1d3444' }}>
-                  {currentUser.name.split('')[0]}
+                  {currentUser.name[0]}
                 </Avatar>
               )
             }

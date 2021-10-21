@@ -96,7 +96,7 @@ const UserAccount = () => {
               email: email || '',
               gender: gender || '',
               address: address || '',
-              dateOfBirth: moment(new Date(dateOfBirth)) || '',
+              dateOfBirth: moment(new Date(dateOfBirth)) || moment(new Date()),
               phone: phone || '',
             }}
             onFinish={onFinish}

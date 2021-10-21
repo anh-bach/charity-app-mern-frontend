@@ -18,6 +18,7 @@ import DashboardHorizontalNav from '../../component/nav/DashboardNav';
 import { getCategories } from '../../actions/category';
 import UserPhotoUpload from '../../component/upload/UserPhotoUpload';
 import { createConnectAccount } from '../../actions/stripe';
+import { createCampaign } from '../../actions/campaign';
 
 const { RangePicker } = DatePicker;
 const { Option } = Select;
@@ -46,13 +47,23 @@ const UserStartCampaign = () => {
     }
   };
 
-  const onFinish = (values) => {
-    //set imageCover
-    values['imageCover'] = campaignPhoto;
-    values['from'] = values.duration[0]._d;
-    values['to'] = values.duration[1]._d;
+  const onFinish = async (values) => {
+    try {
+      setLoading(true);
+      //set imageCover + from and to
+      values['imageCover'] = campaignPhoto;
+      values['from'] = values.duration[0]._d;
+      values['to'] = values.duration[1]._d;
 
-    console.log(values);
+      await createCampaign(values);
+      toast.success('New campaign created!');
+      setLoading(false);
+      setCampaignPhoto(null);
+      form.resetFields();
+    } catch (error) {
+      console.log('From create campaign', error);
+      toast.error('Something wrong happened. Please try again later!');
+    }
   };
 
   const connected = () => (
@@ -252,6 +263,7 @@ const UserStartCampaign = () => {
   return (
     <div className='container'>
       <DashboardHorizontalNav title='Start New Campaign' />
+
       {user && user.stripe_seller && user.stripe_seller.charges_enabled
         ? connected()
         : notConnected()}

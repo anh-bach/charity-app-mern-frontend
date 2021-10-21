@@ -5,3 +5,12 @@ export const updateUser = async (formData) => {
     withCredentials: true,
   });
 };
+
+export const getAllUsers = async () => {
+  return await axios.get(
+    `${process.env.REACT_APP_API}/users?fields=name,email,photo,role`,
+    {
+      withCredentials: true,
+    }
+  );
+};

@@ -70,7 +70,7 @@ const AdminNav = () => {
         <Link to='/admin/dashboard/category'>Category</Link>
       </Item>
       <Item key='contributions' icon={<DatabaseFilled />}>
-        <Link to='#'>Campaigns</Link>
+        <Link to='/admin/dashboard/campaigns'>Campaigns</Link>
       </Item>
       <Item key='saved' icon={<UserOutlined />}>
         <Link to='/admin/dashboard/users'>Users</Link>
