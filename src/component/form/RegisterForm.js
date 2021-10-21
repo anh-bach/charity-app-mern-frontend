@@ -102,14 +102,10 @@ const RegisterForm = () => {
       onFinishFailed={onFinishFailed}
       autoComplete='off'
     >
-      <h2>Register An Account</h2>
-      <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloremque,
-        ratione.
-      </p>
       <Form.Item
         label='Fullname'
         name='name'
+        className="form__label"
         rules={[
           {
             required: true,
@@ -117,12 +113,13 @@ const RegisterForm = () => {
           },
         ]}
       >
-        <Input prefix={<UserOutlined />} />
+        <Input className="form__label--input" prefix={<UserOutlined />} />
       </Form.Item>
 
       <Form.Item
         label='Email'
         name='email'
+        className="form__label"
         rules={[
           {
             type: 'email',
@@ -135,12 +132,13 @@ const RegisterForm = () => {
         ]}
         validateTrigger='onBlur'
       >
-        <Input prefix={<MailOutlined />} />
+        <Input className="form__label--input" prefix={<MailOutlined />} />
       </Form.Item>
 
       <Form.Item
         label='Create Password'
         name='password'
+        className="form__label"
         rules={[
           {
             required: true,
@@ -153,12 +151,13 @@ const RegisterForm = () => {
         ]}
         validateTrigger='onBlur'
       >
-        <Input.Password prefix={<LockOutlined />} type='password' />
+        <Input.Password prefix={<LockOutlined />} type='password' className="form__label--input" />
       </Form.Item>
 
       <Form.Item
         label='Confirm Password'
         name='passwordConfirm'
+        className="form__label"
         dependencies={['password']}
         hasFeedback
         rules={[
@@ -179,11 +178,12 @@ const RegisterForm = () => {
         ]}
         validateTrigger='onChange'
       >
-        <Input.Password prefix={<LockOutlined />} type='password' />
+        <Input.Password prefix={<LockOutlined />} type='password' className="form__label--input" />
       </Form.Item>
 
       <Form.Item
         name='agreement'
+        className="form__check-box--agreement-label"
         valuePropName='checked'
         rules={[
           {
@@ -194,7 +194,7 @@ const RegisterForm = () => {
           },
         ]}
       >
-        <Checkbox>
+        <Checkbox className="form__check-box--agreement-input">
           I have read the <Link to='/agreement'>agreement</Link>
         </Checkbox>
       </Form.Item>
@@ -207,12 +207,8 @@ const RegisterForm = () => {
         <Button
           type='primary'
           htmlType='submit'
-          style={{
-            display: 'block',
-            width: '100%',
-            height: '5rem',
-            borderRadius: '10rem',
-          }}
+          shape="round"
+          className="form__btn btn btn--primary"
         >
           {loading ? <LoadingOutlined /> : 'Register'}
         </Button>
