@@ -58,7 +58,7 @@ const TopNav = () => {
     if (currentUser) {
       currentUser.role === 'admin'
         ? (link = '/admin/dashboard/overview')
-        : (link = `me/${currentUser._id}/dashboard`);
+        : (link = `/me/dashboard/overview`);
     }
     return link;
   };
@@ -100,7 +100,7 @@ const TopNav = () => {
                 <Avatar src={currentUser.photo.url} />
               ) : (
                 <Avatar style={{ backgroundColor: '#1d3444' }}>
-                  {currentUser.name.split('')[0]}
+                  {currentUser.name[0]}
                 </Avatar>
               )
             }

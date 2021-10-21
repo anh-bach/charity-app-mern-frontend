@@ -1,11 +1,11 @@
-import React, { Fragment } from 'react';
-import { useParams } from 'react-router';
+import React, { useState, useEffect } from 'react';
+import DashboardHorizontalNav from '../../component/nav/DashboardNav';
 
 const UserDashboard = () => {
   return (
-    <Fragment>
-      <span>User Dashboard Page</span>
-    </Fragment>
+    <div className='container'>
+      <DashboardHorizontalNav title='Dashboard Overview' />
+    </div>
   );
 };
 

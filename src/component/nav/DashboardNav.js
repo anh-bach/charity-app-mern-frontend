@@ -1,9 +1,9 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, Fragment } from 'react';
 import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { Row, Col, Menu, Dropdown, Avatar } from 'antd';
 
-const DashboardHorizontalNav = () => {
+const DashboardHorizontalNav = ({ title }) => {
   const [currentUser, setCurrentUser] = useState(null);
   const user = useSelector((state) => state.user);
 
@@ -26,7 +26,7 @@ const DashboardHorizontalNav = () => {
   return (
     <Row>
       <Col span={8}>
-        <h2>Campaign Categories</h2>
+        <h2>{title}</h2>
       </Col>
       <Col
         span={8}
@@ -36,8 +36,20 @@ const DashboardHorizontalNav = () => {
         <Link to='/campaigns'>Browse Campaigns</Link>
         <Dropdown overlay={menu} trigger={['click']}>
           <Link to='#'>
-            {currentUser && currentUser.name}
-            <Avatar src={currentUser && currentUser.photo.url} />
+            {currentUser ? (
+              <Fragment>
+                {currentUser.photo ? (
+                  <Avatar src={currentUser.photo.url} />
+                ) : (
+                  <Avatar style={{ backgroundColor: '#1d3444' }}>
+                    {currentUser.name.split('')[0]}
+                  </Avatar>
+                )}
+                <span>{currentUser.name.split(' ')[0]}</span>
+              </Fragment>
+            ) : (
+              'Loading'
+            )}
           </Link>
         </Dropdown>
       </Col>

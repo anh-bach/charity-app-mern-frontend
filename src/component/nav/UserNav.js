@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { useParams } from 'react-router';
 import { Menu } from 'antd';
 import { toast } from 'react-toastify';
 import { logout } from '../../actions/auth';
@@ -23,7 +22,6 @@ import { Link } from 'react-router-dom';
 const { SubMenu, Item } = Menu;
 
 const UserNav = () => {
-  const { userId } = useParams();
   const [current, setCurrent] = useState('overview');
   const dispatch = useDispatch();
   const history = useHistory();
@@ -64,26 +62,26 @@ const UserNav = () => {
         <Link to='/'>My Happy Fund</Link>
       </Item>
       <Item key='overview' icon={<DashboardFilled />}>
-        <Link to='#'>Overview</Link>
+        <Link to='/me/dashboard/overview'>Overview</Link>
       </Item>
       <Item key='campaigns' icon={<ProjectFilled />}>
-        <Link to='#'>My Campaigns</Link>
+        <Link to='/me/dashboard/campaigns'>My Campaigns</Link>
       </Item>
-      <Item key='saved' icon={<SaveFilled />}>
-        <Link to='#'>Saved Campaigns</Link>
+      <Item key='wishlist' icon={<SaveFilled />}>
+        <Link to='#'>My Wishlist</Link>
       </Item>
       <Item key='contributions' icon={<DatabaseFilled />}>
         <Link to='#'>My Contributions</Link>
       </Item>
       <Item key='contributors' icon={<GroupOutlined />}>
-        <Link to='#'>Campaign Contributors</Link>
+        <Link to={`/me/dashboard/start-campaign`}>Start Campaign</Link>
       </Item>
 
       <Menu.Divider />
 
       <SubMenu key='settings' icon={<SettingFilled />} title='Settings'>
         <Menu.Item key='myAccount' icon={<ProfileFilled />}>
-          My Account
+          <Link to='/me/dashboard/account'>My Account</Link>
         </Menu.Item>
         <Menu.Item key='updatePassword' icon={<LockFilled />}>
           Update Password

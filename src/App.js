@@ -23,8 +23,15 @@ import AdminDashboard from './pages/admin/AdminDashboard';
 import RouteWithTopNav from './component/route/RouteWithTopNav';
 import Category from './pages/admin/Category';
 import CategoryUpdate from './pages/admin/CategoryUpdate';
-import Users from './pages/admin/Users';
 import AdminAccount from './pages/admin/AdminAccount';
+import UserAccount from './pages/user/UserAccount';
+import UserStartCampaign from './pages/user/UserStartCampaign';
+import StripeCallback from './pages/stripe/StripeCallback';
+import UserCampaigns from './pages/user/UserCampaigns';
+import AdminUsers from './pages/admin/AdminUsers';
+import AdminCampaigns from './pages/admin/AdminCampaigns';
+import UserCampaign from './pages/user/UserCampaign';
+import UserRouteWithTopNav from './component/route/UserRouteWithTopNav';
 
 const App = () => {
   const dispatch = useDispatch();
@@ -100,11 +107,38 @@ const App = () => {
               path='/reset-password/:resetToken'
               component={ResetPassWord}
             />
+            {/* User routes */}
+            <UserRouteWithTopNav
+              exact
+              path='/me/campaign-overview/:slug'
+              component={UserCampaign}
+            />
             <UserRoute
               exact
-              path='/me/:userId/dashboard'
+              path='/me/dashboard/overview'
               component={UserDashboard}
             />
+            <UserRoute
+              exact
+              path='/me/dashboard/campaigns'
+              component={UserCampaigns}
+            />
+            <UserRoute
+              exact
+              path='/me/dashboard/account'
+              component={UserAccount}
+            />
+            <UserRoute
+              exact
+              path='/me/dashboard/start-campaign'
+              component={UserStartCampaign}
+            />
+            <UserRoute
+              exact
+              path='/stripe/callback'
+              component={StripeCallback}
+            />
+            {/* Admin routes */}
             <AdminRoute
               exact
               path='/admin/dashboard/overview'
@@ -120,7 +154,16 @@ const App = () => {
               path='/admin/dashboard/category'
               component={Category}
             />
-            <AdminRoute exact path='/admin/dashboard/users' component={Users} />
+            <AdminRoute
+              exact
+              path='/admin/dashboard/campaigns'
+              component={AdminCampaigns}
+            />
+            <AdminRoute
+              exact
+              path='/admin/dashboard/users'
+              component={AdminUsers}
+            />
             <AdminRoute
               exact
               path='/admin/dashboard/account'

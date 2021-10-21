@@ -1,10 +1,11 @@
 import React, { Fragment } from 'react';
 import Resizer from 'react-image-file-resizer';
+import { toast } from 'react-toastify';
 import axios from 'axios';
 import Avatar from 'antd/lib/avatar';
 import Badge from 'antd/lib/badge';
 
-const UserPhotoUpload = ({ userPhoto, setUserPhoto, setLoading }) => {
+const UserPhotoUpload = ({ photo, setPhoto, setLoading }) => {
   const resizeFile = (file) =>
     new Promise((resolve) => {
       Resizer.imageFileResizer(
@@ -34,9 +35,13 @@ const UserPhotoUpload = ({ userPhoto, setUserPhoto, setLoading }) => {
           { image },
           { withCredentials: true }
         );
-        setUserPhoto(res.data);
+        setPhoto(res.data);
       } catch (error) {
         console.log('From user upload photo', error.response);
+        //toastify
+        toast.error(error.response.data.errorMessage, {
+          position: 'top-center',
+        });
       }
       setLoading(false);
     }
@@ -50,31 +55,32 @@ const UserPhotoUpload = ({ userPhoto, setUserPhoto, setLoading }) => {
         { public_id },
         { withCredentials: true }
       );
-      setUserPhoto(null);
+      setPhoto(null);
       setLoading(false);
     } catch (error) {
       console.log('From remove image', error.response);
+
       setLoading(false);
     }
   };
 
   return (
     <Fragment>
-      {userPhoto && (
+      {photo && (
         <div className='m-2'>
           <Badge
             count='x'
-            onClick={() => handleImageRemove(userPhoto.public_id)}
+            onClick={() => handleImageRemove(photo.public_id)}
             style={{ cursor: 'pointer' }}
           >
-            <Avatar src={userPhoto.url} size={100} shape='square' />
+            <Avatar src={photo.url} size={100} shape='square' />
           </Badge>
         </div>
       )}
       <div className='row'>
         <div className='col'>
           <label className='btn btn-primary btn-raised m-2'>
-            Choose Images
+            Choose Image
             <input
               type='file'
               multiple
