@@ -1,0 +1,42 @@
+@import "../../styles/variables";
+
+.dashboard-usernav {
+  min-height: 100vh;
+  padding: 2rem 0 !important;
+  font-size: 1rem !important;
+  .anticon {
+    padding-right: 1rem !important;
+  }
+  &__logo {
+  }
+  &__item {
+    padding-left: 2rem !important;
+    min-height: 3.5rem !important;
+    &--overview {
+      // padding-left: 5rem !important;
+    }
+    &--campaigns {
+    }
+    &--wishlist {
+    }
+    &--contributions {
+    }
+    &--new-campaign {
+    }
+    &--setting {
+      padding-left: 0.5rem !important;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      &--account {
+      }
+      &--update-password {
+      }
+    }
+    &--help {
+    }
+    &--sign-out {
+    }
+  }
+}

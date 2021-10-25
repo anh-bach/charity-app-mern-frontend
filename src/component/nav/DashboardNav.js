@@ -24,36 +24,41 @@ const DashboardHorizontalNav = ({ title }) => {
     </Menu>
   );
   return (
-    <Row>
-      <Col span={8}>
-        <h2>{title}</h2>
-      </Col>
-      <Col
-        span={8}
-        offset={8}
-        style={{ display: 'flex', justifyContent: 'space-between' }}
-      >
-        <Link to='/campaigns'>Browse Campaigns</Link>
-        <Dropdown overlay={menu} trigger={['click']}>
-          <Link to='#'>
-            {currentUser ? (
-              <Fragment>
-                {currentUser.photo ? (
-                  <Avatar src={currentUser.photo.url} />
-                ) : (
-                  <Avatar style={{ backgroundColor: '#1d3444' }}>
-                    {currentUser.name.split('')[0]}
-                  </Avatar>
-                )}
-                <span>{currentUser.name.split(' ')[0]}</span>
-              </Fragment>
-            ) : (
-              'Loading'
-            )}
-          </Link>
-        </Dropdown>
-      </Col>
-    </Row>
+    <section className="dashboard-nav-top">
+      <Row className="dashboard-nav-top__cols">
+        <Col span={16} className="dashboard-nav-top__cols--heading">
+          <span className="heading heading--3">{title}</span>
+        </Col>
+        <Col
+          span={4}
+          className="dashboard-nav-top__cols--campaigns"
+        // offset={5}
+        // style={{ display: 'flex', justifyContent: 'space-between' }}
+        >
+          <Link to='/campaigns'>Browse Campaigns</Link>
+        </Col>
+        <Col span={4} className="dashboard-nav-top__cols--user">
+          <Dropdown overlay={menu} trigger={['click']}>
+            <Link to='#'>
+              {currentUser ? (
+                <Fragment>
+                  {currentUser.photo ? (
+                    <Avatar src={currentUser.photo.url} />
+                  ) : (
+                    <Avatar style={{ backgroundColor: '#1d3444' }}>
+                      {currentUser.name.split('')[0]}
+                    </Avatar>
+                  )}
+                  <span className="dashboard-nav-top__cols--user-name">{currentUser.name.split(' ')[0]}</span>
+                </Fragment>
+              ) : (
+                'Loading'
+              )}
+            </Link>
+          </Dropdown>
+        </Col>
+      </Row>
+    </section>
   );
 };
 

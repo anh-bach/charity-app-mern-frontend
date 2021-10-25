@@ -3,7 +3,7 @@ import DashboardHorizontalNav from '../../component/nav/DashboardNav';
 
 const UserDashboard = () => {
   return (
-    <div className='container'>
+    <div className="dashboard-container">
       <DashboardHorizontalNav title='Dashboard Overview' />
     </div>
   );

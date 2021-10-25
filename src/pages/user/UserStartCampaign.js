@@ -82,11 +82,12 @@ const UserStartCampaign = () => {
           onFinish={onFinish}
           autoComplete='off'
           encType='multipart/form-data'
+          // className="form-area"
         >
-          <p>
+          {/* <p>
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloremque,
             ratione.
-          </p>
+          </p> */}
           <Form.Item
             label='Title'
             name='title'

@@ -11,11 +11,13 @@ const UserRoute = ({ component: Component, ...rest }) => {
     <Route
       {...rest}
       render={(routeProps) => (
+        // <Row gutter={{ xs: 8, sm: 16, md: 24, lg: 32 }}>
         <Row>
-          <Col span={5}>
+          <Col span={6}>
+            {/* <Col className="ant-col-xs-24 ant-col-md-24 ant-col-lg-6 ant-col-xl-6"> */}
             <UserNav {...routeProps} />
           </Col>
-          <Col span={19}>
+          <Col span={18} style={{ backgroundColor: "#e3e8ec", padding: '2rem' }}>
             <Component {...routeProps} />
           </Col>
         </Row>
