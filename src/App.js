@@ -1,7 +1,7 @@
 import React, { Fragment, useState, useEffect } from 'react';
 import { useLocation } from 'react-router';
 import { Switch } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { ToastContainer } from 'react-toastify';
 import 'antd/dist/antd.css';
 import 'react-toastify/dist/ReactToastify.css';
@@ -32,9 +32,12 @@ import AdminUsers from './pages/admin/AdminUsers';
 import AdminCampaigns from './pages/admin/AdminCampaigns';
 import UserCampaign from './pages/user/UserCampaign';
 import UserRouteWithTopNav from './component/route/UserRouteWithTopNav';
+import Campaign from './pages/Campaign';
+import Payment from './component/payment/Payment';
 
 const App = () => {
   const dispatch = useDispatch();
+  const checkoutState = useSelector((state) => state.checkoutState);
   const location = useLocation();
   const [curUrl, setCurUrl] = useState(null);
   const [prevUrl, setPrevUrl] = useState(null);
@@ -86,10 +89,16 @@ const App = () => {
       ) : (
         <Fragment>
           <ToastContainer />
+          {checkoutState && <Payment />}
           <Switch>
             <RouteWithTopNav exact path='/' component={Home} />
             <RouteWithTopNav exact path='/about' component={About} />
             <RouteWithTopNav exact path='/campaigns' component={Campaigns} />
+            <RouteWithTopNav
+              exact
+              path='/campaign/:slug'
+              component={Campaign}
+            />
             <RouteWithTopNav exact path='/register' component={Register} />
             <RouteWithTopNav
               exact

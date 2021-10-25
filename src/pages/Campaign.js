@@ -1,18 +1,21 @@
 import React, { useState, useEffect, Fragment } from 'react';
 import { useParams } from 'react-router';
+import { useDispatch } from 'react-redux';
 import { Typography, Row, Col, Progress, Button, Avatar } from 'antd';
-import { getCampaignByUser } from '../../actions/campaign';
+
 import {
   ClockCircleOutlined,
   LineChartOutlined,
   UsergroupAddOutlined,
 } from '@ant-design/icons';
+import { getCampaign } from '../actions/campaign';
+import { TOGGLE_CHECKOUT } from '../actions/types';
 
 const { Title } = Typography;
 
-const UserCampaign = () => {
+const Campaign = () => {
   const { slug } = useParams();
-
+  const dispatch = useDispatch();
   const [campaign, setCampaign] = useState(null);
   const [loading, setLoading] = useState(false);
 
@@ -23,13 +26,20 @@ const UserCampaign = () => {
   const loadCampaign = async () => {
     try {
       setLoading(true);
-      const res = await getCampaignByUser(slug);
-      console.log(res.data.data);
-      setCampaign(res.data.data);
+      const res = await getCampaign(slug);
+      setCampaign(res.data.data.campaign);
       setLoading(false);
     } catch (error) {
-      console.log('From loading single campaign by user', error);
       setLoading(false);
+      console.log('From loading single campaign by user', error);
+    }
+  };
+
+  const handleClick = async () => {
+    try {
+      dispatch({ type: TOGGLE_CHECKOUT });
+    } catch (error) {
+      console.log('from handle click support', error);
     }
   };
 
@@ -74,7 +84,8 @@ const UserCampaign = () => {
                 <Progress percent={30} status='active' />
                 <Row gutter={16}>
                   <Col>
-                    <LineChartOutlined /> Amount raised
+                    <LineChartOutlined />
+                    {campaign.donatedAmount} Amount raised
                   </Col>
                   <Col>
                     <UsergroupAddOutlined /> Supporters
@@ -89,6 +100,7 @@ const UserCampaign = () => {
                   style={{ margin: 'auto', display: 'block' }}
                   type='primary'
                   shape='round'
+                  onClick={handleClick}
                 >
                   Support
                 </Button>
@@ -170,4 +182,4 @@ const UserCampaign = () => {
   );
 };
 
-export default UserCampaign;
+export default Campaign;
