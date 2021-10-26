@@ -1,26 +1,39 @@
 import React from 'react';
 import { Row, Col } from 'antd';
 import { Link } from 'react-router-dom';
-import StarryNightTwo from '../../assets/images/starry_night_2.jpg';
+// import StarryNightTwo from '../../assets/images/starry_night_2.jpg';
+import HoldLove from '../../assets/images/holdlove.jpg';
 import ForgotPasswordForm from '../../component/form/ForgotPasswordForm';
 
 const ForgotPassword = () => {
   return (
-    <Row>
-      <Col sm={24} md={12}>
-        <img src={StarryNightTwo} alt='starry night' width={'100%'} />
-      </Col>
-      <Col sm={24} md={12}>
-        <Row>
-          <Col span={18} offset={3}>
-            <h1>My Happy Fund</h1>
-            <h3>Your Ultimate Solution for Fundraising</h3>
-
-            <ForgotPasswordForm />
-          </Col>
-        </Row>
-      </Col>
-    </Row>
+    <section className="forgot">
+      <Row className="forgot-area">
+        <Col className="ant-col-xs-24 ant-col-md-24 ant-col-lg-12 ant-col-xl-12 forgot__area__left">
+          <div className="forgot__area__left-area">
+            <img className="forgot__area__left-area--img" src={HoldLove} alt='starry night' width={'100%'} />
+          </div>
+          {/* <img src={StarryNightTwo} alt='starry night' width={'100%'} /> */}
+        </Col>
+        <Col className="ant-col-xs-24 ant-col-md-24 ant-col-lg-12 ant-col-xl-12 forgot__area__right">
+          <div className="forgot__area__right-block">
+            <div className="forgot__area__right-block-top">
+              <h2 className="forgot__area__right-block-top--logo heading--2">MyHappyFund</h2>
+              <div>
+                <h3 className="forgot__area__right-block-top--heading heading--3">Forgot Password</h3>
+                <p className="forgot__area__right-block-top--sub-heading">
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloremque,
+                  ratione.
+                </p>
+              </div>
+            </div>
+            <div className="forgot__area__right-block-middle">
+              <ForgotPasswordForm />
+            </div>
+          </div>
+        </Col>
+      </Row>
+    </section>
   );
 };
 

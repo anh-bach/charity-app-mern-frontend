@@ -63,27 +63,23 @@ const CampaignForm = ({
   ]);
 
   return (
-    <Row>
-      <Col span={18} offset={3}>
+    <Row className='start-campaign'>
+      <Col span={24}>
         <Form
           form={form}
-          name='userStartCampaignForm'
-          labelCol={{
-            span: 8,
-          }}
-          wrapperCol={{
-            span: 16,
-          }}
+          name='userCampaignForm'
           initialValues={{}}
           onFinish={onFinish}
           autoComplete='off'
           encType='multipart/form-data'
+          className='start-campaign__form'
         >
           <p>
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloremque,
             ratione.
           </p>
           <Form.Item
+            className='start-campaign__form--label'
             label='Title'
             name='title'
             rules={[
@@ -93,10 +89,11 @@ const CampaignForm = ({
               },
             ]}
           >
-            <Input />
+            <Input className='start-campaign__form--input' />
           </Form.Item>
 
           <Form.Item
+            className='start-campaign__form--label'
             label='Slogan'
             name='slogan'
             rules={[
@@ -106,10 +103,11 @@ const CampaignForm = ({
               },
             ]}
           >
-            <Input />
+            <Input className='start-campaign__form--input' />
           </Form.Item>
 
           <Form.Item
+            className='start-campaign__form--label'
             label='Description'
             name='description'
             rules={[
@@ -123,10 +121,14 @@ const CampaignForm = ({
               },
             ]}
           >
-            <Input.TextArea rows={8} />
+            <Input.TextArea rows={8} className='start-campaign__form--input' />
           </Form.Item>
 
-          <Form.Item name='imageCover' label='Campaign Image'>
+          <Form.Item
+            name='imageCover'
+            label='Campaign Image'
+            className='start-campaign__form--label'
+          >
             <UserPhotoUpload
               photo={campaignPhoto}
               setPhoto={setCampaignPhoto}
@@ -135,6 +137,7 @@ const CampaignForm = ({
           </Form.Item>
 
           <Form.Item
+            className='start-campaign__form--label'
             name='category'
             label='Category'
             rules={[
@@ -144,7 +147,10 @@ const CampaignForm = ({
               },
             ]}
           >
-            <Select placeholder='Select a category'>
+            <Select
+              placeholder='Select a category'
+              className='start-campaign__form--select'
+            >
               {categories.map((category) => (
                 <Option key={category._id} value={category._id}>
                   {category.name}
@@ -154,6 +160,7 @@ const CampaignForm = ({
           </Form.Item>
 
           <Form.Item
+            className='start-campaign__form--label'
             label='Target $'
             name='target'
             rules={[
@@ -163,10 +170,11 @@ const CampaignForm = ({
               },
             ]}
           >
-            <InputNumber />
+            <InputNumber className='start-campaign__form--input' />
           </Form.Item>
 
           <Form.Item
+            className='start-campaign__form--label'
             name='duration'
             label='Duration'
             rules={[
@@ -178,6 +186,7 @@ const CampaignForm = ({
             ]}
           >
             <RangePicker
+              className='start-campaign__form--date-range'
               disabledDate={(current) =>
                 current && current.valueOf() < moment()
               }
@@ -186,6 +195,7 @@ const CampaignForm = ({
           </Form.Item>
 
           <Form.Item
+            className='start-campaign__form--label'
             name='location'
             label='Location'
             rules={[
@@ -195,27 +205,16 @@ const CampaignForm = ({
               },
             ]}
           >
-            <Input />
+            <Input className='start-campaign__form--input' />
           </Form.Item>
 
-          <Form.Item
-            wrapperCol={{
-              span: 24,
-            }}
+          <Button
+            htmlType='submit'
+            shape='round'
+            className='start-campaign__form__btn btn btn--primary'
           >
-            <Button
-              type='primary'
-              htmlType='submit'
-              style={{
-                display: 'block',
-                width: '100%',
-                height: '5rem',
-                borderRadius: '10rem',
-              }}
-            >
-              {loading ? <LoadingOutlined /> : action}
-            </Button>
-          </Form.Item>
+            {loading ? <LoadingOutlined /> : 'Post Campaign'}
+          </Button>
         </Form>
       </Col>
     </Row>

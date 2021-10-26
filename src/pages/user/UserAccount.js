@@ -41,9 +41,9 @@ const UserAccount = () => {
   const prefixSelector = (
     <Form.Item name='prefix' noStyle>
       <Select
-        style={{
-          width: 70,
-        }}
+      // style={{
+      //   width: 70,
+      // }}
       >
         <Option value='86'>+86</Option>
         <Option value='87'>+87</Option>
@@ -81,16 +81,10 @@ const UserAccount = () => {
   return (
     <div className='container'>
       <DashboardHorizontalNav title='Account Settings' />
-      <Row>
-        <Col span={18} offset={3}>
+      <Row className="account-setting">
+        <Col span={24}>
           <Form
             name='userAccountForm'
-            labelCol={{
-              span: 8,
-            }}
-            wrapperCol={{
-              span: 16,
-            }}
             initialValues={{
               name: name || '',
               email: email || '',
@@ -103,13 +97,10 @@ const UserAccount = () => {
             autoComplete='off'
             encType='multipart/form-data'
           >
-            <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit.
-              Doloremque, ratione.
-            </p>
             <Form.Item
               label='Fullname'
               name='name'
+              className="start-campaign__form--label"
               rules={[
                 {
                   required: true,
@@ -117,12 +108,13 @@ const UserAccount = () => {
                 },
               ]}
             >
-              <Input prefix={<UserOutlined />} />
+              <Input className="start-campaign__form--input" prefix={<UserOutlined />} />
             </Form.Item>
 
             <Form.Item
               label='Email'
               name='email'
+              className="start-campaign__form--label"
               rules={[
                 {
                   type: 'email',
@@ -135,25 +127,26 @@ const UserAccount = () => {
               ]}
               validateTrigger='onBlur'
             >
-              <Input prefix={<MailOutlined />} />
+              <Input className="start-campaign__form--input" prefix={<MailOutlined />} />
             </Form.Item>
 
-            <Form.Item name='gender' label='Gender'>
-              <Select name='gender' allowClear>
+            <Form.Item name='gender' className="start-campaign__form--label" label='Gender'>
+              <Select name='gender' className="start-campaign__form--select" allowClear>
                 <Option value='male'>male</Option>
                 <Option value='female'>female</Option>
                 <Option value='other'>other</Option>
               </Select>
             </Form.Item>
 
-            <Form.Item name='dateOfBirth' label='Date of Birth'>
+            <Form.Item name='dateOfBirth' className="start-campaign__form--label" label='Date of Birth'>
               <DatePicker
+                className="start-campaign__form--input"
                 disabledDate={(current) =>
                   current && current.valueOf() > moment()
                 }
               />
             </Form.Item>
-            <Form.Item name='photo' label='User Photo'>
+            <Form.Item name='photo' className="start-campaign__form--label" label='User Photo'>
               <UserPhotoUpload
                 setLoading={setLoading}
                 photo={userPhoto}
@@ -161,16 +154,14 @@ const UserAccount = () => {
               />
             </Form.Item>
 
-            <Form.Item name='address' label='Address'>
-              <Input prefix={<HomeFilled />} />
+            <Form.Item name='address' className="start-campaign__form--label" label='Address'>
+              <Input className="start-campaign__form--input" prefix={<HomeFilled />} />
             </Form.Item>
 
-            <Form.Item name='phone' label='Phone Number'>
+            <Form.Item name='phone' className="start-campaign__form--label" label='Phone Number'>
               <Input
                 addonBefore={prefixSelector}
-                style={{
-                  width: '100%',
-                }}
+                className="start-campaign__form--input"
               />
             </Form.Item>
 
@@ -180,14 +171,9 @@ const UserAccount = () => {
               }}
             >
               <Button
-                type='primary'
                 htmlType='submit'
-                style={{
-                  display: 'block',
-                  width: '100%',
-                  height: '5rem',
-                  borderRadius: '10rem',
-                }}
+                shape="round"
+                className="start-campaign__form__btn btn btn--primary"
               >
                 {loading ? <LoadingOutlined /> : 'Update'}
               </Button>

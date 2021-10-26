@@ -39,11 +39,10 @@ const ForgotPasswordForm = () => {
       onFinish={onFinish}
       autoComplete='off'
     >
-      <h2>Forgot Password</h2>
-      <p>Forgot your password? Reset your password here!</p>
       <Form.Item
         label='Email Address'
         name='email'
+        className="form__label"
         rules={[
           {
             type: 'email',
@@ -56,23 +55,15 @@ const ForgotPasswordForm = () => {
         ]}
         validateTrigger='onBlur'
       >
-        <Input prefix={<MailOutlined />} />
+        <Input prefix={<MailOutlined />} className="form__label--input" placeholder="Enter you email" />
       </Form.Item>
 
       <Form.Item
-        wrapperCol={{
-          span: 24,
-        }}
       >
         <Button
-          type='primary'
           htmlType='submit'
-          style={{
-            display: 'block',
-            width: '100%',
-            height: '5rem',
-            borderRadius: '10rem',
-          }}
+          shape="round"
+          className="form__btn btn btn--primary"
         >
           {loading ? <LoadingOutlined /> : 'Reset Password'}
         </Button>

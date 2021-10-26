@@ -4,6 +4,7 @@ import { toast } from 'react-toastify';
 import axios from 'axios';
 import Avatar from 'antd/lib/avatar';
 import Badge from 'antd/lib/badge';
+import { UploadOutlined } from '@ant-design/icons';
 
 const UserPhotoUpload = ({ photo, setPhoto, setLoading }) => {
   const resizeFile = (file) =>
@@ -80,8 +81,9 @@ const UserPhotoUpload = ({ photo, setPhoto, setLoading }) => {
       )}
       <div className='row'>
         <div className='col'>
-          <label className='btn btn-primary btn-raised m-2'>
-            Choose Image
+          <label>
+            {/* <label className='btn btn-primary btn-raised m-2'> */}
+            <UploadOutlined /> Choose Image
             <input
               type='file'
               multiple

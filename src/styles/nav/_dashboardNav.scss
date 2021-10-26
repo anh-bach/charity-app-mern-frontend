@@ -1,0 +1,32 @@
+@import "../../styles/variables";
+
+.dashboard-nav-top {
+  background-color: rgb(241, 241, 241);
+  // background-color: #1d3444;
+  align-items: center !important;
+  justify-content: center !important;
+  margin-bottom: 1rem;
+  &__cols {
+    padding: 1rem;
+    align-items: center;
+    text-align: center !important;
+    &--heading {
+      text-align: left !important;
+    }
+    &--campaigns {
+      a {
+        text-decoration: none;
+        color: $primary-color;
+      }
+    }
+    &--user {
+      a {
+        text-decoration: none;
+        color: $primary-color;
+      }
+      &-name {
+        padding-left: 1rem;
+      }
+    }
+  }
+}
