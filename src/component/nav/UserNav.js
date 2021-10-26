@@ -53,44 +53,44 @@ const UserNav = () => {
       onClick={handleClick}
       selectedKeys={[current]}
       mode='inline'
+      className="dashboard-usernav"
     >
       <Item
-        className='user-nav__logo'
         style={{ marginBottom: '5rem', fontSize: '2rem' }}
-        key='logo'
+        key='logo' className="dashboard-usernav__logo heading--2"
       >
-        <Link to='/'>My Happy Fund</Link>
+        <Link to='/'>MyHappyFund</Link>
       </Item>
-      <Item key='overview' icon={<DashboardFilled />}>
+      <Item key='overview' icon={<DashboardFilled />} className="dashboard-usernav__item dashboard-usernav__item--overview">
         <Link to='/me/dashboard/overview'>Overview</Link>
       </Item>
-      <Item key='campaigns' icon={<ProjectFilled />}>
+      <Item key='campaigns' icon={<ProjectFilled />} className="dashboard-usernav__item dashboard-usernav__item--campaigns">
         <Link to='/me/dashboard/campaigns'>My Campaigns</Link>
       </Item>
-      <Item key='wishlist' icon={<SaveFilled />}>
+      <Item key='wishlist' icon={<SaveFilled />} className="dashboard-usernav__item dashboard-usernav__item--wishlist">
         <Link to='#'>My Wishlist</Link>
       </Item>
-      <Item key='contributions' icon={<DatabaseFilled />}>
+      <Item key='contributions' icon={<DatabaseFilled />} className="dashboard-usernav__item dashboard-usernav__item--contributions">
         <Link to='#'>My Contributions</Link>
       </Item>
-      <Item key='contributors' icon={<GroupOutlined />}>
+      <Item key='contributors' icon={<GroupOutlined />} className="dashboard-usernav__item dashboard-usernav__item--new-campaign">
         <Link to={`/me/dashboard/start-campaign`}>Start Campaign</Link>
       </Item>
 
-      <Menu.Divider />
+      {/* <Menu.Divider /> */}
 
-      <SubMenu key='settings' icon={<SettingFilled />} title='Settings'>
-        <Menu.Item key='myAccount' icon={<ProfileFilled />}>
+      <SubMenu key='settings' icon={<SettingFilled />} title='Settings' className="dashboard-usernav__item dashboard-usernav__item--setting">
+        <Menu.Item key='myAccount' icon={<ProfileFilled />} className="dashboard-usernav__item--setting--account">
           <Link to='/me/dashboard/account'>My Account</Link>
         </Menu.Item>
-        <Menu.Item key='updatePassword' icon={<LockFilled />}>
+        <Menu.Item key='updatePassword' icon={<LockFilled />} className="dashboard-usernav__item--setting--update-password">
           Update Password
         </Menu.Item>
       </SubMenu>
-      <Item key='help' icon={<PhoneFilled />}>
+      <Item key='help' icon={<PhoneFilled />} className="dashboard-usernav__item dashboard-usernav__item--help">
         <Link to='#'>Help</Link>
       </Item>
-      <Item key='signout' icon={<LogoutOutlined />} onClick={handleLogoutClick}>
+      <Item key='signout' icon={<LogoutOutlined />} className="dashboard-usernav__item dashboard-usernav__item--sign-out" onClick={handleLogoutClick}>
         Sign Out
       </Item>
     </Menu>
