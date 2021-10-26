@@ -10,7 +10,7 @@ const AdminUsersList = ({ users = [] }) => {
       key: 'name',
     },
     {
-      title: 'Created At',
+      title: 'Joined At',
       dataIndex: 'createdAt',
       key: 'createdAt',
     },

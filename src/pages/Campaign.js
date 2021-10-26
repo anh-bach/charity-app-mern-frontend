@@ -11,12 +11,16 @@ import {
 import {
   getActiveCampaignsTotalByUser,
   getCampaign,
+  getCampaigns,
 } from '../actions/campaign';
 import { TOGGLE_CHECKOUT } from '../actions/types';
 import moment from 'moment';
 import Payment from '../component/payment/Payment';
 import { getDonationsByCampaign } from '../actions/donation';
 import DonationsList from '../component/table/DonationsList';
+import CampaignCard from '../component/card/CampaignCard';
+import Join from '../assets/images/join.png';
+import CTABanner from '../component/banner/CTABanner';
 
 const { Title } = Typography;
 
@@ -27,6 +31,7 @@ const Campaign = () => {
   const [campaign, setCampaign] = useState(null);
   const [donations, setDonations] = useState([]);
   const [totalCampaignsByUser, setTotalCampaignsByUser] = useState(0);
+  const [relatedCampaigns, setRelatedCampaigns] = useState([]);
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
@@ -38,7 +43,7 @@ const Campaign = () => {
     return () => {
       isMounted = false; //cleanup
     };
-  }, []);
+  }, [slug]);
 
   const loadCampaign = async () => {
     try {
@@ -48,6 +53,7 @@ const Campaign = () => {
       await loadActiveCampaignsTotalByUser(
         res.data.data.campaign.createdBy._id
       );
+      await loadRelatedCampaigns(res.data.data.campaign);
       setLoading(false);
     } catch (error) {
       setLoading(false);
@@ -73,6 +79,19 @@ const Campaign = () => {
       setTotalCampaignsByUser(res.data.data.activeCampaignsTotalByUser);
     } catch (error) {
       console.log('From load active campaigns total by user', error);
+    }
+  };
+
+  const loadRelatedCampaigns = async (campaign) => {
+    try {
+      const category = campaign.category._id;
+      const res = await getCampaigns(1, 3, category);
+      const filteredCampaigns = res.data.data.campaigns.filter(
+        (item) => item._id !== campaign._id
+      );
+      setRelatedCampaigns(filteredCampaigns);
+    } catch (error) {
+      console.log('From load related campaigns');
     }
   };
 
@@ -227,6 +246,32 @@ const Campaign = () => {
           </Col>
         </Row>
       </section>
+
+      {relatedCampaigns.length > 0 && (
+        <section className='ant-space ant-space-vertical main__section latest-campaigns'>
+          <Row className='latest-campaigns__top main__section--header'>
+            <Col className='ant-col-xs-24 ant-col-md-24 ant-col-lg-18 ant-col-xl-18 ant-col-xxl-12  latest-campaigns__top--text'>
+              <Title
+                className='latest-campaigns__top--text--heading heading--2'
+                level={2}
+              >
+                You Might Also Be Interested
+              </Title>
+            </Col>
+          </Row>
+          <Row gutter={[32, 32]} className='latest-campaigns__middle'>
+            {relatedCampaigns.map((campaign) => (
+              <CampaignCard key={campaign._id} campaign={campaign} />
+            ))}
+          </Row>
+        </section>
+      )}
+      <CTABanner
+        heading='Have Any Campaigns To Start?'
+        bodyText='Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur sit amet eros blandit, hendrerit elit et.'
+        btnVal='Start A Campaign'
+        img={Join}
+      />
     </Fragment>
   );
 

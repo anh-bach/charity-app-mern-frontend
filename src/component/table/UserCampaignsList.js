@@ -8,9 +8,15 @@ const UserCampaignsList = ({ campaigns = [] }) => {
       title: 'Title',
       dataIndex: 'title',
       key: 'title',
-      render: (title, campaign) => (
-        <Link to={`/me/campaign-overview/${campaign.slug}`}>{title}</Link>
-      ),
+      render: (title, campaign) => {
+        if (campaign.status === 'approved') {
+          return <Link to={`/campaign/${campaign.slug}`}>{title}</Link>;
+        } else {
+          return (
+            <Link to={`/me/campaign-overview/${campaign.slug}`}>{title}</Link>
+          );
+        }
+      },
     },
     {
       title: 'Created At',

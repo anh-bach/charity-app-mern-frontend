@@ -8,7 +8,15 @@ const AdminCampaignsList = ({ campaigns = [], handleActionClick }) => {
       title: 'Title',
       dataIndex: 'title',
       key: 'title',
-      render: (text) => <Link to='#'>{text}</Link>,
+      render: (title, campaign) => {
+        if (campaign.status === 'approved') {
+          return <Link to={`/campaign/${campaign.slug}`}>{title}</Link>;
+        } else {
+          return (
+            <Link to={`/me/campaign-overview/${campaign.slug}`}>{title}</Link>
+          );
+        }
+      },
     },
     {
       title: 'Created By',

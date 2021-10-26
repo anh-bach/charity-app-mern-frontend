@@ -40,7 +40,6 @@ const UserStartCampaign = () => {
       values['imageCover'] = campaignPhoto;
       values['from'] = values.duration[0]._d;
       values['to'] = values.duration[1]._d;
-      console.log('values', values);
       await createCampaign(values);
       toast.success('New campaign created!');
       setLoading(false);

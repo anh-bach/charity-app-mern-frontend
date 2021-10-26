@@ -11,6 +11,7 @@ import { toast } from 'react-toastify';
 const processDataForTable = (data) =>
   data.map((campaign) => ({
     key: campaign._id,
+    slug: campaign.slug,
     title: campaign.title,
     createdBy: campaign.createdBy.name,
     target: Number(campaign.target).toLocaleString(),

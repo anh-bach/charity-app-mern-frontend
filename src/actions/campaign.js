@@ -1,7 +1,12 @@
 import axios from 'axios';
 
 //Public actions
-export const getCampaigns = async (page = 1, limit = 3) => {
+export const getCampaigns = async (page = 1, limit = 3, category = '') => {
+  if (category) {
+    return await axios.get(
+      `${process.env.REACT_APP_API}/campaigns?page=${page}&limit=${limit}&category=${category}`
+    );
+  }
   return await axios.get(
     `${process.env.REACT_APP_API}/campaigns?page=${page}&limit=${limit}`
   );

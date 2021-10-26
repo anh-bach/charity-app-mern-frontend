@@ -1,5 +1,6 @@
 import React, { useState, useEffect, Fragment } from 'react';
 import { useParams } from 'react-router';
+import moment from 'moment';
 import { Typography, Row, Col, Progress, Button, Avatar } from 'antd';
 import { getCampaignByUser } from '../../actions/campaign';
 import {
@@ -70,16 +71,17 @@ const UserCampaign = () => {
           >
             <Row>
               <Col span={20}>
-                <Progress percent={30} status='active' />
+                <Progress percent={0} status='active' />
                 <Row gutter={16}>
                   <Col>
-                    <LineChartOutlined /> Amount raised
+                    <LineChartOutlined />$ 0 Amount raised
                   </Col>
                   <Col>
-                    <UsergroupAddOutlined /> Supporters
+                    <UsergroupAddOutlined /> 0 Supporters
                   </Col>
                   <Col>
-                    <ClockCircleOutlined /> Days left
+                    <ClockCircleOutlined />{' '}
+                    {moment(campaign.to).diff(moment(), 'days')} Days left
                   </Col>
                 </Row>
               </Col>
