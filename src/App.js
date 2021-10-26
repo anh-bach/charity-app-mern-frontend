@@ -183,7 +183,6 @@ const App = () => {
               component={AdminAccount}
             />
           </Switch>
-          <CustomFooter />
         </Fragment>
       )}
     </Fragment>

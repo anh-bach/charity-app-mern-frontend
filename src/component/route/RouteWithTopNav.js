@@ -1,5 +1,6 @@
 import React, { Fragment } from 'react';
 import { Route } from 'react-router-dom';
+import CustomFooter from '../footer/CustomFooter';
 import TopNav from '../nav/TopNav';
 
 const RouteWithTopNav = ({ component: Component, prevUrl, ...rest }) => {
@@ -10,6 +11,7 @@ const RouteWithTopNav = ({ component: Component, prevUrl, ...rest }) => {
         <Fragment>
           <TopNav {...routeProps} />
           <Component {...routeProps} prevUrl={prevUrl} />
+          <CustomFooter />
         </Fragment>
       )}
     />
