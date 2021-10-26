@@ -34,6 +34,7 @@ import UserCampaign from './pages/user/UserCampaign';
 import UserRouteWithTopNav from './component/route/UserRouteWithTopNav';
 import Campaign from './pages/Campaign';
 import Payment from './component/payment/Payment';
+import UserEditCampaign from './pages/user/UserEditCampaign';
 
 const App = () => {
   const dispatch = useDispatch();
@@ -71,8 +72,8 @@ const App = () => {
       });
       setLoading(false);
     } catch (error) {
-      console.log('From load current user', error);
       setLoading(false);
+      console.log('From load current user', error);
     }
   };
 
@@ -141,6 +142,11 @@ const App = () => {
               exact
               path='/me/dashboard/start-campaign'
               component={UserStartCampaign}
+            />
+            <UserRoute
+              exact
+              path='/me/dashboard/edit-campaign/:slug'
+              component={UserEditCampaign}
             />
             <UserRoute
               exact

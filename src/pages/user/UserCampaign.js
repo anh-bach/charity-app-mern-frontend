@@ -24,12 +24,11 @@ const UserCampaign = () => {
     try {
       setLoading(true);
       const res = await getCampaignByUser(slug);
-      console.log(res.data.data);
       setCampaign(res.data.data);
       setLoading(false);
     } catch (error) {
-      console.log('From loading single campaign by user', error);
       setLoading(false);
+      console.log('From loading single campaign by user', error);
     }
   };
 
@@ -138,14 +137,6 @@ const UserCampaign = () => {
                 <p>{campaign.createdBy.address || 'Address: Unknown'}</p>
               </Col>
             </Row>
-            <Row>
-              <span>3 Campaigns</span>
-              <span>5 Supporters</span>
-            </Row>
-            <h3>RECENT SUPPORTERS</h3>
-            <Row>Unknown</Row>
-            <Row>Unknown</Row>
-            <Row>Unknown</Row>
           </Col>
         </Row>
       </section>

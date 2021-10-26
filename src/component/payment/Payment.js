@@ -1,15 +1,6 @@
 import React, { Fragment, useState, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
-import {
-  Steps,
-  Button,
-  Form,
-  Input,
-  message,
-  Row,
-  Col,
-  InputNumber,
-} from 'antd';
+import { Steps, Button, Form, Input, Row, Col, InputNumber } from 'antd';
 import { TOGGLE_CHECKOUT } from '../../actions/types';
 
 const { Step } = Steps;
@@ -80,11 +71,57 @@ const Payment = () => {
       ),
     },
     {
-      title: 'Payment Method',
+      title: 'Make Donation',
       content: (
-        <Form.Item label='Phone Number' name='phone' className='form__label'>
-          <Input placeholder='Ex. +123 456 7890' />
-        </Form.Item>
+        <Fragment>
+          <Form.Item
+            label='Amount'
+            name='amount'
+            className='form__label'
+            rules={[
+              {
+                required: true,
+                message: 'Please input the amount!',
+              },
+            ]}
+            validateTrigger='onBlur'
+          >
+            <InputNumber className='form__label--input' />
+          </Form.Item>
+          <Form.Item
+            label='Full name'
+            name='name'
+            className='form__label'
+            rules={[
+              {
+                required: true,
+                message: 'Please input your name!',
+              },
+            ]}
+            validateTrigger='onBlur'
+          >
+            <Input className='form__label--input' />
+          </Form.Item>
+          <Form.Item label='Address' name='address' className='form__label'>
+            <Input placeholder='Ex. Apartment no, building no, street no' />
+          </Form.Item>
+          <Row style={{ display: 'flex', justifyContent: 'space-between' }}>
+            <Col>
+              <Form.Item label='City' name='city' className='form__label'>
+                <Input placeholder='Ex. Helsinki' />
+              </Form.Item>
+            </Col>
+
+            <Col>
+              <Form.Item label='Country' name='country' className='form__label'>
+                <Input placeholder='Ex. Finland' />
+              </Form.Item>
+            </Col>
+          </Row>
+          <Form.Item label='Phone Number' name='phone' className='form__label'>
+            <Input placeholder='Ex. +123 456 7890' />
+          </Form.Item>
+        </Fragment>
       ),
     },
   ];
@@ -102,8 +139,6 @@ const Payment = () => {
   };
 
   const onFinish = (values) => {
-    const formData = form.getFieldsValue(true);
-    console.log(formData);
     console.log(values);
   };
 
@@ -165,13 +200,7 @@ const Payment = () => {
             </Button>
           )}
           {current === steps.length - 1 && (
-            <Button
-              type='primary'
-              onClick={() => {
-                message.success('Processing complete!');
-                form.submit();
-              }}
-            >
+            <Button type='primary' onClick={() => form.submit()}>
               Done
             </Button>
           )}

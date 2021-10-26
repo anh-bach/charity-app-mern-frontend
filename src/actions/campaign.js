@@ -27,6 +27,16 @@ export const createCampaign = async (formData) => {
   );
 };
 
+export const updateCampaignByUser = async (slug, formData) => {
+  return await axios.patch(
+    `${process.env.REACT_APP_API}/update-campaign-by-user/${slug}`,
+    formData,
+    {
+      withCredentials: true,
+    }
+  );
+};
+
 export const getCampaignsByUser = async () => {
   return await axios.get(`${process.env.REACT_APP_API}/get-campaigns-by-user`, {
     withCredentials: true,

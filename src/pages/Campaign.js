@@ -10,6 +10,7 @@ import {
 } from '@ant-design/icons';
 import { getCampaign } from '../actions/campaign';
 import { TOGGLE_CHECKOUT } from '../actions/types';
+import moment from 'moment';
 
 const { Title } = Typography;
 
@@ -91,7 +92,8 @@ const Campaign = () => {
                     <UsergroupAddOutlined /> Supporters
                   </Col>
                   <Col>
-                    <ClockCircleOutlined /> Days left
+                    <ClockCircleOutlined />{' '}
+                    {moment(campaign.to).diff(moment(), 'days')} Days left
                   </Col>
                 </Row>
               </Col>

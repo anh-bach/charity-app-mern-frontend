@@ -3,11 +3,12 @@ import { Link } from 'react-router-dom';
 
 import { Typography, Button, Card, Progress, Col } from 'antd';
 import { HeartOutlined, ClockCircleOutlined } from '@ant-design/icons';
+import moment from 'moment';
 
 const { Title, Text } = Typography;
 
 const CampaignCard = ({ campaign = {} }) => {
-  const { imageCover, title, donatedAmount, target, daysLeft, slug } = campaign;
+  const { imageCover, title, donatedAmount, target, from, to, slug } = campaign;
 
   return (
     <Col className='ant-col-xs-24 ant-col-md-12 ant-col-lg-12 ant-col-xl-8 latest-campaigns__middle--col'>
@@ -50,7 +51,8 @@ const CampaignCard = ({ campaign = {} }) => {
                   ${donatedAmount} <span>raised of ${target}</span>
                 </Text>
                 <Text className='campaign-card__area-body--content--number--days'>
-                  <ClockCircleOutlined /> {daysLeft} <span>days left</span>
+                  <ClockCircleOutlined /> {moment(to).diff(moment(), 'days')}{' '}
+                  <span>days left</span>
                 </Text>
               </div>
             </div>
