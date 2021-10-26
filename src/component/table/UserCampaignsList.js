@@ -46,9 +46,9 @@ const UserCampaignsList = ({ campaigns = [] }) => {
     {
       title: 'Action',
       key: 'action',
-      render: (text, record) => (
+      render: (text, campaign) => (
         <Space size='middle'>
-          <a>Edit {record.name}</a>
+          <Link to={`/me/dashboard/edit-campaign/${campaign.slug}`}>Edit</Link>
           <a>Delete</a>
         </Space>
       ),

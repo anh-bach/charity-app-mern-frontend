@@ -1,6 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import moment from 'moment';
-import { getCampaigns, updateCampaignByAdmin } from '../../actions/campaign';
+import {
+  getCampaignsByAdmin,
+  updateCampaignByAdmin,
+} from '../../actions/campaign';
 import AdminCampaignsList from '../../component/table/AdminCampaignsList';
 import DashboardHorizontalNav from '../../component/nav/DashboardNav';
 import { toast } from 'react-toastify';
@@ -31,7 +34,7 @@ const AdminCampaigns = () => {
   const loadPendingCampaigns = async () => {
     try {
       setLoading(true);
-      const res = await getCampaigns('pending');
+      const res = await getCampaignsByAdmin('pending');
       const tableData = processDataForTable(res.data.data.campaigns);
       setPendingCampaigns(tableData);
       setLoading(false);
@@ -43,7 +46,7 @@ const AdminCampaigns = () => {
   const loadApprovedCampaigns = async () => {
     try {
       setLoading(true);
-      const res = await getCampaigns('approved');
+      const res = await getCampaignsByAdmin('approved');
       const tableData = processDataForTable(res.data.data.campaigns);
       setApprovedCampaigns(tableData);
       setLoading(false);
@@ -55,7 +58,7 @@ const AdminCampaigns = () => {
   const loadRejectedCampaigns = async () => {
     try {
       setLoading(true);
-      const res = await getCampaigns('rejected');
+      const res = await getCampaignsByAdmin('rejected');
       const tableData = processDataForTable(res.data.data.campaigns);
       setRejectedCampaigns(tableData);
       setLoading(false);

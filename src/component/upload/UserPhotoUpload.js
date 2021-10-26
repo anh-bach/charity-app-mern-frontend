@@ -51,6 +51,7 @@ const UserPhotoUpload = ({ photo, setPhoto, setLoading }) => {
   const handleImageRemove = async (public_id) => {
     try {
       setLoading(true);
+      console.log('click');
       await axios.post(
         `${process.env.REACT_APP_API}/remove-image`,
         { public_id },

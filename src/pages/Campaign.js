@@ -1,18 +1,22 @@
 import React, { useState, useEffect, Fragment } from 'react';
 import { useParams } from 'react-router';
+import { useDispatch } from 'react-redux';
 import { Typography, Row, Col, Progress, Button, Avatar } from 'antd';
-import { getCampaignByUser } from '../../actions/campaign';
+
 import {
   ClockCircleOutlined,
   LineChartOutlined,
   UsergroupAddOutlined,
 } from '@ant-design/icons';
+import { getCampaign } from '../actions/campaign';
+import { TOGGLE_CHECKOUT } from '../actions/types';
+import moment from 'moment';
 
 const { Title } = Typography;
 
-const UserCampaign = () => {
+const Campaign = () => {
   const { slug } = useParams();
-
+  const dispatch = useDispatch();
   const [campaign, setCampaign] = useState(null);
   const [loading, setLoading] = useState(false);
 
@@ -23,12 +27,20 @@ const UserCampaign = () => {
   const loadCampaign = async () => {
     try {
       setLoading(true);
-      const res = await getCampaignByUser(slug);
-      setCampaign(res.data.data);
+      const res = await getCampaign(slug);
+      setCampaign(res.data.data.campaign);
       setLoading(false);
     } catch (error) {
       setLoading(false);
       console.log('From loading single campaign by user', error);
+    }
+  };
+
+  const handleClick = async () => {
+    try {
+      dispatch({ type: TOGGLE_CHECKOUT });
+    } catch (error) {
+      console.log('from handle click support', error);
     }
   };
 
@@ -73,13 +85,15 @@ const UserCampaign = () => {
                 <Progress percent={30} status='active' />
                 <Row gutter={16}>
                   <Col>
-                    <LineChartOutlined /> Amount raised
+                    <LineChartOutlined />
+                    {campaign.donatedAmount} Amount raised
                   </Col>
                   <Col>
                     <UsergroupAddOutlined /> Supporters
                   </Col>
                   <Col>
-                    <ClockCircleOutlined /> Days left
+                    <ClockCircleOutlined />{' '}
+                    {moment(campaign.to).diff(moment(), 'days')} Days left
                   </Col>
                 </Row>
               </Col>
@@ -88,6 +102,7 @@ const UserCampaign = () => {
                   style={{ margin: 'auto', display: 'block' }}
                   type='primary'
                   shape='round'
+                  onClick={handleClick}
                 >
                   Support
                 </Button>
@@ -137,6 +152,14 @@ const UserCampaign = () => {
                 <p>{campaign.createdBy.address || 'Address: Unknown'}</p>
               </Col>
             </Row>
+            <Row>
+              <span>3 Campaigns</span>
+              <span>5 Supporters</span>
+            </Row>
+            <h3>RECENT SUPPORTERS</h3>
+            <Row>Unknown</Row>
+            <Row>Unknown</Row>
+            <Row>Unknown</Row>
           </Col>
         </Row>
       </section>
@@ -161,4 +184,4 @@ const UserCampaign = () => {
   );
 };
 
-export default UserCampaign;
+export default Campaign;
