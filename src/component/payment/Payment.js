@@ -1,12 +1,20 @@
-import React, { Fragment, useState, useEffect } from 'react';
-import { useDispatch } from 'react-redux';
+import React, { Fragment, useState } from 'react';
 import { Steps, Button, Form, Input, Row, Col, InputNumber } from 'antd';
 import { TOGGLE_CHECKOUT } from '../../actions/types';
+import { makeDonationByUser } from '../../actions/campaign';
+import { toast } from 'react-toastify';
+import { LoadingOutlined } from '@ant-design/icons';
 
 const { Step } = Steps;
 
-const Payment = () => {
-  const dispatch = useDispatch();
+const Payment = ({
+  slug,
+  loading,
+  setLoading,
+  dispatch,
+  loadCampaign,
+  loadDonations,
+}) => {
   const [current, setCurrent] = useState(0);
   const [form] = Form.useForm();
 
@@ -138,8 +146,20 @@ const Payment = () => {
     dispatch({ type: TOGGLE_CHECKOUT });
   };
 
-  const onFinish = (values) => {
-    console.log(values);
+  const onFinish = async (values) => {
+    try {
+      setLoading(true);
+      await makeDonationByUser(slug, values);
+      await loadCampaign();
+      await loadDonations();
+      toast.success('Thank you for your support!');
+      form.resetFields();
+      dispatch({ type: TOGGLE_CHECKOUT });
+      setLoading(false);
+    } catch (error) {
+      setLoading(false);
+      console.log('From on finnish payment', error);
+    }
   };
 
   return (
@@ -201,7 +221,7 @@ const Payment = () => {
           )}
           {current === steps.length - 1 && (
             <Button type='primary' onClick={() => form.submit()}>
-              Done
+              {loading ? <LoadingOutlined /> : 'Done'}
             </Button>
           )}
           {current > 0 && (

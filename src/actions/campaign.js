@@ -43,9 +43,28 @@ export const getCampaignsByUser = async () => {
   });
 };
 
+export const getActiveCampaignsTotalByUser = async (userId) => {
+  return await axios.get(
+    `${process.env.REACT_APP_API}/get-total-active-campaigns-by-user/${userId}`,
+    {
+      withCredentials: true,
+    }
+  );
+};
+
 export const getCampaignByUser = async (slug) => {
   return await axios.get(
     `${process.env.REACT_APP_API}/get-campaign-by-user/${slug}`,
+    {
+      withCredentials: true,
+    }
+  );
+};
+
+export const makeDonationByUser = async (slug, formData) => {
+  return await axios.post(
+    `${process.env.REACT_APP_API}/donate-campaign/${slug}`,
+    formData,
     {
       withCredentials: true,
     }

@@ -1,6 +1,6 @@
 import React, { useState, useEffect, Fragment } from 'react';
 import { useParams } from 'react-router';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { Typography, Row, Col, Progress, Button, Avatar } from 'antd';
 
 import {
@@ -8,20 +8,36 @@ import {
   LineChartOutlined,
   UsergroupAddOutlined,
 } from '@ant-design/icons';
-import { getCampaign } from '../actions/campaign';
+import {
+  getActiveCampaignsTotalByUser,
+  getCampaign,
+} from '../actions/campaign';
 import { TOGGLE_CHECKOUT } from '../actions/types';
 import moment from 'moment';
+import Payment from '../component/payment/Payment';
+import { getDonationsByCampaign } from '../actions/donation';
+import DonationsList from '../component/table/DonationsList';
 
 const { Title } = Typography;
 
 const Campaign = () => {
   const { slug } = useParams();
   const dispatch = useDispatch();
+  const checkoutState = useSelector((state) => state.checkoutState);
   const [campaign, setCampaign] = useState(null);
+  const [donations, setDonations] = useState([]);
+  const [totalCampaignsByUser, setTotalCampaignsByUser] = useState(0);
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
-    loadCampaign();
+    let isMounted = true;
+    if (isMounted) {
+      loadCampaign();
+      loadDonations();
+    }
+    return () => {
+      isMounted = false; //cleanup
+    };
   }, []);
 
   const loadCampaign = async () => {
@@ -29,10 +45,34 @@ const Campaign = () => {
       setLoading(true);
       const res = await getCampaign(slug);
       setCampaign(res.data.data.campaign);
+      await loadActiveCampaignsTotalByUser(
+        res.data.data.campaign.createdBy._id
+      );
       setLoading(false);
     } catch (error) {
       setLoading(false);
       console.log('From loading single campaign by user', error);
+    }
+  };
+
+  const loadDonations = async () => {
+    try {
+      setLoading(true);
+      const res = await getDonationsByCampaign(slug);
+      setDonations(res.data.data);
+      setLoading(false);
+    } catch (error) {
+      console.log('From loading donation', error);
+      setLoading(false);
+    }
+  };
+
+  const loadActiveCampaignsTotalByUser = async (userId) => {
+    try {
+      const res = await getActiveCampaignsTotalByUser(userId);
+      setTotalCampaignsByUser(res.data.data.activeCampaignsTotalByUser);
+    } catch (error) {
+      console.log('From load active campaigns total by user', error);
     }
   };
 
@@ -46,6 +86,16 @@ const Campaign = () => {
 
   const renderCampaign = (campaign) => (
     <Fragment>
+      {checkoutState && (
+        <Payment
+          slug={slug}
+          loading={loading}
+          setLoading={setLoading}
+          dispatch={dispatch}
+          loadCampaign={loadCampaign}
+          loadDonations={loadDonations}
+        />
+      )}
       <section className='ant-space ant-space-vertical main__section all-campaigns'>
         <Row className='all-campaigns__top main__section--header'>
           <Col className='ant-col-xs-24 ant-col-md-24 ant-col-lg-18 ant-col-xl-18 ant-col-xxl-12  all-campaigns__top--text'>
@@ -82,14 +132,17 @@ const Campaign = () => {
           >
             <Row>
               <Col span={20}>
-                <Progress percent={30} status='active' />
+                <Progress
+                  percent={(campaign.donatedAmount / campaign.target) * 100}
+                  status='active'
+                />
                 <Row gutter={16}>
                   <Col>
-                    <LineChartOutlined />
-                    {campaign.donatedAmount} Amount raised
+                    <LineChartOutlined />$
+                    {campaign.donatedAmount.toLocaleString()} Amount raised
                   </Col>
                   <Col>
-                    <UsergroupAddOutlined /> Supporters
+                    <UsergroupAddOutlined /> {donations.length} Supporters
                   </Col>
                   <Col>
                     <ClockCircleOutlined />{' '}
@@ -153,13 +206,24 @@ const Campaign = () => {
               </Col>
             </Row>
             <Row>
-              <span>3 Campaigns</span>
-              <span>5 Supporters</span>
+              <span
+                style={{
+                  paddingRight: '1rem',
+                  borderRight: '1px solid black',
+                }}
+              >
+                {totalCampaignsByUser} Campaigns
+              </span>
+              <span
+                style={{
+                  paddingLeft: '1rem',
+                }}
+              >
+                {donations.length} Supporters
+              </span>
             </Row>
             <h3>RECENT SUPPORTERS</h3>
-            <Row>Unknown</Row>
-            <Row>Unknown</Row>
-            <Row>Unknown</Row>
+            <DonationsList donations={donations} />
           </Col>
         </Row>
       </section>

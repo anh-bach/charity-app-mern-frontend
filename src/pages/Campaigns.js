@@ -48,7 +48,7 @@ const Campaigns = () => {
             className='all-campaigns__top--text--heading heading--2'
             level={2}
           >
-            {activeCampaignsTotal} Active Campaigns
+            {loading ? 'Loading' : `${activeCampaignsTotal} Active Campaigns`}
           </Title>
         </Col>
       </Row>

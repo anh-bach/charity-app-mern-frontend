@@ -33,12 +33,11 @@ import AdminCampaigns from './pages/admin/AdminCampaigns';
 import UserCampaign from './pages/user/UserCampaign';
 import UserRouteWithTopNav from './component/route/UserRouteWithTopNav';
 import Campaign from './pages/Campaign';
-import Payment from './component/payment/Payment';
 import UserEditCampaign from './pages/user/UserEditCampaign';
 
 const App = () => {
   const dispatch = useDispatch();
-  const checkoutState = useSelector((state) => state.checkoutState);
+
   const location = useLocation();
   const [curUrl, setCurUrl] = useState(null);
   const [prevUrl, setPrevUrl] = useState(null);
@@ -90,7 +89,6 @@ const App = () => {
       ) : (
         <Fragment>
           <ToastContainer />
-          {checkoutState && <Payment />}
           <Switch>
             <RouteWithTopNav exact path='/' component={Home} />
             <RouteWithTopNav exact path='/about' component={About} />
