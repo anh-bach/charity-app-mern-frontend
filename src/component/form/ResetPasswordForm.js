@@ -75,11 +75,10 @@ const ResetPasswordForm = () => {
       onFinish={onFinish}
       autoComplete='off'
     >
-      <h2>Reset Password</h2>
-      <p>Create your new password here!</p>
       <Form.Item
         label='New Password'
         name='password'
+        className="form__label"
         rules={[
           {
             required: true,
@@ -92,12 +91,13 @@ const ResetPasswordForm = () => {
         ]}
         validateTrigger='onBlur'
       >
-        <Input.Password prefix={<LockOutlined />} type='password' />
+        <Input.Password prefix={<LockOutlined />} type='password' className="form__label--input" />
       </Form.Item>
 
       <Form.Item
         label='Confirm Password'
         name='passwordConfirm'
+        className="form__label"
         dependencies={['password']}
         hasFeedback
         rules={[
@@ -118,7 +118,7 @@ const ResetPasswordForm = () => {
         ]}
         validateTrigger='onChange'
       >
-        <Input.Password prefix={<LockOutlined />} type='password' />
+        <Input.Password prefix={<LockOutlined />} type='password' className="form__label--input" />
       </Form.Item>
 
       <Form.Item
@@ -127,14 +127,9 @@ const ResetPasswordForm = () => {
         }}
       >
         <Button
-          type='primary'
           htmlType='submit'
-          style={{
-            display: 'block',
-            width: '100%',
-            height: '5rem',
-            borderRadius: '10rem',
-          }}
+          shape="round"
+          className="btn btn--primary"
         >
           {loading ? <LoadingOutlined /> : 'Create Password'}
         </Button>
