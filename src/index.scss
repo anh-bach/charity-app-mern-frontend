@@ -20,6 +20,7 @@
 @import "./styles/components/toast";
 @import "./styles/components/loginForm";
 @import "./styles/components/registerForm";
+@import "./styles/components/userRoute";
 
 //Pages Styles
 @import "./styles/pages/login";
@@ -29,3 +30,5 @@
 @import "./styles/pages/campaigns";
 @import "./styles/pages/about";
 @import "./styles/pages/user/userDashboard";
+@import "./styles/pages/user/userStartCampaign";
+@import "./styles/pages/user/userAccount";

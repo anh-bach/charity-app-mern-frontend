@@ -67,30 +67,27 @@ const UserStartCampaign = () => {
   };
 
   const connected = () => (
-    <Row>
-      <Col span={18} offset={3}>
+    <Row className="start-campaign">
+      <Col span={24}>
         <Form
           form={form}
           name='userStartCampaignForm'
-          labelCol={{
-            span: 8,
-          }}
-          wrapperCol={{
-            span: 16,
-          }}
+          // labelCol={{
+          //   span: 8,
+          // }}
+          // wrapperCol={{
+          //   span: 16,
+          // }}
           initialValues={{}}
           onFinish={onFinish}
           autoComplete='off'
           encType='multipart/form-data'
-          // className="form-area"
+          className="start-campaign__form"
         >
-          {/* <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloremque,
-            ratione.
-          </p> */}
           <Form.Item
             label='Title'
             name='title'
+            className="start-campaign__form--label"
             rules={[
               {
                 required: true,
@@ -98,12 +95,13 @@ const UserStartCampaign = () => {
               },
             ]}
           >
-            <Input />
+            <Input className="start-campaign__form--input" />
           </Form.Item>
 
           <Form.Item
             label='Slogan'
             name='slogan'
+            className="start-campaign__form--label"
             rules={[
               {
                 required: true,
@@ -111,12 +109,13 @@ const UserStartCampaign = () => {
               },
             ]}
           >
-            <Input />
+            <Input className="start-campaign__form--input" />
           </Form.Item>
 
           <Form.Item
             label='Description'
             name='description'
+            className="start-campaign__form--label"
             rules={[
               {
                 required: true,
@@ -128,10 +127,10 @@ const UserStartCampaign = () => {
               },
             ]}
           >
-            <Input.TextArea rows={8} />
+            <Input.TextArea rows={8} className="start-campaign__form--input" />
           </Form.Item>
 
-          <Form.Item name='imageCover' label='Campaign Image'>
+          <Form.Item name='imageCover' label='Campaign Image' className="start-campaign__form--label">
             <UserPhotoUpload
               photo={campaignPhoto}
               setPhoto={setCampaignPhoto}
@@ -142,6 +141,7 @@ const UserStartCampaign = () => {
           <Form.Item
             name='category'
             label='Category'
+            className="start-campaign__form--label"
             rules={[
               {
                 required: true,
@@ -149,7 +149,7 @@ const UserStartCampaign = () => {
               },
             ]}
           >
-            <Select placeholder='Select a category'>
+            <Select placeholder='Select a category' className="start-campaign__form--select">
               {categories.map((category) => (
                 <Option key={category._id} value={category._id}>
                   {category.name}
@@ -161,6 +161,7 @@ const UserStartCampaign = () => {
           <Form.Item
             label='Target $'
             name='target'
+            className="start-campaign__form--label"
             rules={[
               {
                 required: true,
@@ -168,12 +169,13 @@ const UserStartCampaign = () => {
               },
             ]}
           >
-            <InputNumber />
+            <InputNumber className="start-campaign__form--input" />
           </Form.Item>
 
           <Form.Item
             name='duration'
             label='Duration'
+            className="start-campaign__form--label"
             rules={[
               {
                 type: 'array',
@@ -183,16 +185,19 @@ const UserStartCampaign = () => {
             ]}
           >
             <RangePicker
+              className="start-campaign__form--date-range"
               disabledDate={(current) =>
                 current && current.valueOf() < moment()
               }
               format='YYYY-MM-DD'
+
             />
           </Form.Item>
 
           <Form.Item
             name='location'
             label='Location'
+            className="start-campaign__form--label"
             rules={[
               {
                 required: true,
@@ -200,27 +205,15 @@ const UserStartCampaign = () => {
               },
             ]}
           >
-            <Input />
+            <Input className="start-campaign__form--input" />
           </Form.Item>
-
-          <Form.Item
-            wrapperCol={{
-              span: 24,
-            }}
+          <Button
+            htmlType='submit'
+            shape="round"
+            className="start-campaign__form__btn btn btn--primary"
           >
-            <Button
-              type='primary'
-              htmlType='submit'
-              style={{
-                display: 'block',
-                width: '100%',
-                height: '5rem',
-                borderRadius: '10rem',
-              }}
-            >
-              {loading ? <LoadingOutlined /> : 'Create'}
-            </Button>
-          </Form.Item>
+            {loading ? <LoadingOutlined /> : 'Post Campaign'}
+          </Button>
         </Form>
       </Col>
     </Row>

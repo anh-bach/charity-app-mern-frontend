@@ -1,0 +1,16 @@
+@import "../../variables";
+
+.account-setting {
+  background-color: #fff;
+  padding: 3rem 5rem;
+  overflow: scroll;
+  &__form {
+    width: 100% !important;
+    &--label {
+      display: block !important;
+    }
+    &--input {
+      width: 100% !important;
+    }
+  }
+}

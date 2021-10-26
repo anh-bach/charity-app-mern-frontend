@@ -1,0 +1,27 @@
+@import "../../variables";
+
+.start-campaign {
+  background-color: #fff;
+  padding: 3rem;
+  overflow: scroll;
+  &__form {
+    width: 100% !important;
+    &--label {
+      display: block !important;
+      font-weight: 500;
+    }
+    &--input,
+    &--select {
+      width: 100% !important;
+      font-weight: 400;
+      color: $paragraph-text--1 !important;
+    }
+    &--date-range {
+      width: 100% !important;
+      input {
+        font-weight: 400;
+        color: $paragraph-text--1 !important;
+      }
+    }
+  }
+}
