@@ -11,7 +11,6 @@ import About from './pages/About';
 import Campaigns from './pages/Campaigns';
 import Register from './pages/auth/Register';
 import Login from './pages/auth/Login';
-import CustomFooter from './component/footer/CustomFooter';
 import ForgotPassword from './pages/auth/ForgotPassword';
 import ResetPassWord from './pages/auth/ResetPassword';
 import { getCurrentUser } from './actions/auth';
