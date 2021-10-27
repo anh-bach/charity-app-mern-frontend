@@ -47,7 +47,7 @@ const CampaignCard = ({ campaign = {} }) => {
 
               <div className='campaign-card__area-body--content--number'>
                 <Text className='campaign-card__area-body--content--number--amount'>
-                  ${donatedAmount} <span>raised of ${target}</span>
+                  $ {donatedAmount} <span>raised of $ {target}</span>
                 </Text>
                 <Text className='campaign-card__area-body--content--number--days'>
                   <ClockCircleOutlined /> {daysLeft} <span>days left</span>
