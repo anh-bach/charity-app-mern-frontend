@@ -1,7 +1,7 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import { Link } from 'react-router-dom';
 
-import { Typography, Button, Card, Progress, Col } from 'antd';
+import { Typography, Button, Card, Progress, Col, Tooltip } from 'antd';
 import { HeartOutlined, ClockCircleOutlined } from '@ant-design/icons';
 import moment from 'moment';
 
@@ -24,7 +24,9 @@ const CampaignCard = ({ campaign = {} }) => {
           <div className='campaign-card__area-body'>
             <div className='campaign-card__area-body--icon'>
               <div className='campaign-card__area-body--icon-svg'>
-                <HeartOutlined />
+                <Tooltip title='Add to wishlist'>
+                  <HeartOutlined />
+                </Tooltip>
               </div>
             </div>
             <Title
@@ -37,7 +39,7 @@ const CampaignCard = ({ campaign = {} }) => {
             <div className='campaign-card__area-body--content'>
               <div className='campaign-card__area-body--content--progress'>
                 <Text className='campaign-card__area-body--content--progress-percent'>
-                  {(donatedAmount / target) * 100}%
+                  {((donatedAmount / target) * 100).toFixed(2)}%
                 </Text>
                 <Progress
                   className='campaign-card__area-body--content--progress-bar'
@@ -51,8 +53,15 @@ const CampaignCard = ({ campaign = {} }) => {
                   ${donatedAmount} <span>raised of ${target}</span>
                 </Text>
                 <Text className='campaign-card__area-body--content--number--days'>
-                  <ClockCircleOutlined /> {moment(to).diff(moment(), 'days')}{' '}
-                  <span>days left</span>
+                  <ClockCircleOutlined />{' '}
+                  {moment(to).diff(moment()) > 0 ? (
+                    <Fragment>
+                      {moment(to).diff(moment(), 'days')}
+                      <span> days left</span>
+                    </Fragment>
+                  ) : (
+                    <span>Overdued</span>
+                  )}
                 </Text>
               </div>
             </div>

@@ -8,3 +8,12 @@ export const getDonationsByCampaign = async (slug) => {
     }
   );
 };
+
+export const getDonationsByUser = async (userId) => {
+  return await axios.get(
+    `${process.env.REACT_APP_API}/get-donations-by-user/${userId}`,
+    {
+      withCredentials: true,
+    }
+  );
+};

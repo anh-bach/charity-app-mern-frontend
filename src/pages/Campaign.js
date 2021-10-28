@@ -2,7 +2,7 @@ import React, { useState, useEffect, Fragment } from 'react';
 import { useParams } from 'react-router';
 import { useDispatch, useSelector } from 'react-redux';
 import { Typography, Row, Col, Progress, Button, Avatar } from 'antd';
-
+import moment from 'moment';
 import {
   ClockCircleOutlined,
   LineChartOutlined,
@@ -14,7 +14,6 @@ import {
   getCampaigns,
 } from '../actions/campaign';
 import { TOGGLE_CHECKOUT } from '../actions/types';
-import moment from 'moment';
 import Payment from '../component/payment/Payment';
 import { getDonationsByCampaign } from '../actions/donation';
 import DonationsList from '../component/table/DonationsList';
@@ -165,7 +164,14 @@ const Campaign = () => {
                   </Col>
                   <Col>
                     <ClockCircleOutlined />{' '}
-                    {moment(campaign.to).diff(moment(), 'days')} Days left
+                    {moment(campaign.to).diff(moment()) > 0 ? (
+                      <Fragment>
+                        {moment(campaign.to).diff(moment(), 'days')}
+                        <span> days left</span>
+                      </Fragment>
+                    ) : (
+                      <span>Overdued</span>
+                    )}
                   </Col>
                 </Row>
               </Col>
@@ -175,6 +181,7 @@ const Campaign = () => {
                   type='primary'
                   shape='round'
                   onClick={handleClick}
+                  disabled={moment(campaign.to).diff(moment()) < 0}
                 >
                   Support
                 </Button>

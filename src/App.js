@@ -33,6 +33,8 @@ import UserCampaign from './pages/user/UserCampaign';
 import UserRouteWithTopNav from './component/route/UserRouteWithTopNav';
 import Campaign from './pages/Campaign';
 import UserEditCampaign from './pages/user/UserEditCampaign';
+import Spinner from './assets/images/spinner.svg';
+import UserDonations from './pages/user/UserDonations';
 
 const App = () => {
   const dispatch = useDispatch();
@@ -83,7 +85,7 @@ const App = () => {
             height: '100vh',
           }}
         >
-          ...loading
+          <img className='spinner--main' src={Spinner} alt='spinner' />
         </div>
       ) : (
         <Fragment>
@@ -129,6 +131,11 @@ const App = () => {
               exact
               path='/me/dashboard/campaigns'
               component={UserCampaigns}
+            />
+            <UserRoute
+              exact
+              path='/me/dashboard/donations'
+              component={UserDonations}
             />
             <UserRoute
               exact
