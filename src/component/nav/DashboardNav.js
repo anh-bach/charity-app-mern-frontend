@@ -57,20 +57,15 @@ const DashboardHorizontalNav = ({ title }) => {
     </Menu>
   );
   return (
-    <section className="dashboard-nav-top">
-      <Row className="dashboard-nav-top__cols">
-        <Col span={16} className="dashboard-nav-top__cols--heading">
-          <span className="heading heading--3">{title}</span>
+    <section className='dashboard-nav-top'>
+      <Row className='dashboard-nav-top__cols'>
+        <Col span={16} className='dashboard-nav-top__cols--heading'>
+          <span className='heading heading--3'>{title}</span>
         </Col>
-        <Col
-          span={4}
-          className="dashboard-nav-top__cols--campaigns"
-        // offset={5}
-        // style={{ display: 'flex', justifyContent: 'space-between' }}
-        >
+        <Col span={4} className='dashboard-nav-top__cols--campaigns'>
           <Link to='/campaigns'>Browse Campaigns</Link>
         </Col>
-        <Col span={4} className="dashboard-nav-top__cols--user">
+        <Col span={4} className='dashboard-nav-top__cols--user'>
           <Dropdown overlay={menu} trigger={['click']}>
             <Link to='#'>
               {currentUser ? (
@@ -82,7 +77,9 @@ const DashboardHorizontalNav = ({ title }) => {
                       {currentUser.name.split('')[0]}
                     </Avatar>
                   )}
-                  <span className="dashboard-nav-top__cols--user-name">{currentUser.name.split(' ')[0]}</span>
+                  <span className='dashboard-nav-top__cols--user-name'>
+                    {currentUser.name.split(' ')[0]}
+                  </span>
                 </Fragment>
               ) : (
                 'Loading'

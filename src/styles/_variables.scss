@@ -16,3 +16,29 @@ $paragraph-text--2: #6a6a6a;
     xl: '1200px',
     xxl: '1600px',
   } */
+
+$bkg1-light: hsl(0, 0%, 100%);
+
+$bkg1-dark: hsl(218, 15.4%, 10.2%);
+
+$bkg1: $bkg1-light;
+
+@media (prefers-color-scheme: dark) {
+  $bkg1: $bkg1-dark;
+}
+
+@media (prefers-color-scheme: light) {
+  $bkg1: $bkg1-light;
+}
+
+[color-scheme='dark'] {
+  $bkg1: $bkg1-dark;
+}
+
+[color-scheme='light'] {
+  $bkg1: $bkg1-light;
+}
+
+.background--test--mode {
+  background-color: $bkg1;
+}
