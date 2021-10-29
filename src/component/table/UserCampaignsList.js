@@ -8,6 +8,8 @@ const UserCampaignsList = ({ campaigns = [] }) => {
       title: 'Title',
       dataIndex: 'title',
       key: 'title',
+      width: 200,
+      fixed: 'left',
       render: (title, campaign) => {
         if (campaign.status === 'approved') {
           return <Link to={`/campaign/${campaign.slug}`}>{title}</Link>;
@@ -22,32 +24,44 @@ const UserCampaignsList = ({ campaigns = [] }) => {
       title: 'Created At',
       dataIndex: 'createdAt',
       key: 'createdAt',
+      width: 120,
     },
     {
       title: 'From',
       dataIndex: 'from',
       key: 'from',
+      width: 120,
     },
     {
       title: 'To',
       dataIndex: 'to',
       key: 'to',
+      width: 120,
+    },
+    {
+      title: 'Donated',
+      dataIndex: 'donated',
+      key: 'donated',
+      width: 120,
     },
     {
       title: 'Target',
       dataIndex: 'target',
       key: 'target',
+      width: 120,
     },
     {
       title: 'Category',
       dataIndex: 'category',
       key: 'category',
+      width: 150,
       render: (category) => <Tag color='blue'>{category}</Tag>,
     },
     {
       title: 'Status',
       dataIndex: 'status',
       key: 'status',
+      width: 120,
     },
     {
       title: 'Action',
@@ -65,7 +79,7 @@ const UserCampaignsList = ({ campaigns = [] }) => {
       columns={columns}
       dataSource={campaigns}
       pagination={{ pageSize: 10 }}
-      scroll={{ y: 480 }}
+      scroll={{ x: 1500, y: 400 }}
     />
   );
 };

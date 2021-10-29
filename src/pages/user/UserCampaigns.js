@@ -8,15 +8,16 @@ import UserCampaignsList from '../../component/table/UserCampaignsList';
 const processDataForTable = (data) =>
   data.map((campaign) => ({
     key: campaign._id,
-    title: campaign.title,
+    title: campaign.title.slice(0, 20) + '...',
     slug: campaign.slug,
     createdBy: campaign.createdBy.name,
     target: Number(campaign.target).toLocaleString(),
+    donated: Number(campaign.donatedAmount).toLocaleString(),
     category: campaign.category.name,
     status: campaign.status,
-    createdAt: moment(campaign.createdAt).format('DD-MM-YYYY'),
-    from: moment(campaign.from).format('DD-MM-YYYY'),
-    to: moment(campaign.to).format('DD-MM-YYYY'),
+    createdAt: moment(campaign.createdAt).format('DD-MM-YY'),
+    from: moment(campaign.from).format('DD-MM-YY'),
+    to: moment(campaign.to).format('DD-MM-YY'),
   }));
 
 const UserCampaigns = () => {
