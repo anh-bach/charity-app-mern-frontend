@@ -24,10 +24,19 @@ const TopNav = () => {
 
   //setting the top navbar item according to the pathname
   useEffect(() => {
-    setCurrent(pathname.slice(1));
-    if (current === 'logo' || current === '') {
+    if (/campaign/gi.test(pathname)) {
+      setCurrent('campaigns');
+    }
+
+    if (/about/gi.test(pathname)) {
+      setCurrent('about');
+    }
+
+    if (pathname === '/') {
       setCurrent('home');
     }
+
+    console.log('pathname', pathname);
   }, [pathname]);
 
   //load user if there is current logged in user
