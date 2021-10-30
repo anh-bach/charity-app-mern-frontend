@@ -151,7 +151,10 @@ const Campaign = () => {
             <Row>
               <Col span={20}>
                 <Progress
-                  percent={(campaign.donatedAmount / campaign.target) * 100}
+                  percent={(
+                    (campaign.donatedAmount / campaign.target) *
+                    100
+                  ).toFixed(2)}
                   status='active'
                 />
                 <Row gutter={16}>

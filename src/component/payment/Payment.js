@@ -170,8 +170,9 @@ const Payment = ({
           position: 'absolute',
           top: '0',
           bottom: '0',
+          left: '0',
+          right: '0',
           zIndex: '2',
-          width: '100%',
           backgroundColor: '#000',
           opacity: '90%',
         }}
@@ -182,11 +183,11 @@ const Payment = ({
         style={{
           padding: '4rem',
           position: 'absolute',
-          top: '5%',
+          top: '50%',
           width: '50%',
           zIndex: '3',
           left: '50%',
-          transform: 'translateX(-50%)',
+          transform: 'translate(-50%, -50%)',
           background: '#fff',
         }}
       >
