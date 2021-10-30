@@ -8,6 +8,7 @@ import { composeWithDevTools } from 'redux-devtools-extension';
 import './index.scss';
 import App from './App';
 import rootReducer from './reducers';
+import ScrollToTop from './component/scroll/ScrollToTop';
 
 //set up redux store
 const initialState = {};
@@ -21,7 +22,9 @@ const store = createStore(
 ReactDOM.render(
   <Provider store={store}>
     <Router>
-      <App />
+      <ScrollToTop>
+        <App />
+      </ScrollToTop>
     </Router>
   </Provider>,
   document.getElementById('root')

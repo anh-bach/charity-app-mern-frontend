@@ -1,4 +1,5 @@
 import React from 'react';
+import { useLocation } from 'react-router';
 import Layout from 'antd/lib/layout';
 import { Row, Col } from 'antd';
 import {
@@ -12,6 +13,8 @@ import { Link } from 'react-router-dom';
 const { Footer } = Layout;
 
 const CustomFooter = () => {
+  const { pathname } = useLocation();
+
   return (
     <Footer className='footer'>
       <div className='footer__top'>
@@ -32,7 +35,11 @@ const CustomFooter = () => {
                 </p>
                 <ul>
                   <li>
-                    <Link to='/'>Home</Link>
+                    {pathname !== '/' ? (
+                      <Link to='/'>Home</Link>
+                    ) : (
+                      <a href='#hero'>Home</a>
+                    )}
                   </li>
                   <li>
                     {' '}

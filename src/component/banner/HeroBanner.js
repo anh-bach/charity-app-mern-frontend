@@ -8,7 +8,7 @@ const { Title } = Typography;
 
 const HeroBanner = () => {
   return (
-    <section className='hero'>
+    <section className='hero' id='hero'>
       <Row className='hero__content'>
         <Col
           span={12}
