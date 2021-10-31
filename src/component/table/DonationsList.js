@@ -7,19 +7,19 @@ const DonationsList = ({ donations = [] }) => {
     const { _id, amount, donatedBy, createdAt } = donation;
 
     return (
-      <Row key={_id}>
-        <Col>
+      <Row key={_id} className="user-card" >
+        <Col className="user-card__left" span={6}>
           {donatedBy.photo ? (
-            <Avatar src={donatedBy.photo.url} />
+            <Avatar className="user-card__left--avatar" src={donatedBy.photo.url} />
           ) : (
-            <Avatar>{donatedBy.name[0]}</Avatar>
+            <Avatar className="user-card__left--avatar" >{donatedBy.name[0]}</Avatar>
           )}
         </Col>
-        <Col>
-          <h5>{donatedBy.name}</h5>
-          <span>
-            ${amount.toLocaleString()}, {moment(createdAt).format('MMM Do YY')}
-          </span>
+        <Col span={18} className="user-card__right">
+          <h4 className="user-card__right--title">{donatedBy.name}</h4>
+          <p className="user-card__right--sub-title">
+            {`$${amount.toLocaleString()}`}, {moment(createdAt).format('MMM Do YY')}
+          </p>
         </Col>
       </Row>
     );

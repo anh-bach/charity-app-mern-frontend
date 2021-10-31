@@ -2,6 +2,7 @@ import React, { useState, useEffect, Fragment } from 'react';
 import { useParams } from 'react-router';
 import { useDispatch, useSelector } from 'react-redux';
 import { Typography, Row, Col, Progress, Button, Avatar } from 'antd';
+import { Divider } from 'antd';
 import moment from 'moment';
 import {
   ClockCircleOutlined,
@@ -21,7 +22,7 @@ import CampaignCard from '../component/card/CampaignCard';
 import Join from '../assets/images/join.png';
 import CTABanner from '../component/banner/CTABanner';
 
-const { Title } = Typography;
+const { Title, Text } = Typography;
 
 const Campaign = () => {
   const { slug } = useParams();
@@ -103,7 +104,7 @@ const Campaign = () => {
   };
 
   const renderCampaign = (campaign) => (
-    <Fragment>
+    <section className="campaign">
       {checkoutState && (
         <Payment
           slug={slug}
@@ -114,11 +115,11 @@ const Campaign = () => {
           loadDonations={loadDonations}
         />
       )}
-      <section className='ant-space ant-space-vertical main__section all-campaigns'>
-        <Row className='all-campaigns__top main__section--header'>
-          <Col className='ant-col-xs-24 ant-col-md-24 ant-col-lg-18 ant-col-xl-18 ant-col-xxl-12  all-campaigns__top--text'>
+      <section>
+        <Row className='campaign__top main__section'>
+          <Col span={24}>
             <Title
-              className='all-campaigns__top--text--heading heading--2'
+              className='campaign__top--heading heading--2'
               level={2}
             >
               {campaign.title}
@@ -126,62 +127,62 @@ const Campaign = () => {
           </Col>
         </Row>
       </section>
-      <section>
-        <Row
+      <section className="campaign__middle">
+        <Row className="campaign__middle--img"
           style={{
             background: `url(${campaign.imageCover.url}) no-repeat fixed center`,
-            backgroundSize: 'cover',
-            height: '500px',
-            position: 'relative',
           }}
         >
           <Col
+            className="campaign__middle--card"
             span={12}
             offset={6}
-            style={{
-              padding: '4rem 3rem',
-              background: '#fff',
-              position: 'absolute',
-              bottom: '0',
-              transform: 'translateY(50%)',
-              width: '100%',
-              borderRadius: '3px',
-            }}
           >
-            <Row>
-              <Col span={20}>
-                <Progress
-                  percent={(
-                    (campaign.donatedAmount / campaign.target) *
-                    100
-                  ).toFixed(2)}
-                  status='active'
-                />
-                <Row gutter={16}>
-                  <Col>
-                    <LineChartOutlined />$
-                    {campaign.donatedAmount.toLocaleString()} Amount raised
+            <Row gutter={[32]} className="campaign__middle--card-area">
+              <Col span={20} className="campaign__middle--card-area-left">
+                <Row className='campaign__middle--card-area-left-top'>
+                  <Text className='campaign__middle--card-area-left-top--percent'>
+                    {((campaign.donatedAmount / campaign.target) * 100).toFixed(2)}%
+                  </Text>
+                  <Progress className='campaign__middle--card-area-left-top--progress' percent={((campaign.donatedAmount / campaign.target) * 100).toFixed(2)} status='active' showInfo={false} />
+                </Row>
+                <Row gutter={32} className="campaign__middle--card-area-left-bottom">
+                  <Col className="campaign__middle--card-area-left-bottom--data" span={8}>
+                    <LineChartOutlined className="campaign__middle--card-area-left-bottom--data-icon" />
+                    <span>
+                      <span className="campaign__middle--card-area-left-bottom--data-number">
+                        {`$${campaign.donatedAmount.toLocaleString()}`}
+                      </span>
+                      {`raised of $${campaign.target}`}
+                    </span>
                   </Col>
-                  <Col>
-                    <UsergroupAddOutlined /> {donations.length} Supporters
+                  <Col className="campaign__middle--card-area-left-bottom--data" span={8}>
+                    <UsergroupAddOutlined className="campaign__middle--card-area-left-bottom--data-icon" />
+                    <span>
+                      <span className="campaign__middle--card-area-left-bottom--data-number">{donations.length}</span>
+                      Supporters
+                    </span>
                   </Col>
-                  <Col>
-                    <ClockCircleOutlined />{' '}
-                    {moment(campaign.to).diff(moment()) > 0 ? (
-                      <Fragment>
-                        {moment(campaign.to).diff(moment(), 'days')}
-                        <span> days left</span>
-                      </Fragment>
-                    ) : (
-                      <span>Overdued</span>
-                    )}
+                  <Col className="campaign__middle--card-area-left-bottom--data" span={8}>
+                    <ClockCircleOutlined className="campaign__middle--card-area-left-bottom--data-icon" />
+                    <span>
+                      {moment(campaign.to).diff(moment()) > 0 ? (
+                        <Fragment>
+                          <span className="campaign__middle--card-area-left-bottom--data-number">
+                            {moment(campaign.to).diff(moment(), 'days')}
+                          </span>
+                          <span> days left</span>
+                        </Fragment>
+                      ) : (
+                        <span>Overdued</span>
+                      )}
+                    </span>
                   </Col>
                 </Row>
               </Col>
-              <Col span={4}>
+              <Col span={4} className="campaign__middle--card-area-right">
                 <Button
-                  style={{ margin: 'auto', display: 'block' }}
-                  type='primary'
+                  className="btn btn--primary"
                   shape='round'
                   onClick={handleClick}
                   disabled={moment(campaign.to).diff(moment()) < 0}
@@ -193,68 +194,62 @@ const Campaign = () => {
           </Col>
         </Row>
       </section>
-      <section className='ant-space ant-space-vertical main__section all-campaigns'>
-        <Row>
-          <Col span={16}>
-            <blockquote style={{ position: 'relative' }}>
-              <span
-                style={{
-                  fontSize: '5rem',
-                  position: 'absolute',
-                  transform: 'translateY(-50%)',
-                }}
-              >
-                &#8220;
-              </span>{' '}
-              <span style={{ fontSize: '2rem', fontWeight: '500' }}>
-                {campaign.slogan}
-              </span>
-            </blockquote>
-            <div
-              className='campaign__description'
-              style={{ whiteSpace: 'pre-line' }}
-            >
+      <section>
+        <Row gutter={[32]} className="campaign__bottom main__section">
+          <Col span={18} className="campaign__bottom-left">
+            <Row>
+              <Col className="campaign__bottom-left-quote">
+                <blockquote>
+                  <span>
+                    {campaign.slogan}
+                  </span>
+                </blockquote>
+              </Col>
+            </Row>
+            <Row
+              className='campaign__bottom-left-description'>
               {campaign.description.split(/\r?\n|\r/g).map((item, index) => (
                 <p key={index}>{item}</p>
               ))}
+            </Row>
+          </Col>
+          <Col span={6} className="campaign__bottom-right">
+
+            <div className="campaign__bottom-right--card campaign__bottom-right--card--org">
+              <Title className="campaign__bottom-right--card--heading">ORGANIZER</Title>
+              <Row className="campaign__bottom-right--card--user-card user-card">
+                <Col span={6} className="campaign__bottom-right--card--user-card__left user-card__left">
+                  {campaign.createdBy.photo ? (
+                    <Avatar className="campaign__bottom-right--card--user-card__left--avatar user-card" src={campaign.createdBy.photo.url} />
+                  ) : (
+                    <Avatar className="campaign__bottom-right--card--user-card__left--avatar user-card">{campaign.createdBy.name[0]}</Avatar>
+                  )}
+                </Col>
+                <Col span={18} className="campaign__bottom-right--card--user-card__right user-card__right">
+                  <h4 className="campaign__bottom-right--card--user-card__right--title user-card__right--title">{campaign.createdBy.name}</h4>
+                  <p className="campaign__bottom-right--card--user-card__right--sub-title user-card__right--sub-title">{campaign.createdBy.address || 'Address: Anonymous'}</p>
+                </Col>
+              </Row>
+              <Row className="campaign__bottom-right--card--body-text">
+                <Col span={12}
+                  className="campaign__bottom-right--card--body-text--left"
+                >
+                  {totalCampaignsByUser} Campaigns
+                </Col>
+                <Col span={12}
+                  className="campaign__bottom-right--card--body-text--right"
+                >
+                  {donations.length} Supporters
+                </Col>
+              </Row>
+            </div>
+            <div className="campaign__bottom-right--card campaign__bottom-right--card--supporter">
+              <Title className="campaign__bottom-right--card--heading">RECENT SUPPORTERS</Title>
+              <DonationsList donations={donations} />
             </div>
           </Col>
-          <Col span={6} offset={2}>
-            <h3>ORGANIZER</h3>
-            <Row>
-              <Col span={4}>
-                {campaign.createdBy.photo ? (
-                  <Avatar src={campaign.createdBy.photo.url} />
-                ) : (
-                  <Avatar>{campaign.createdBy.name[0]}</Avatar>
-                )}
-              </Col>
-              <Col span={20}>
-                <h4>{campaign.createdBy.name}</h4>
-                <p>{campaign.createdBy.address || 'Address: Unknown'}</p>
-              </Col>
-            </Row>
-            <Row>
-              <span
-                style={{
-                  paddingRight: '1rem',
-                  borderRight: '1px solid black',
-                }}
-              >
-                {totalCampaignsByUser} Campaigns
-              </span>
-              <span
-                style={{
-                  paddingLeft: '1rem',
-                }}
-              >
-                {donations.length} Supporters
-              </span>
-            </Row>
-            <h3>RECENT SUPPORTERS</h3>
-            <DonationsList donations={donations} />
-          </Col>
         </Row>
+        <Divider />
       </section>
 
       {relatedCampaigns.length > 0 && (
@@ -282,7 +277,7 @@ const Campaign = () => {
         btnVal='Start A Campaign'
         img={Join}
       />
-    </Fragment>
+    </section>
   );
 
   return loading ? (
