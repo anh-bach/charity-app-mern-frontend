@@ -1,6 +1,16 @@
 @import "../variables";
 
 .latest-campaigns {
+  &__middle {
+    flex: 0 0 100% !important;
+    justify-content: space-around !important;
+    // margin: 0 auto !important;
+    &--col {
+      display: flex !important;
+      flex: 0 0 100% !important;
+      justify-content: space-around !important;
+    }
+  }
   &__bottom {
     &--btn {
       display: flex !important;

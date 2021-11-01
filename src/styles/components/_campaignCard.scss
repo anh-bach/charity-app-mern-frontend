@@ -1,9 +1,10 @@
 @import "../variables";
 
 .campaign-card {
-  min-width: 310px !important;
-  min-height: 470px !important;
-  width: 100% !important;
+  width: 350px !important;
+  height: 476px !important;
+  // width: 100% !important;
+  margin: 0 auto !important;
   border-radius: 10px !important;
   padding: 0 !important;
   border: transparent !important;
@@ -162,3 +163,27 @@
 //   background-color: #ff6f00;
 //   color: #fff !important;
 // }
+
+/* 
+@media (max-width: 1200px) {
+    &__content {
+      padding: 0 3rem !important;
+    }
+  }
+
+  @media (max-width: 992px) {
+    &__content {
+      justify-content: flex-start;
+      &__left {
+        max-width: 100% !important;
+        flex: 0 0 100% !important;
+      }
+      &__right {
+        display: none !important;
+      }
+    }
+  }
+  @media (max-width: 576px) {
+    
+  }
+*/
