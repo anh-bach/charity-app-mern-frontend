@@ -21,6 +21,12 @@ const UserCampaignsList = ({ campaigns = [] }) => {
       },
     },
     {
+      title: 'Status',
+      dataIndex: 'status',
+      key: 'status',
+      width: 120,
+    },
+    {
       title: 'Created At',
       dataIndex: 'createdAt',
       key: 'createdAt',
@@ -56,12 +62,6 @@ const UserCampaignsList = ({ campaigns = [] }) => {
       key: 'category',
       width: 150,
       render: (category) => <Tag color='blue'>{category}</Tag>,
-    },
-    {
-      title: 'Status',
-      dataIndex: 'status',
-      key: 'status',
-      width: 120,
     },
     {
       title: 'Action',
