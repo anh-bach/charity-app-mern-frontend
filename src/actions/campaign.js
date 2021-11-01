@@ -77,7 +77,9 @@ export const makeDonationByUser = async (slug, formData) => {
 
 export const getCampaignsByAdmin = async (status = '') => {
   return await axios.get(
-    `${process.env.REACT_APP_API}/admin/campaigns?status=${status}`,
+    `${process.env.REACT_APP_API}/admin/campaigns${
+      status && `?status=${status}`
+    }`,
     {
       withCredentials: true,
     }
