@@ -2,20 +2,18 @@ import React from 'react';
 import { Typography, Button, Row, Col } from 'antd';
 import love from '../../assets/images/love.png';
 import { Link } from 'react-router-dom';
-// import love from '../../assets/images/hero_img.png';
 
 const { Title } = Typography;
 
 const HeroBanner = () => {
   return (
     <section className='hero' id='hero'>
-      <Row className='hero__content'>
+      <Row className='hero__content' gutter={[32, 32]}>
         <Col
-          span={12}
           className='hero__content__left ant-col-xs-24 ant-col-md-24 ant-col-lg-12 ant-col-xl-12'
         >
           <Title className='hero__content__left--title heading--1'>
-            Lorem ipsum dolor sit uerpsum dolor tis.
+            <span className='hero__content__left--title-span'>Your 1st step</span> matters for a better <span>Tomorrow</span>
           </Title>
           <Button
             className='hero__content__left--button btn btn--primary'
@@ -26,8 +24,7 @@ const HeroBanner = () => {
           </Button>
         </Col>
         <Col
-          span={12}
-          className='hero__content__right ant-col-xs-24 ant-col-md-24 ant-col-lg-12 ant-col-xl-12'
+          className='hero__content__right ant-col-lg-12 ant-col-xl-12'
         >
           <div className='hero__content__right--circle'>
             <img
@@ -38,14 +35,9 @@ const HeroBanner = () => {
             />
           </div>
         </Col>
-        {/* <Col span={12} className="hero__content__right ant-col-xs-24 ant-col-md-24 ant-col-lg-12 ant-col-xl-12">
-                    <img className="hero__content__right--img" src={love} alt='share love' width={'100%'} />
-                </Col> */}
       </Row>
     </section>
   );
 };
 
 export default HeroBanner;
-
-// ant-col-xs-24 ant-col-md-12 ant-col-lg-12 ant-col-xl-8
