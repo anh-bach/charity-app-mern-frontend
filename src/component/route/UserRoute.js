@@ -19,10 +19,7 @@ const UserRoute = ({ component: Component, ...rest }) => {
             {/* <Col className="ant-col-xs-24 ant-col-md-24 ant-col-lg-6 ant-col-xl-6"> */}
             <UserNav {...routeProps} />
           </Col>
-          <Col
-            span={18}
-            style={{ backgroundColor: '#e3e8ec', padding: '2rem' }}
-          >
+          <Col span={18} className='user__dashboard--content'>
             <Component {...routeProps} />
           </Col>
         </Row>

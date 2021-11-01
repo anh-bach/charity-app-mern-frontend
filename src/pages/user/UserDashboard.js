@@ -13,7 +13,6 @@ const UserDashboard = () => {
   const loadCampaigns = async () => {
     try {
       const res = await getCampaignsByUser();
-      console.log(res.data.data);
       setCampaigns(res.data.data);
     } catch (error) {
       console.log('From User Dashboard overview', error);
