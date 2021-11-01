@@ -1,6 +1,7 @@
 @import "../variables";
 
 .global-activities {
+  width: 100%;
   &__area {
     flex-direction: column;
     &--top {
@@ -12,7 +13,12 @@
       }
     }
     &--bottom {
+      flex: 0 0 100% !important;
+      justify-content: space-around !important;
       &--col {
+        display: flex !important;
+        flex: 0 0 100% !important;
+        justify-content: space-around !important;
       }
     }
   }

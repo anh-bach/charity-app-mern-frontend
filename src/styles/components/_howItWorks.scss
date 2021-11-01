@@ -1,6 +1,7 @@
 @import "../variables";
 
 .how-it-works {
+  width: 100%;
   background-color: $secondary-color--1;
   &__area {
     flex-direction: column;
@@ -13,7 +14,12 @@
       }
     }
     &--bottom {
+      flex: 0 0 100% !important;
+      justify-content: space-around !important;
       &--col {
+        display: flex !important;
+        flex: 0 0 100% !important;
+        justify-content: space-around !important;
       }
     }
   }

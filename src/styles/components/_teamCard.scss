@@ -1,11 +1,12 @@
 @import "../variables";
 
 .team-card {
-  min-width: 310px !important;
+  width: 350px !important;
+  height: 476px !important;
   border-radius: 10px !important;
 
   &__ui {
-    width: 100% !important;
+    // width: 100% !important;
     padding: 0 !important;
     border: transparent !important;
     background-color: $secondary-color--3 !important;
