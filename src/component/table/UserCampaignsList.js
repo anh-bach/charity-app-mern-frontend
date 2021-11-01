@@ -69,7 +69,7 @@ const UserCampaignsList = ({ campaigns = [] }) => {
       render: (text, campaign) => (
         <Space size='middle'>
           <Link to={`/me/dashboard/edit-campaign/${campaign.slug}`}>Edit</Link>
-          <a>Delete</a>
+          <a href='#'>Delete</a>
         </Space>
       ),
     },

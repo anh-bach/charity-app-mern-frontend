@@ -1,5 +1,5 @@
 import React, { Fragment } from 'react';
-import { useParams } from 'react-router';
+
 import DashboardHorizontalNav from '../../component/nav/DashboardNav';
 
 const AdminDashboard = () => {

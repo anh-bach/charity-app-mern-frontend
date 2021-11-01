@@ -23,7 +23,6 @@ import { Link } from 'react-router-dom';
 const { SubMenu, Item } = Menu;
 
 const AdminNav = () => {
-  const { userId } = useParams();
   const [current, setCurrent] = useState('overview');
   const dispatch = useDispatch();
   const history = useHistory();

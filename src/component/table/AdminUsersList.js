@@ -1,6 +1,5 @@
 import React from 'react';
-import { Table, Tag, Space, Avatar } from 'antd';
-import { Link } from 'react-router-dom';
+import { Table, Space, Avatar } from 'antd';
 
 const AdminUsersList = ({ users = [] }) => {
   const columns = [

@@ -1,7 +1,7 @@
 import React from 'react';
 import { Route } from 'react-router';
 import { useSelector } from 'react-redux';
-import { Row, Col, Layout } from 'antd';
+import { Row, Col } from 'antd';
 import LoadingToRedirect from './LoadingToRedirect';
 import UserNav from '../nav/UserNav';
 
@@ -14,12 +14,15 @@ const UserRoute = ({ component: Component, ...rest }) => {
       {...rest}
       render={(routeProps) => (
         // <Row gutter={{ xs: 8, sm: 16, md: 24, lg: 32 }}>
-        <Row className="user-route">
-          <Col span={6} className="user-route__nav">
+        <Row className='user-route'>
+          <Col span={6} className='user-route__nav'>
             {/* <Col className="ant-col-xs-24 ant-col-md-24 ant-col-lg-6 ant-col-xl-6"> */}
             <UserNav {...routeProps} />
           </Col>
-          <Col span={18} style={{ backgroundColor: "#e3e8ec", padding: '2rem' }}>
+          <Col
+            span={18}
+            style={{ backgroundColor: '#e3e8ec', padding: '2rem' }}
+          >
             <Component {...routeProps} />
           </Col>
         </Row>
@@ -32,7 +35,8 @@ const UserRoute = ({ component: Component, ...rest }) => {
 
 export default UserRoute;
 
-{/* <Layout className="user-route">
+{
+  /* <Layout className="user-route">
   <Sider style={{
     overflow: 'auto',
     height: '100vh',
@@ -46,4 +50,5 @@ export default UserRoute;
       <Component {...routeProps} />
     </Content>
   </Layout>
-</Layout>; */}
+</Layout>; */
+}

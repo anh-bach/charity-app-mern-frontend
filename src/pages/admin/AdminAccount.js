@@ -2,22 +2,12 @@ import React, { useState, useEffect } from 'react';
 import moment from 'moment';
 import { useSelector, useDispatch } from 'react-redux';
 import { LOGGED_IN_USER } from '../../actions/types';
-import {
-  Row,
-  Col,
-  Form,
-  Input,
-  Button,
-  Select,
-  DatePicker,
-  Upload,
-} from 'antd';
+import { Row, Col, Form, Input, Button, Select, DatePicker } from 'antd';
 import {
   UserOutlined,
   MailOutlined,
   LoadingOutlined,
   HomeFilled,
-  UploadOutlined,
 } from '@ant-design/icons';
 import { updateUser } from '../../actions/user';
 import { toast } from 'react-toastify';

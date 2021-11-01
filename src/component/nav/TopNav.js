@@ -35,8 +35,6 @@ const TopNav = () => {
     if (pathname === '/') {
       setCurrent('home');
     }
-
-    console.log('pathname', pathname);
   }, [pathname]);
 
   //load user if there is current logged in user

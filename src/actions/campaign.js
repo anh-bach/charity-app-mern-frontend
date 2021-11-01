@@ -20,6 +20,12 @@ export const getActiveCampaignsTotal = async () => {
   return await axios.get(`${process.env.REACT_APP_API}/count-active-campaigns`);
 };
 
+export const getActiveCampaignsTotalByUser = async (userId) => {
+  return await axios.get(
+    `${process.env.REACT_APP_API}/get-total-active-campaigns-by-user/${userId}`
+  );
+};
+
 // User actions
 
 export const createCampaign = async (formData) => {
@@ -46,15 +52,6 @@ export const getCampaignsByUser = async () => {
   return await axios.get(`${process.env.REACT_APP_API}/get-campaigns-by-user`, {
     withCredentials: true,
   });
-};
-
-export const getActiveCampaignsTotalByUser = async (userId) => {
-  return await axios.get(
-    `${process.env.REACT_APP_API}/get-total-active-campaigns-by-user/${userId}`,
-    {
-      withCredentials: true,
-    }
-  );
 };
 
 export const getCampaignByUser = async (slug) => {

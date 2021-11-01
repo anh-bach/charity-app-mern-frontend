@@ -1,5 +1,5 @@
 import React from 'react';
-import { Table, Tag, Space } from 'antd';
+import { Table } from 'antd';
 import { Link } from 'react-router-dom';
 
 const UserDonationsList = ({ donations = [] }) => {
