@@ -8,7 +8,7 @@ import moment from 'moment';
 const { Title, Text } = Typography;
 
 const CampaignCard = ({ campaign = {} }) => {
-  const { imageCover, title, donatedAmount, target, from, to, slug } = campaign;
+  const { imageCover, title, donatedAmount, target, to, slug } = campaign;
 
   return (
     <Col className='ant-col-xs-24 ant-col-md-12 ant-col-lg-8 ant-col-xl-8 latest-campaigns__middle--col'>
@@ -39,7 +39,7 @@ const CampaignCard = ({ campaign = {} }) => {
             <div className='campaign-card__area-body--content'>
               <div className='campaign-card__area-body--content--progress'>
                 <Text className='campaign-card__area-body--content--progress-percent'>
-                  {((donatedAmount / target) * 100).toFixed(2)}%
+                  {Math.round((donatedAmount / target) * 100)}%
                 </Text>
                 <Progress
                   className='campaign-card__area-body--content--progress-bar'

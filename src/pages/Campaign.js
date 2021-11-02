@@ -104,7 +104,7 @@ const Campaign = () => {
   };
 
   const renderCampaign = (campaign) => (
-    <section className="campaign">
+    <section className='campaign'>
       {checkoutState && (
         <Payment
           slug={slug}
@@ -118,57 +118,76 @@ const Campaign = () => {
       <section>
         <Row className='campaign__top main__section'>
           <Col span={24}>
-            <Title
-              className='campaign__top--heading heading--2'
-              level={2}
-            >
+            <Title className='campaign__top--heading heading--2' level={2}>
               {campaign.title}
             </Title>
           </Col>
         </Row>
       </section>
-      <section className="campaign__middle">
-        <Row className="campaign__middle--img"
+      <section className='campaign__middle'>
+        <Row
+          className='campaign__middle--img'
           style={{
             background: `url(${campaign.imageCover.url}) no-repeat fixed center`,
           }}
         >
-          <Col
-            className="campaign__middle--card"
-            span={12}
-            offset={6}
-          >
-            <Row gutter={[32]} className="campaign__middle--card-area">
-              <Col span={20} className="campaign__middle--card-area-left">
+          <Col className='campaign__middle--card' span={12} offset={6}>
+            <Row gutter={[32]} className='campaign__middle--card-area'>
+              <Col span={20} className='campaign__middle--card-area-left'>
                 <Row className='campaign__middle--card-area-left-top'>
                   <Text className='campaign__middle--card-area-left-top--percent'>
-                    {((campaign.donatedAmount / campaign.target) * 100).toFixed(2)}%
+                    {Math.round(
+                      (campaign.donatedAmount / campaign.target) * 100
+                    )}
+                    %
                   </Text>
-                  <Progress className='campaign__middle--card-area-left-top--progress' percent={((campaign.donatedAmount / campaign.target) * 100).toFixed(2)} status='active' showInfo={false} />
+                  <Progress
+                    className='campaign__middle--card-area-left-top--progress'
+                    percent={(
+                      (campaign.donatedAmount / campaign.target) *
+                      100
+                    ).toFixed(2)}
+                    status='active'
+                    showInfo={false}
+                  />
                 </Row>
-                <Row gutter={32} className="campaign__middle--card-area-left-bottom">
-                  <Col className="campaign__middle--card-area-left-bottom--data" span={8}>
-                    <LineChartOutlined className="campaign__middle--card-area-left-bottom--data-icon" />
+                <Row
+                  gutter={32}
+                  className='campaign__middle--card-area-left-bottom'
+                >
+                  <Col
+                    className='campaign__middle--card-area-left-bottom--data'
+                    span={8}
+                  >
+                    <LineChartOutlined className='campaign__middle--card-area-left-bottom--data-icon' />
                     <span>
-                      <span className="campaign__middle--card-area-left-bottom--data-number">
+                      <span className='campaign__middle--card-area-left-bottom--data-number'>
                         {`$${campaign.donatedAmount.toLocaleString()}`}
                       </span>
                       {`raised of $${campaign.target}`}
                     </span>
                   </Col>
-                  <Col className="campaign__middle--card-area-left-bottom--data" span={8}>
-                    <UsergroupAddOutlined className="campaign__middle--card-area-left-bottom--data-icon" />
+                  <Col
+                    className='campaign__middle--card-area-left-bottom--data'
+                    span={8}
+                  >
+                    <UsergroupAddOutlined className='campaign__middle--card-area-left-bottom--data-icon' />
                     <span>
-                      <span className="campaign__middle--card-area-left-bottom--data-number">{donations.length}</span>
+                      <span className='campaign__middle--card-area-left-bottom--data-number'>
+                        {donations.length}
+                      </span>
                       Supporters
                     </span>
                   </Col>
-                  <Col className="campaign__middle--card-area-left-bottom--data" span={8}>
-                    <ClockCircleOutlined className="campaign__middle--card-area-left-bottom--data-icon" />
+                  <Col
+                    className='campaign__middle--card-area-left-bottom--data'
+                    span={8}
+                  >
+                    <ClockCircleOutlined className='campaign__middle--card-area-left-bottom--data-icon' />
                     <span>
                       {moment(campaign.to).diff(moment()) > 0 ? (
                         <Fragment>
-                          <span className="campaign__middle--card-area-left-bottom--data-number">
+                          <span className='campaign__middle--card-area-left-bottom--data-number'>
                             {moment(campaign.to).diff(moment(), 'days')}
                           </span>
                           <span> days left</span>
@@ -180,9 +199,9 @@ const Campaign = () => {
                   </Col>
                 </Row>
               </Col>
-              <Col span={4} className="campaign__middle--card-area-right">
+              <Col span={4} className='campaign__middle--card-area-right'>
                 <Button
-                  className="btn btn--primary"
+                  className='btn btn--primary'
                   shape='round'
                   onClick={handleClick}
                   disabled={moment(campaign.to).diff(moment()) < 0}
@@ -195,56 +214,73 @@ const Campaign = () => {
         </Row>
       </section>
       <section>
-        <Row gutter={[32]} className="campaign__bottom main__section">
-          <Col span={18} className="campaign__bottom-left">
+        <Row gutter={[32]} className='campaign__bottom main__section'>
+          <Col span={18} className='campaign__bottom-left'>
             <Row>
-              <Col className="campaign__bottom-left-quote">
+              <Col className='campaign__bottom-left-quote'>
                 <blockquote>
-                  <span>
-                    {campaign.slogan}
-                  </span>
+                  <span>{campaign.slogan}</span>
                 </blockquote>
               </Col>
             </Row>
-            <Row
-              className='campaign__bottom-left-description'>
+            <Row className='campaign__bottom-left-description'>
               {campaign.description.split(/\r?\n|\r/g).map((item, index) => (
                 <p key={index}>{item}</p>
               ))}
             </Row>
           </Col>
-          <Col span={6} className="campaign__bottom-right">
-
-            <div className="campaign__bottom-right--card campaign__bottom-right--card--org">
-              <Title className="campaign__bottom-right--card--heading">ORGANIZER</Title>
-              <Row className="campaign__bottom-right--card--user-card user-card">
-                <Col span={6} className="campaign__bottom-right--card--user-card__left user-card__left">
+          <Col span={6} className='campaign__bottom-right'>
+            <div className='campaign__bottom-right--card campaign__bottom-right--card--org'>
+              <Title className='campaign__bottom-right--card--heading'>
+                ORGANIZER
+              </Title>
+              <Row className='campaign__bottom-right--card--user-card user-card'>
+                <Col
+                  span={6}
+                  className='campaign__bottom-right--card--user-card__left user-card__left'
+                >
                   {campaign.createdBy.photo ? (
-                    <Avatar className="campaign__bottom-right--card--user-card__left--avatar user-card" src={campaign.createdBy.photo.url} />
+                    <Avatar
+                      className='campaign__bottom-right--card--user-card__left--avatar user-card'
+                      src={campaign.createdBy.photo.url}
+                    />
                   ) : (
-                    <Avatar className="campaign__bottom-right--card--user-card__left--avatar user-card">{campaign.createdBy.name[0]}</Avatar>
+                    <Avatar className='campaign__bottom-right--card--user-card__left--avatar user-card'>
+                      {campaign.createdBy.name[0]}
+                    </Avatar>
                   )}
                 </Col>
-                <Col span={18} className="campaign__bottom-right--card--user-card__right user-card__right">
-                  <h4 className="campaign__bottom-right--card--user-card__right--title user-card__right--title">{campaign.createdBy.name}</h4>
-                  <p className="campaign__bottom-right--card--user-card__right--sub-title user-card__right--sub-title">{campaign.createdBy.address || 'Address: Anonymous'}</p>
+                <Col
+                  span={18}
+                  className='campaign__bottom-right--card--user-card__right user-card__right'
+                >
+                  <h4 className='campaign__bottom-right--card--user-card__right--title user-card__right--title'>
+                    {campaign.createdBy.name}
+                  </h4>
+                  <p className='campaign__bottom-right--card--user-card__right--sub-title user-card__right--sub-title'>
+                    {campaign.createdBy.address || 'Address: Anonymous'}
+                  </p>
                 </Col>
               </Row>
-              <Row className="campaign__bottom-right--card--body-text">
-                <Col span={12}
-                  className="campaign__bottom-right--card--body-text--left"
+              <Row className='campaign__bottom-right--card--body-text'>
+                <Col
+                  span={12}
+                  className='campaign__bottom-right--card--body-text--left'
                 >
                   {totalCampaignsByUser} Campaigns
                 </Col>
-                <Col span={12}
-                  className="campaign__bottom-right--card--body-text--right"
+                <Col
+                  span={12}
+                  className='campaign__bottom-right--card--body-text--right'
                 >
                   {donations.length} Supporters
                 </Col>
               </Row>
             </div>
-            <div className="campaign__bottom-right--card campaign__bottom-right--card--supporter">
-              <Title className="campaign__bottom-right--card--heading">RECENT SUPPORTERS</Title>
+            <div className='campaign__bottom-right--card campaign__bottom-right--card--supporter'>
+              <Title className='campaign__bottom-right--card--heading'>
+                RECENT SUPPORTERS
+              </Title>
               <DonationsList donations={donations} />
             </div>
           </Col>
