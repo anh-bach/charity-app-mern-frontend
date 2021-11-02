@@ -1,5 +1,5 @@
 import React, { useState, useEffect, Fragment } from 'react';
-import { useParams } from 'react-router';
+import { useParams, useHistory } from 'react-router';
 import { useDispatch, useSelector } from 'react-redux';
 import { Typography, Row, Col, Progress, Button, Avatar } from 'antd';
 import { Divider } from 'antd';
@@ -26,8 +26,10 @@ const { Title, Text } = Typography;
 
 const Campaign = () => {
   const { slug } = useParams();
+  const history = useHistory();
   const dispatch = useDispatch();
   const checkoutState = useSelector((state) => state.checkoutState);
+  const user = useSelector((state) => state.user);
   const [campaign, setCampaign] = useState(null);
   const [donations, setDonations] = useState([]);
   const [totalCampaignsByUser, setTotalCampaignsByUser] = useState(0);
@@ -96,10 +98,15 @@ const Campaign = () => {
   };
 
   const handleClick = async () => {
-    try {
-      dispatch({ type: TOGGLE_CHECKOUT });
-    } catch (error) {
-      console.log('from handle click support', error);
+    //If the user not logged in, redirect to login
+    if (!user || !user._id) {
+      history.push('/login');
+    } else {
+      try {
+        dispatch({ type: TOGGLE_CHECKOUT });
+      } catch (error) {
+        console.log('from handle click support', error);
+      }
     }
   };
 

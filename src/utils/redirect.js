@@ -2,7 +2,6 @@ export const roleBasedRedirect = (prevUrl, history, role) => {
   //check if intended path from history location state
 
   if (prevUrl) {
-    console.log('prevUrl', prevUrl);
     //case pathname is dashboard and user is admin
     if (prevUrl.includes('dashboard') && role === 'admin') {
       history.push('/admin/dashboard/overview');
