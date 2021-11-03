@@ -213,7 +213,7 @@ const CampaignForm = ({
             shape='round'
             className='start-campaign__form__btn btn btn--primary'
           >
-            {loading ? <LoadingOutlined /> : 'Post Campaign'}
+            {loading ? <LoadingOutlined /> : action}
           </Button>
         </Form>
       </Col>

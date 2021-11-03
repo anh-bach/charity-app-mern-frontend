@@ -95,3 +95,14 @@ export const updateCampaignByAdmin = async (campaignId, updates) => {
     }
   );
 };
+
+export const getCampaignsByDayForAdmin = async (status = '') => {
+  return await axios.get(
+    `${process.env.REACT_APP_API}/get-campaigns-by-day-for-admin${
+      status && `?status=${status}`
+    }`,
+    {
+      withCredentials: true,
+    }
+  );
+};

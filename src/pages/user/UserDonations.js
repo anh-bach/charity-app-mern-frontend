@@ -28,7 +28,6 @@ const UserDonations = () => {
     try {
       setLoading(true);
       const res = await getDonationsByUser(user._id);
-      console.log(res.data.data);
       const filteredDonations = processDataForTable(res.data.data);
       setDonations(filteredDonations);
       setLoading(false);

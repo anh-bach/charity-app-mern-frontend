@@ -7,7 +7,6 @@ import CampaignForm from '../../component/form/CampaignForm';
 import DashboardHorizontalNav from '../../component/nav/DashboardNav';
 import { getCategories } from '../../actions/category';
 import {
-  createCampaign,
   getCampaignByUser,
   updateCampaignByUser,
 } from '../../actions/campaign';
@@ -60,7 +59,7 @@ const UserEditCampaign = () => {
       values['to'] = values.duration[1]._d;
       const res = await updateCampaignByUser(slug, values);
       console.log(res.data);
-      toast.success('Campaign created!');
+      toast.success('Campaign updated!');
       setLoading(false);
     } catch (error) {
       console.log('From create campaign', error);
@@ -82,7 +81,7 @@ const UserEditCampaign = () => {
           campaignPhoto={campaignPhoto}
           setCampaignPhoto={setCampaignPhoto}
           categories={categories}
-          action='Update'
+          action='Update Campaign'
         />
       )}
     </div>
