@@ -85,7 +85,7 @@ const AdminCampaigns = () => {
   };
 
   return (
-    <div className='container'>
+    <div className='container admin-campaigns'>
       <DashboardHorizontalNav title='All Campaign List' />
       <h3>Pending Campaigns</h3>
       <AdminCampaignsList

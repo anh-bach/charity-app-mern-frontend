@@ -18,11 +18,11 @@ const AdminRoute = ({ component: Component, ...rest }) => {
     <Route
       {...rest}
       render={(routeProps) => (
-        <Row>
-          <Col span={5}>
+        <Row className='user-route'>
+          <Col span={6} className='user-route__nav'>
             <AdminNav {...routeProps} />
           </Col>
-          <Col span={19}>
+          <Col span={18} className='user__dashboard--content'>
             <Component {...routeProps} />
           </Col>
         </Row>

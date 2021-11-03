@@ -43,7 +43,7 @@ const Category = () => {
     <div className='container'>
       <DashboardHorizontalNav title='Categories' />
       <Row gutter={16}>
-        <Col span='10'>
+        <Col span='8' className="category-form">
           <CategoryForm
             title='Create Category'
             buttonText='Create'
@@ -52,7 +52,7 @@ const Category = () => {
             loadCategories={loadCategories}
           />
         </Col>
-        <Col span='14'>
+        <Col span='16' className='category-list'>
           <CategoryList
             loading={loading}
             categoryList={categoryList}
