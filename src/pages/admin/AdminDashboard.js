@@ -48,13 +48,13 @@ const AdminDashboard = () => {
   };
 
   return (
-    <Fragment>
+    <div className='container'>
       <DashboardHorizontalNav title='Dashboard Overview' />
       <AdminDashboardOverviewLineChart
         donations={donations}
         campaignsByDay={campaignsByDay}
       />
-    </Fragment>
+    </div>
   );
 };
 
