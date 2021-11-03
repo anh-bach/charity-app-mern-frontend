@@ -1,13 +1,17 @@
 import React, { useState, useEffect } from 'react';
 import { getCampaignsByUser } from '../../actions/campaign';
+import { getDonationsToUser } from '../../actions/donation';
+import UserDashboardOverviewBanner from '../../component/banner/UserDashboardOverviewBanner';
 import UserDashboardOverviewChart from '../../component/chart/UserDashboardOverviewChart';
 import DashboardHorizontalNav from '../../component/nav/DashboardNav';
 
 const UserDashboard = () => {
   const [campaigns, setCampaigns] = useState([]);
+  const [donations, setDonations] = useState([]);
 
   useEffect(() => {
     loadCampaigns();
+    loadDonations();
   }, []);
 
   const loadCampaigns = async () => {
@@ -19,9 +23,22 @@ const UserDashboard = () => {
     }
   };
 
+  const loadDonations = async () => {
+    try {
+      const res = await getDonationsToUser();
+      setDonations(res.data.data);
+    } catch (error) {
+      console.log('From User Dashboard overview load donations', error);
+    }
+  };
+
   return (
     <div className='container'>
       <DashboardHorizontalNav title='Dashboard Overview' />
+      <UserDashboardOverviewBanner
+        campaigns={campaigns}
+        donations={donations}
+      />
       <UserDashboardOverviewChart campaigns={campaigns} />
     </div>
   );

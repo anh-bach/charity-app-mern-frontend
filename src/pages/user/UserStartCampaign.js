@@ -60,7 +60,7 @@ const UserStartCampaign = () => {
       campaignPhoto={campaignPhoto}
       setCampaignPhoto={setCampaignPhoto}
       categories={categories}
-      action='Create'
+      action='Create Campaign'
     />
   );
 

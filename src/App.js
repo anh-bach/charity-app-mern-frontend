@@ -89,7 +89,8 @@ const App = () => {
         </div>
       ) : (
         <Fragment>
-          <ToastContainer toastStyle={{ fill: 'yellow' }} />
+          <ToastContainer autoClose={2000} />
+
           <Switch>
             <RouteWithTopNav exact path='/' component={Home} />
             <RouteWithTopNav exact path='/about' component={About} />
