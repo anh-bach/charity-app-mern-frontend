@@ -2,11 +2,29 @@ import React, { Fragment } from 'react';
 import Chart from 'react-google-charts';
 import moment from 'moment';
 
-const AdminDashboardOverviewLineChart = ({ donations, campaignsByDay }) => {
+const UserDashboardOverviewLineChart = ({ donations }) => {
   const processDonations = donations.map((donation) => [
-    donation.dateDMY,
-    donation.count,
+    moment(donation.createdAt).format('DD-MM-YYYY'),
+    donation.amount,
   ]);
+
+  let donationsObj = {};
+
+  for (let i = 0; i < processDonations.length; i++) {
+    if (donationsObj[processDonations[0]]) {
+      donationsObj[processDonations[i][0]] += processDonations[i][1];
+    } else {
+      donationsObj[processDonations[i][0]] = processDonations[i][1];
+    }
+  }
+
+  let donationsArray = [];
+
+  for (let key in donationsObj) {
+    donationsArray.push([key, donationsObj[key]]);
+  }
+
+  console.log(donationsArray);
 
   const processData = (data) => {
     const initData = [];
@@ -31,24 +49,10 @@ const AdminDashboardOverviewLineChart = ({ donations, campaignsByDay }) => {
     return initData;
   };
 
-  const processCampaigns = campaignsByDay.map((campaign) => [
-    campaign.dateDMY,
-    campaign.count,
-  ]);
+  const dataDonations = [['Day', 'Donation'], ...processData(donationsArray)];
 
-  const dataDonations = [['Day', 'Donation'], ...processData(processDonations)];
-  const dataCampaigns = [
-    ['Day', 'Campaigns'],
-    ...processData(processCampaigns),
-  ];
   const optionsDonation = {
     title: 'Donations Last 30 days',
-    curveType: 'function',
-    legend: { position: 'right' },
-  };
-
-  const optionsCampaigns = {
-    title: 'Campaigns Submitted Last 30 days',
     curveType: 'function',
     legend: { position: 'right' },
   };
@@ -62,15 +66,8 @@ const AdminDashboardOverviewLineChart = ({ donations, campaignsByDay }) => {
         data={dataDonations}
         options={optionsDonation}
       />
-      <Chart
-        chartType='LineChart'
-        width='100%'
-        height='400px'
-        data={dataCampaigns}
-        options={optionsCampaigns}
-      />
     </Fragment>
   );
 };
 
-export default AdminDashboardOverviewLineChart;
+export default UserDashboardOverviewLineChart;

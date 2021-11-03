@@ -3,6 +3,7 @@ import { getCampaignsByUser } from '../../actions/campaign';
 import { getDonationsToUser } from '../../actions/donation';
 import UserDashboardOverviewBanner from '../../component/banner/UserDashboardOverviewBanner';
 import UserDashboardOverviewChart from '../../component/chart/UserDashboardOverviewChart';
+import UserDashboardOverviewLineChart from '../../component/chart/UserDashboardOverviewLineChart';
 import DashboardHorizontalNav from '../../component/nav/DashboardNav';
 
 const UserDashboard = () => {
@@ -27,6 +28,7 @@ const UserDashboard = () => {
     try {
       const res = await getDonationsToUser();
       setDonations(res.data.data);
+      console.log(res.data.data);
     } catch (error) {
       console.log('From User Dashboard overview load donations', error);
     }
@@ -40,6 +42,7 @@ const UserDashboard = () => {
         donations={donations}
       />
       <UserDashboardOverviewChart campaigns={campaigns} />
+      <UserDashboardOverviewLineChart donations={donations} />
     </div>
   );
 };
