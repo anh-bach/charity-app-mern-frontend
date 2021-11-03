@@ -73,7 +73,6 @@ const TopNav = () => {
   return (
     <Header
       className='header'
-      style={{ position: 'fixed', top: 0, zIndex: 100, width: '100%' }}
     >
       <Menu
         className='header__nav'
@@ -101,6 +100,7 @@ const TopNav = () => {
         </Item>
         {currentUser ? (
           <SubMenu
+            className=""
             key='SubMenu'
             icon={
               currentUser.photo ? (

@@ -1,7 +1,9 @@
 @import "../variables";
 
 .cta-banner {
+  background-color: $secondary-color--3;
   &__area {
+    width: 100% !important;
     &-card {
       background-color: $secondary-color--1 !important;
       // position: relative;
@@ -38,36 +40,17 @@
       }
     }
   }
+  @media (max-width: 1200px) {
+  }
+  @media (max-width: 992px) {
+  }
+  @media (max-width: 576px) {
+    &__area {
+      &-card {
+        &__body {
+          padding: 0 !important;
+        }
+      }
+    }
+  }
 }
-
-// .main__section--cta-banner {
-//   padding: 100px;
-//   .cta-banner {
-//     background-color: $secondary-color--1 !important;
-//     &__body {
-//       display: flex;
-//       // flex-direction: row;
-//       align-items: center;
-//       justify-content: center;
-//       &__left {
-//         flex: 1;
-//         &--heading {
-//         }
-//         &--subheading {
-//         }
-//         &--button {
-//           text-align: left !important;
-//           border: none !important;
-//           padding: 2rem 0 0 0 !important;
-//         }
-//       }
-//       &__right {
-//         flex: 1;
-//         align-self: flex-end;
-//         &--img {
-//           width: 100%;
-//         }
-//       }
-//     }
-//   }
-// }

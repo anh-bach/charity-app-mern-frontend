@@ -89,7 +89,7 @@ const App = () => {
         </div>
       ) : (
         <Fragment>
-          <ToastContainer />
+          <ToastContainer toastStyle={{ fill: 'yellow' }} />
           <Switch>
             <RouteWithTopNav exact path='/' component={Home} />
             <RouteWithTopNav exact path='/about' component={About} />

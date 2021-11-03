@@ -39,6 +39,15 @@ body {
   &--header {
     margin-bottom: 2rem !important;
   }
+
+  @media (max-width: 1200px) {
+    padding: 6.25rem 2rem;
+  }
+  @media (max-width: 992px) {
+  }
+  @media (max-width: 576px) {
+    width: 100% !important;
+  }
 }
 
 .heading {
@@ -82,7 +91,6 @@ body {
   text-transform: capitalize;
   height: auto !important;
   text-shadow: none !important;
-  box-shadow: 0 37px 20px -20px rgba($primary-color, 0.2) !important;
 
   &--primary {
     color: #fff !important;
@@ -101,6 +109,10 @@ body {
   &--text {
     color: $primary-color !important;
     font-size: 1rem !important;
+  }
+
+  &:hover {
+    box-shadow: 0 20px 20px -20px rgba($primary-color, 0.2) !important;
   }
 }
 

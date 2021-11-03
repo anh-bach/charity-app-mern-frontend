@@ -7,12 +7,18 @@
     }
   }
   &__middle {
+    width: 100% !important;
+    .ant-row {
+      justify-content: center !important;
+      align-items: center !important;
+    }
     &--img {
       position: relative;
       background-size: cover !important;
       height: 700px;
     }
     &--card {
+      // width: 900px;
       width: 100%;
       padding: 4rem;
       background-color: $secondary-color--3;
@@ -34,6 +40,7 @@
         &-left {
           &-top {
             &--percent {
+              width: 100%;
               font-weight: 500;
               color: $primary-color !important;
             }
@@ -66,7 +73,8 @@
           }
         }
         &-right {
-          flex: 0 !important;
+          width: 100% !important;
+          // flex: 0 !important;
         }
       }
     }
@@ -123,6 +131,96 @@
           background-color: #fff;
           border: 1px solid rgba($secondary-color--5, 0.5);
           margin-bottom: 0;
+        }
+      }
+    }
+  }
+
+  @media (max-width: 1200px) {
+    &__middle {
+      &--card {
+        &-area {
+          &-right {
+            margin-top: 2rem;
+          }
+        }
+      }
+    }
+    &__bottom {
+      justify-content: space-around !important;
+      &-right {
+        width: 100% !important;
+        display: flex !important;
+        justify-content: space-around !important;
+        align-items: flex-start;
+        &--card {
+          margin: 0 2rem !important;
+        }
+      }
+    }
+  }
+  @media (max-width: 992px) {
+    &__middle {
+      &--card {
+        &-area {
+          &-right {
+            margin-top: 2rem;
+          }
+        }
+      }
+    }
+    &__bottom {
+      justify-content: space-around !important;
+      &-right {
+        width: 100% !important;
+        display: flex !important;
+        justify-content: space-around !important;
+        align-items: flex-start;
+        &--card {
+          margin: 0 2rem !important;
+        }
+      }
+    }
+  }
+
+  @media (max-width: 576px) {
+    &__middle {
+      &--card {
+        &-area {
+          &-left {
+            &-bottom {
+              &--data {
+                padding: 0.5rem 0 !important;
+                flex-direction: row !important;
+                font-size: 1rem !important;
+
+                &-number {
+                  display: inline !important;
+                  color: $primary-color;
+                  font-size: 1.5rem;
+                  font-weight: 500;
+                  padding-right: 0.5rem;
+                  font-size: 1rem !important;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+
+    &__bottom {
+      &-right {
+        width: 100% !important;
+        display: flex !important;
+        flex-direction: column !important;
+        justify-content: space-around !important;
+        align-items: flex-start;
+        &--card {
+          margin: 0 2rem !important;
+          &--supporter {
+            margin-top: 2rem !important;
+          }
         }
       }
     }

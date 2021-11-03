@@ -1,9 +1,9 @@
 @import "../variables";
 
 .campaign-card {
+  // width: 410px !important;
   width: 350px !important;
   height: 476px !important;
-  // width: 100% !important;
   margin: 0 auto !important;
   border-radius: 10px !important;
   padding: 0 !important;
@@ -117,73 +117,13 @@
     color: #fff !important;
   }
 
-  // &:hover {
-  //   background-color: $primary-color !important;
-  //   border: transparent;
-  //   border-radius: 10px !important;
-  //   &__area:hover * {
-
-  //     &-header {
-  //       // border-radius: 10px 10px 0 0 !important;
-  //       &--img {
-  //         // border-radius: 10px 10px 0 0 !important;
-  //       }
-  //     }
-  //     &-body {
-  //       color: #fff !important;
-  //       &--icon {
-  //         &-svg {
-  //         }
-  //       }
-  //       &--heading {
-  //         // color: #ffffff !important;
-  //       }
-  //       &__content {
-  //         &--progress {
-  //           &-bar {
-  //           }
-  //         }
-  //         &--number {
-  //           &--amount {
-  //             span {
-  //             }
-  //           }
-  //           &--days {
-  //             span {
-  //             }
-  //           }
-  //         }
-  //       }
-  //     }
-  //   }
-  // }
-}
-
-// .card:hover .card-button {
-//   background-color: #ff6f00;
-//   color: #fff !important;
-// }
-
-/* 
-@media (max-width: 1200px) {
-    &__content {
-      padding: 0 3rem !important;
-    }
+  @media (max-width: 1200px) {
   }
-
   @media (max-width: 992px) {
-    &__content {
-      justify-content: flex-start;
-      &__left {
-        max-width: 100% !important;
-        flex: 0 0 100% !important;
-      }
-      &__right {
-        display: none !important;
-      }
-    }
   }
   @media (max-width: 576px) {
-    
   }
-*/
+  @media (max-width: 375px) {
+    width: 100% !important;
+  }
+}

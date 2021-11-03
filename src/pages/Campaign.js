@@ -138,9 +138,10 @@ const Campaign = () => {
             background: `url(${campaign.imageCover.url}) no-repeat fixed center`,
           }}
         >
-          <Col className='campaign__middle--card' span={12} offset={6}>
+          <Col span={3}></Col>
+          <Col className='campaign__middle--card' span={18}>
             <Row gutter={[32]} className='campaign__middle--card-area'>
-              <Col span={20} className='campaign__middle--card-area-left'>
+              <Col span={20} className='campaign__middle--card-area-left ant-col-xs-24 ant-col-md-24 ant-col-lg-24 ant-col-xl-20'>
                 <Row className='campaign__middle--card-area-left-top'>
                   <Text className='campaign__middle--card-area-left-top--percent'>
                     {Math.round(
@@ -163,8 +164,7 @@ const Campaign = () => {
                   className='campaign__middle--card-area-left-bottom'
                 >
                   <Col
-                    className='campaign__middle--card-area-left-bottom--data'
-                    span={8}
+                    className='campaign__middle--card-area-left-bottom--data ant-col-xs-24 ant-col-md-8 ant-col-lg-8 ant-col-xl-8'
                   >
                     <LineChartOutlined className='campaign__middle--card-area-left-bottom--data-icon' />
                     <span>
@@ -175,8 +175,7 @@ const Campaign = () => {
                     </span>
                   </Col>
                   <Col
-                    className='campaign__middle--card-area-left-bottom--data'
-                    span={8}
+                    className='campaign__middle--card-area-left-bottom--data ant-col-xs-24 ant-col-md-8 ant-col-lg-8 ant-col-xl-8'
                   >
                     <UsergroupAddOutlined className='campaign__middle--card-area-left-bottom--data-icon' />
                     <span>
@@ -187,8 +186,7 @@ const Campaign = () => {
                     </span>
                   </Col>
                   <Col
-                    className='campaign__middle--card-area-left-bottom--data'
-                    span={8}
+                    className='campaign__middle--card-area-left-bottom--data ant-col-xs-24 ant-col-md-8 ant-col-lg-8 ant-col-xl-8'
                   >
                     <ClockCircleOutlined className='campaign__middle--card-area-left-bottom--data-icon' />
                     <span>
@@ -206,7 +204,7 @@ const Campaign = () => {
                   </Col>
                 </Row>
               </Col>
-              <Col span={4} className='campaign__middle--card-area-right'>
+              <Col className='campaign__middle--card-area-right ant-col-xs-24 ant-col-md-24 ant-col-lg-24 ant-col-xl-4'>
                 <Button
                   className='btn btn--primary'
                   shape='round'
@@ -218,11 +216,12 @@ const Campaign = () => {
               </Col>
             </Row>
           </Col>
+          <Col span={3}></Col>
         </Row>
       </section>
       <section>
         <Row gutter={[32]} className='campaign__bottom main__section'>
-          <Col span={18} className='campaign__bottom-left'>
+          <Col className='campaign__bottom-left ant-col-xs-24 ant-col-md-24 ant-col-lg-24 ant-col-xl-18'>
             <Row>
               <Col className='campaign__bottom-left-quote'>
                 <blockquote>
@@ -236,7 +235,7 @@ const Campaign = () => {
               ))}
             </Row>
           </Col>
-          <Col span={6} className='campaign__bottom-right'>
+          <Col className='campaign__bottom-right ant-col-xs-24 ant-col-md-24 ant-col-lg-24 ant-col-xl-6'>
             <div className='campaign__bottom-right--card campaign__bottom-right--card--org'>
               <Title className='campaign__bottom-right--card--heading'>
                 ORGANIZER

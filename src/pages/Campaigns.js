@@ -41,8 +41,8 @@ const Campaigns = () => {
   };
 
   return (
-    <section className='ant-space ant-space-vertical main__section all-campaigns'>
-      <Row className='all-campaigns__top main__section--header'>
+    <section className='ant-space ant-space-vertical main__section all-campaigns' style={{ minHeight: '100vh', overflow: 'scroll' }}>
+      <Row className='all-campaigns__top main__section--header' style={{ marginTop: '5rem' }}>
         <Col className='ant-col-xs-24 ant-col-md-24 ant-col-lg-18 ant-col-xl-18 ant-col-xxl-12  all-campaigns__top--text'>
           <Title
             className='all-campaigns__top--text--heading heading--2'
@@ -57,13 +57,13 @@ const Campaigns = () => {
           <CampaignCard key={campaign._id} campaign={campaign} />
         ))}
       </Row>
-      <Row className='all-campaigns__bottom'>
+      {/* <Row className='all-campaigns__bottom'>
         <Col span={24} className='all-campaigns__bottom--btn'>
           <Button className='btn btn--primary' type='primary' shape='round'>
             Browse More Campaigns
           </Button>
         </Col>
-      </Row>
+      </Row> */}
     </section>
   );
 };
