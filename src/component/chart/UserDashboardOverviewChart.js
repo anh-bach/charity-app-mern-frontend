@@ -14,7 +14,7 @@ const UserDashboardOverviewChart = ({ campaigns }) => {
   ).length;
 
   const data = [
-    ['Campaign', 'Total', { role: 'style' }],
+    ['Campaign', 'Campaign', { role: 'style' }],
     ['Active', activeCampaigns, '#1d3444'],
     ['Pending', pendingCampaigns, '#8b98a1'],
     ['Rejected', rejectedCampaigns, '#ff6666'],
@@ -29,7 +29,6 @@ const UserDashboardOverviewChart = ({ campaigns }) => {
 };
 
 export default UserDashboardOverviewChart;
-
 
 /* ['Campaign', 'Total', { role: 'style' }],
     ['Active', activeCampaigns, 'silver'], // English color name

@@ -19,7 +19,7 @@ const UserDashboardOverviewBanner = ({ campaigns, donations }) => {
   const BannerItem = ({ icon, number, title }) => (
     <Row>
       <Col>{icon}</Col>
-      <Col>
+      <Col offset={2}>
         <div>{number}</div>
         <div>{title}</div>
       </Col>
@@ -27,22 +27,49 @@ const UserDashboardOverviewBanner = ({ campaigns, donations }) => {
   );
 
   return (
-    <Row>
-      <Col>
+    <Row
+      style={{
+        display: 'flex',
+        justifyContent: 'space-between',
+        marginBottom: '2rem',
+      }}
+    >
+      <Col
+        span={6}
+        style={{
+          backgroundColor: '#dceaf5',
+          padding: '1rem',
+          borderRadius: '5px',
+        }}
+      >
         <BannerItem
           icon={<DollarCircleFilled />}
           number={activeCampaignsTotal}
           title='Active Campaigns'
         />
       </Col>
-      <Col>
+      <Col
+        span={6}
+        style={{
+          backgroundColor: '#dceaf5',
+          padding: '1rem',
+          borderRadius: '5px',
+        }}
+      >
         <BannerItem
           icon={<DollarCircleFilled />}
           number={raisedFundTotal.toLocaleString()}
           title='Raised Funds'
         />
       </Col>
-      <Col>
+      <Col
+        span={6}
+        style={{
+          backgroundColor: '#dceaf5',
+          padding: '1rem',
+          borderRadius: '5px',
+        }}
+      >
         <BannerItem
           icon={<DollarCircleFilled />}
           number={supportersTotal}

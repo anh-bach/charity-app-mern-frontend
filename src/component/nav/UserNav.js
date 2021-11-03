@@ -49,6 +49,7 @@ const UserNav = () => {
 
   return (
     <Menu
+      style={{ position: 'fixed' }}
       theme='dark'
       onClick={handleClick}
       selectedKeys={[current]}

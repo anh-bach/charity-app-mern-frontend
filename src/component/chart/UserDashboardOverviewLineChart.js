@@ -24,8 +24,6 @@ const UserDashboardOverviewLineChart = ({ donations }) => {
     donationsArray.push([key, donationsObj[key]]);
   }
 
-  console.log(donationsArray);
-
   const processData = (data) => {
     const initData = [];
 
