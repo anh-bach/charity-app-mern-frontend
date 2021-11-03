@@ -11,7 +11,7 @@ const CampaignCard = ({ campaign = {} }) => {
   const { imageCover, title, donatedAmount, target, to, slug } = campaign;
 
   return (
-    <Col className='ant-col-xs-24 ant-col-md-12 ant-col-lg-8 ant-col-xl-8 latest-campaigns__middle--col'>
+    <Col className='ant-col-xs-24 ant-col-md-12 ant-col-lg-12 ant-col-xl-8 latest-campaigns__middle--col'>
       <Card className='campaign-card' bodyStyle={{ padding: '0' }}>
         <div className='campaign-card__area'>
           <div className='campaign-card__area-header'>
@@ -70,7 +70,7 @@ const CampaignCard = ({ campaign = {} }) => {
               type='default'
               shape='round'
             >
-              <Link to={`/campaign/${slug}`}>Support</Link>
+              <Link to={`/campaign/${slug}`}>Learn More</Link>
             </Button>
           </div>
         </div>

@@ -11,17 +11,17 @@ const GlobalActivities = () => {
                 <Row className="global-activities__area--top main__section--header">
                     <Col className="ant-col-xs-24 ant-col-md-24 ant-col-lg-18 ant-col-xl-18 ant-col-xxl-12  global-activities__area--top-text">
                         <Title className="global-activities__area--top-text--heading heading--2" level={2}>Our Global Activities</Title>
-                        <Text className="global-activities__area--top-text--sub-heading sub-heading">Lorem ipsum dolor sit amet, consectetur adipiscing elit.Curabitur sit amet eros blandit, hendrerit elit et, mattis purus.</Text>
+                        <Text className="global-activities__area--top-text--sub-heading sub-heading">We are growing quickly. Be our proud member today and spread your helping hand worldwide.</Text>
                     </Col>
                 </Row>
                 <Row gutter={[32, 32]} className="global-activities__area--bottom">
-                    <Col className="ant-col-xs-24 ant-col-md-12 ant-col-lg-8 ant-col-xl-8 global-activities__area--bottom--col">
+                    <Col className="ant-col-xs-24 ant-col-md-12 ant-col-lg-12 ant-col-xl-8 global-activities__area--bottom--col">
                         <FeatureCard keyVal="10K" heading="Worldwide Campaigns" text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur sit amet eros blandit, hendrerit elit et, " />
                     </Col>
-                    <Col className="ant-col-xs-24 ant-col-md-12 ant-col-lg-8 ant-col-xl-8 global-activities__area--bottom--col">
+                    <Col className="ant-col-xs-24 ant-col-md-12 ant-col-lg-12 ant-col-xl-8 global-activities__area--bottom--col">
                         <FeatureCard keyVal="$600M" heading="Fund Raised" text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur sit amet eros blandit, hendrerit elit et, " />
                     </Col>
-                    <Col className="ant-col-xs-24 ant-col-md-12 ant-col-lg-8 ant-col-xl-8 global-activities__area--bottom--col">
+                    <Col className="ant-col-xs-24 ant-col-md-12 ant-col-lg-12 ant-col-xl-8 global-activities__area--bottom--col">
                         <FeatureCard keyVal="200M" heading="Worldwide Doners" text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur sit amet eros blandit, hendrerit elit et, " />
                     </Col>
                 </Row>

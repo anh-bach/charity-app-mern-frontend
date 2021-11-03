@@ -54,26 +54,26 @@ const Payment = ({
             ]}
             validateTrigger='onBlur'
           >
-            <Input className='form__label--input' />
+            <Input className='form__label--input payment-form-input' />
           </Form.Item>
           <Form.Item label='Address' name='address' className='form__label'>
-            <Input placeholder='Ex. Apartment no, building no, street no' />
+            <Input className='payment-form-input' placeholder='Ex. Apartment no, building no, street no' />
           </Form.Item>
           <Row style={{ display: 'flex', justifyContent: 'space-between' }}>
             <Col>
               <Form.Item label='City' name='city' className='form__label'>
-                <Input placeholder='Ex. Helsinki' />
+                <Input className='payment-form-input' placeholder='Ex. Helsinki' />
               </Form.Item>
             </Col>
 
             <Col>
               <Form.Item label='Country' name='country' className='form__label'>
-                <Input placeholder='Ex. Finland' />
+                <Input className='payment-form-input' placeholder='Ex. Finland' />
               </Form.Item>
             </Col>
           </Row>
           <Form.Item label='Phone Number' name='phone' className='form__label'>
-            <Input placeholder='Ex. +123 456 7890' />
+            <Input className='payment-form-input' placeholder='Ex. +123 456 7890' />
           </Form.Item>
         </Fragment>
       ),
@@ -108,26 +108,26 @@ const Payment = ({
             ]}
             validateTrigger='onBlur'
           >
-            <Input className='form__label--input' />
+            <Input className='form__label--input payment-form-input' />
           </Form.Item>
           <Form.Item label='Address' name='address' className='form__label'>
-            <Input placeholder='Ex. Apartment no, building no, street no' />
+            <Input className='payment-form-input' placeholder='Ex. Apartment no, building no, street no' />
           </Form.Item>
           <Row style={{ display: 'flex', justifyContent: 'space-between' }}>
             <Col>
               <Form.Item label='City' name='city' className='form__label'>
-                <Input placeholder='Ex. Helsinki' />
+                <Input className='payment-form-input' placeholder='Ex. Helsinki' />
               </Form.Item>
             </Col>
 
             <Col>
               <Form.Item label='Country' name='country' className='form__label'>
-                <Input placeholder='Ex. Finland' />
+                <Input className='payment-form-input' placeholder='Ex. Finland' />
               </Form.Item>
             </Col>
           </Row>
           <Form.Item label='Phone Number' name='phone' className='form__label'>
-            <Input placeholder='Ex. +123 456 7890' />
+            <Input className='payment-form-input' placeholder='Ex. +123 456 7890' />
           </Form.Item>
         </Fragment>
       ),
@@ -216,17 +216,17 @@ const Payment = ({
         </div>
         <div className='steps-action'>
           {current < steps.length - 1 && (
-            <Button type='primary' onClick={() => next()}>
+            <Button className="btn btn--primary" shape='round' onClick={() => next()}>
               Continue
             </Button>
           )}
           {current === steps.length - 1 && (
-            <Button type='primary' onClick={() => form.submit()}>
+            <Button type='primary' className='btn btn--primary' shape='round' onClick={() => form.submit()}>
               {loading ? <LoadingOutlined /> : 'Done'}
             </Button>
           )}
           {current > 0 && (
-            <Button style={{ margin: '0 8px' }} onClick={() => prev()}>
+            <Button className="btn btn--text btn--back" shape='round' style={{ margin: '0 8px' }} onClick={() => prev()}>
               Back
             </Button>
           )}

@@ -17,6 +17,12 @@ $paragraph-text--2: #6a6a6a;
     xxl: '1600px',
   } */
 
+/* 
+  @media (max-width: 1200px) {}
+  @media (max-width: 992px) {}
+  @media (max-width: 576px) {}
+  */
+
 // $bkg1-light: #e3e8ec;
 
 // $bkg1-dark: hsl(218, 15.4%, 10.2%);
@@ -56,10 +62,10 @@ $paragraph-text--2: #6a6a6a;
   }
 }
 
-[color-scheme='dark'] {
+[color-scheme="dark"] {
   --bkg1: var(--bkg1-dark);
 }
 
-[color-scheme='light'] {
+[color-scheme="light"] {
   --bkg1: var(--bkg1-light);
 }

@@ -10,16 +10,11 @@ const { Title, Text } = Typography;
 
 const About = () => {
   return (
-    <section className='ant-space ant-space-vertical main__section team'>
-      <Row className='team__top main__section--header'>
-        <Col className='ant-col-xs-24 ant-col-md-24 ant-col-lg-18 ant-col-xl-18 ant-col-xxl-12  team__top--content'>
-          <Title className='team__top--content--heading heading--2' level={2}>
-            Our Teams
-          </Title>
-          <Text className='team__top--content--sub-heading sub-heading'>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit.Curabitur
-            sit amet eros blandit, hendrerit elit et, mattis purus.
-          </Text>
+    <section className="ant-space ant-space-vertical main__section team">
+      <Row className="team__top main__section--header">
+        <Col className="ant-col-xs-24 ant-col-md-24 ant-col-lg-18 ant-col-xl-18 ant-col-xxl-12  team__top--content">
+          <Title className="team__top--content--heading heading--2" level={2}>Our Teams</Title>
+          <Text className="team__top--content--sub-heading sub-heading">Get to know about our amazing team members</Text>
         </Col>
       </Row>
       <Row gutter={[32, 32]} className='team-ui'>

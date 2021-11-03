@@ -1,0 +1,66 @@
+@import "../variables";
+
+.form__label {
+  padding-top: 2rem !important;
+}
+
+.ant-steps-item {
+  .ant-steps-item-icon {
+    background-color: $primary-color !important;
+    border-color: $primary-color !important;
+  }
+}
+
+.ant-steps-item-wait {
+  .ant-steps-item-icon {
+    background-color: white !important;
+    border-color: rgba(0, 0, 0, 0.25) !important;
+  }
+}
+
+.ant-steps-finish-icon {
+  svg {
+    color: white !important;
+  }
+}
+
+.ant-steps-item-title::after {
+  background-color: $secondary-color--2 !important;
+}
+
+.form__label--input {
+  width: 100% !important;
+  padding: 0.2rem !important;
+}
+
+.btn--back {
+  &:hover {
+    border-color: $secondary-color--1 !important;
+  }
+}
+
+@media (max-width: 1200px) {
+}
+@media (max-width: 992px) {
+  .ant-steps {
+    flex-direction: column !important;
+  }
+  .ant-steps-item {
+    padding-left: 0 !important;
+    padding-bottom: 1rem !important;
+  }
+  .form--popup {
+    margin-top: 7rem;
+    width: 90% !important;
+    // height: 100% !important;
+  }
+  .ant-steps-item-title::after {
+    display: none !important;
+  }
+
+  .payment-form-input {
+    width: 100% !important;
+  }
+}
+@media (max-width: 576px) {
+}

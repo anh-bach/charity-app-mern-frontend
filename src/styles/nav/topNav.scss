@@ -6,26 +6,94 @@
   box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
   display: flex;
   align-items: flex-end;
+  position: fixed;
+  top: 0;
+  z-index: 100;
+  width: 100%;
 
   &__nav {
-    width: 85% !important;
+    width: 1200px !important;
     margin: 0 auto !important;
     border-bottom: transparent !important;
+
     &__left {
-      &:hover {
-        color: $primary-color !important;
-        border-bottom: transparent !important;
-      }
       &--logo {
         font-size: 1.5rem !important;
         font-weight: 600;
-        &:hover {
-          color: $primary-color !important;
-        }
-        &::after {
-          border-bottom: transparent !important;
+        a {
+          &:hover {
+            color: $primary-color !important;
+          }
         }
       }
+    }
+    .ant-menu-item-selected a {
+      color: $primary-color !important;
+      &:hover {
+        color: $primary-color !important;
+      }
+    }
+
+    .ant-menu-item-active a {
+      color: $primary-color !important;
+    }
+  }
+
+  .ant-menu-submenu-open {
+    color: $primary-color !important;
+  }
+
+  .ant-menu-submenu-active {
+    color: $primary-color !important;
+  }
+
+  .ant-menu-submenu-title:hover {
+    color: $primary-color !important;
+  }
+
+  .ant-menu-title-content,
+  .ant-menu-title-content:hover {
+    color: $primary-color !important;
+  }
+
+  .ant-menu-horizontal:not(.ant-menu-dark) > .ant-menu-item-selected::after {
+    border-bottom: 2px solid $primary-color !important;
+  }
+  // underline of menu on hover for all including logo
+  .ant-menu-horizontal > .ant-menu-item:hover:after {
+    border-bottom: 2px solid $primary-color !important;
+  }
+  // on hover underline for logo
+  .ant-menu-horizontal > .ant-menu-item:first-child:after {
+    border-bottom: 2px solid transparent !important;
+  }
+
+  .ant-menu-horizontal > .ant-menu-submenu::after {
+    border-bottom: 2px solid transparent !important;
+  }
+
+  .ant-menu-horizontal:not(.ant-menu-dark) > .ant-menu-submenu:hover::after {
+    border-bottom: 2px solid $primary-color !important;
+  }
+
+  .ant-menu-title-content:hover {
+    color: $primary-color !important;
+  }
+
+  @media (max-width: 1200px) {
+    &__nav {
+      width: 100% !important;
+    }
+  }
+
+  @media (max-width: 992px) {
+    &__nav {
+      width: 100% !important;
+    }
+  }
+  @media (max-width: 576px) {
+    &__nav {
+      width: 100% !important;
     }
   }
 }

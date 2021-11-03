@@ -8,7 +8,7 @@ const { Title } = Typography;
 const HeroBanner = () => {
   return (
     <section className='hero' id='hero'>
-      <Row className='hero__content' gutter={[32, 32]}>
+      <Row className='hero__content'>
         <Col
           className='hero__content__left ant-col-xs-24 ant-col-md-24 ant-col-lg-12 ant-col-xl-12'
         >

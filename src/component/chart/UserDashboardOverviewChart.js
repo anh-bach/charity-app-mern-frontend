@@ -15,10 +15,10 @@ const UserDashboardOverviewChart = ({ campaigns }) => {
 
   const data = [
     ['Campaign', 'Total', { role: 'style' }],
-    ['Active', activeCampaigns, 'silver'], // English color name
-    ['Pending', pendingCampaigns, 'gold'],
-    ['Rejected', rejectedCampaigns, 'color: #e5e4e2'], // CSS-style declaration,
-    ['Campaigns', totalCampaigns, '#b87333'], // RGB value
+    ['Active', activeCampaigns, '#1d3444'],
+    ['Pending', pendingCampaigns, '#8b98a1'],
+    ['Rejected', rejectedCampaigns, '#ff6666'],
+    ['Total', totalCampaigns, '#006699'],
   ];
 
   return (
@@ -29,3 +29,10 @@ const UserDashboardOverviewChart = ({ campaigns }) => {
 };
 
 export default UserDashboardOverviewChart;
+
+
+/* ['Campaign', 'Total', { role: 'style' }],
+    ['Active', activeCampaigns, 'silver'], // English color name
+    ['Pending', pendingCampaigns, 'gold'],
+    ['Rejected', rejectedCampaigns, 'color: #e5e4e2'], // CSS-style declaration,
+    ['Campaigns', totalCampaigns, '#b87333'], // RGB value */

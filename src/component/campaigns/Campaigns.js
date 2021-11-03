@@ -18,8 +18,7 @@ const Campaigns = ({ campaigns = [] }) => {
             Latest Campaigns
           </Title>
           <Text className='latest-campaigns__top--text--sub-heading sub-heading'>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit.Curabitur
-            sit amet eros blandit, hendrerit elit et, mattis purus.
+            Check out our latest worldwide campaigns to spread your love for others.
           </Text>
         </Col>
       </Row>
@@ -30,8 +29,9 @@ const Campaigns = ({ campaigns = [] }) => {
       </Row>
       <Row className='latest-campaigns__bottom'>
         <Col span={24} className='latest-campaigns__bottom--btn'>
-          <Button className='btn btn--primary' type='primary' shape='round'>
-            <Link to='/campaigns'>Browse Campaigns</Link>
+          <Button className='btn btn--secondary-two' shape='round'>
+            {/* <Button className='btn btn--primary' type='primary' shape='round'> */}
+            <Link to='/campaigns'>Browse All Campaigns</Link>
           </Button>
         </Col>
       </Row>

@@ -24,7 +24,7 @@ const CustomFooter = () => {
               MyHappyFund
             </h2>
             <p className='footer__top__area--left--subheading sub-heading'>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+              Your 1st step matters for a better Tomorrow
             </p>
           </Col>
           <Col className='footer__top__area--right ant-col-xs-24 ant-col-md-24 ant-col-lg-9 ant-col-xl-9'>

@@ -90,6 +90,7 @@ const App = () => {
       ) : (
         <Fragment>
           <ToastContainer autoClose={2000} />
+
           <Switch>
             <RouteWithTopNav exact path='/' component={Home} />
             <RouteWithTopNav exact path='/about' component={About} />
