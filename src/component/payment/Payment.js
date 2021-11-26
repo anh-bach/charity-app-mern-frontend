@@ -25,7 +25,7 @@ const Payment = ({
         <Form.Item
           label='Amount'
           name='amount'
-          className='form__label'
+          className='pform__label'
           rules={[
             {
               required: true,
@@ -34,7 +34,7 @@ const Payment = ({
           ]}
           validateTrigger='onBlur'
         >
-          <InputNumber className='form__label--input' />
+          <InputNumber className='pform__label--input' />
         </Form.Item>
       ),
     },
@@ -45,7 +45,7 @@ const Payment = ({
           <Form.Item
             label='Full name'
             name='name'
-            className='form__label'
+            className='pform__label'
             rules={[
               {
                 required: true,
@@ -54,25 +54,25 @@ const Payment = ({
             ]}
             validateTrigger='onBlur'
           >
-            <Input className='form__label--input payment-form-input' />
+            <Input className='pform__label--input payment-form-input' />
           </Form.Item>
-          <Form.Item label='Address' name='address' className='form__label'>
+          <Form.Item label='Address' name='address' className='pform__label'>
             <Input className='payment-form-input' placeholder='Ex. Apartment no, building no, street no' />
           </Form.Item>
           <Row style={{ display: 'flex', justifyContent: 'space-between' }}>
             <Col>
-              <Form.Item label='City' name='city' className='form__label'>
+              <Form.Item label='City' name='city' className='pform__label'>
                 <Input className='payment-form-input' placeholder='Ex. Helsinki' />
               </Form.Item>
             </Col>
 
             <Col>
-              <Form.Item label='Country' name='country' className='form__label'>
+              <Form.Item label='Country' name='country' className='pform__label'>
                 <Input className='payment-form-input' placeholder='Ex. Finland' />
               </Form.Item>
             </Col>
           </Row>
-          <Form.Item label='Phone Number' name='phone' className='form__label'>
+          <Form.Item label='Phone Number' name='phone' className='pform__label'>
             <Input className='payment-form-input' placeholder='Ex. +123 456 7890' />
           </Form.Item>
         </Fragment>
@@ -85,7 +85,7 @@ const Payment = ({
           <Form.Item
             label='Amount'
             name='amount'
-            className='form__label'
+            className='pform__label'
             rules={[
               {
                 required: true,
@@ -94,12 +94,12 @@ const Payment = ({
             ]}
             validateTrigger='onBlur'
           >
-            <InputNumber className='form__label--input' />
+            <InputNumber className='pform__label--input' />
           </Form.Item>
           <Form.Item
             label='Full name'
             name='name'
-            className='form__label'
+            className='pform__label'
             rules={[
               {
                 required: true,
@@ -108,25 +108,25 @@ const Payment = ({
             ]}
             validateTrigger='onBlur'
           >
-            <Input className='form__label--input payment-form-input' />
+            <Input className='pform__label--input payment-form-input' />
           </Form.Item>
-          <Form.Item label='Address' name='address' className='form__label'>
+          <Form.Item label='Address' name='address' className='pform__label'>
             <Input className='payment-form-input' placeholder='Ex. Apartment no, building no, street no' />
           </Form.Item>
           <Row style={{ display: 'flex', justifyContent: 'space-between' }}>
             <Col>
-              <Form.Item label='City' name='city' className='form__label'>
+              <Form.Item label='City' name='city' className='pform__label'>
                 <Input className='payment-form-input' placeholder='Ex. Helsinki' />
               </Form.Item>
             </Col>
 
             <Col>
-              <Form.Item label='Country' name='country' className='form__label'>
+              <Form.Item label='Country' name='country' className='pform__label'>
                 <Input className='payment-form-input' placeholder='Ex. Finland' />
               </Form.Item>
             </Col>
           </Row>
-          <Form.Item label='Phone Number' name='phone' className='form__label'>
+          <Form.Item label='Phone Number' name='phone' className='pform__label'>
             <Input className='payment-form-input' placeholder='Ex. +123 456 7890' />
           </Form.Item>
         </Fragment>
