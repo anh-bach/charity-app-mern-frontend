@@ -41,3 +41,5 @@ You can use admin account to check the whole application, investigate, approve o
 email: quocanh1990bach@gmail.com
 password: 123456789
 ```
+
+Thank you and have fun. :)

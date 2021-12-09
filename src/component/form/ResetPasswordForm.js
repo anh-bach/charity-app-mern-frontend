@@ -8,7 +8,7 @@ import { LOGGED_IN_USER } from '../../actions/types';
 import { createNewPassword } from '../../actions/auth';
 import { roleBasedRedirect } from '../../utils/redirect';
 
-const ResetPasswordForm = () => {
+const ResetPasswordForm = ({ prevUrl }) => {
   const [loading, setLoading] = useState(false);
   const [form] = Form.useForm();
   const { resetToken } = useParams();
@@ -50,11 +50,18 @@ const ResetPasswordForm = () => {
       setLoading(false);
 
       //redirect user
-      roleBasedRedirect(location, history, user.role);
+      roleBasedRedirect(prevUrl, history, user.role);
     } catch (error) {
       console.log('From reset password', error);
       //toastify
-      toast.error(error.response.data.errorMessage, { position: 'top-center' });
+      toast.error(
+        error.response
+          ? error.response.data.errorMessage
+          : 'Something went wrong. Please try again later!',
+        {
+          position: 'top-center',
+        }
+      );
       setLoading(false);
     }
   };
@@ -78,7 +85,7 @@ const ResetPasswordForm = () => {
       <Form.Item
         label='New Password'
         name='password'
-        className="form__label"
+        className='form__label'
         rules={[
           {
             required: true,
@@ -91,13 +98,17 @@ const ResetPasswordForm = () => {
         ]}
         validateTrigger='onBlur'
       >
-        <Input.Password prefix={<LockOutlined />} type='password' className="form__label--input" />
+        <Input.Password
+          prefix={<LockOutlined />}
+          type='password'
+          className='form__label--input'
+        />
       </Form.Item>
 
       <Form.Item
         label='Confirm Password'
         name='passwordConfirm'
-        className="form__label"
+        className='form__label'
         dependencies={['password']}
         hasFeedback
         rules={[
@@ -118,7 +129,11 @@ const ResetPasswordForm = () => {
         ]}
         validateTrigger='onChange'
       >
-        <Input.Password prefix={<LockOutlined />} type='password' className="form__label--input" />
+        <Input.Password
+          prefix={<LockOutlined />}
+          type='password'
+          className='form__label--input'
+        />
       </Form.Item>
 
       <Form.Item
@@ -126,11 +141,7 @@ const ResetPasswordForm = () => {
           span: 24,
         }}
       >
-        <Button
-          htmlType='submit'
-          shape="round"
-          className="btn btn--primary"
-        >
+        <Button htmlType='submit' shape='round' className='btn btn--primary'>
           {loading ? <LoadingOutlined /> : 'Create Password'}
         </Button>
       </Form.Item>

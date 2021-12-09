@@ -110,6 +110,7 @@ const App = () => {
             <RouteWithTopNav
               exact
               path='/forgot-password'
+              prevUrl={prevUrl}
               component={ForgotPassword}
             />
             <RouteWithTopNav
