@@ -3,14 +3,15 @@
 .login {
   &__area {
     width: 100vw;
-    height: 100vh;
+    min-height: 100vh;
+
     &__left {
       display: flex !important;
       justify-content: center;
       &-area {
         overflow: hidden;
         &--img {
-          height: 100vh;
+          min-height: 100vh;
           width: auto;
         }
       }
@@ -22,11 +23,7 @@
       padding: 5rem;
       &-block {
         &-top {
-          &--logo {
-          }
           &--heading {
-          }
-          &--sub-heading {
           }
         }
         &-middle {
@@ -36,19 +33,6 @@
             color: $primary-color !important;
             font-weight: 600;
           }
-
-          // &--forgot-password {
-          //   a {
-          //     color: $primary-color !important;
-          //     font-weight: 600;
-          //   }
-          // }
-          // &--new-account {
-          //   a {
-          //     // background-color: red !important;
-          //     color: $primary-color !important;
-          //   }
-          // }
         }
       }
     }

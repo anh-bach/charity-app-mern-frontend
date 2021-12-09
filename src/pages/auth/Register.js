@@ -34,18 +34,9 @@ const Register = () => {
         <Col className='ant-col-xs-24 ant-col-md-24 ant-col-lg-12 ant-col-xl-12 register__area__right'>
           <div className='register__area__right-block'>
             <div className='register__area__right-block-top'>
-              <h2 className='register__area__right-block-top--logo heading--2'>
-                MyHappyFund
+              <h2 className='register__area__right-block-top--heading heading--2'>
+                Register Your Account
               </h2>
-              <div>
-                <h3 className='register__area__right-block-top--heading heading--3'>
-                  Sign In To Your Account
-                </h3>
-                <p className='register__area__right-block-top--sub-heading'>
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                  Doloremque, ratione.
-                </p>
-              </div>
             </div>
             <div className='register__area__right-block-middle'>
               <RegisterForm />
