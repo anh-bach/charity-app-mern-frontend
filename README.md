@@ -10,6 +10,8 @@ In the project directory, you can run:
 
 This script will install all needed dependencies for the app front-end.
 
+Note: You'll have to replace several environment variables in order to make the application running in your local environment.
+
 ### `npm start`
 
 This script run the app in the development mode.
@@ -25,3 +27,19 @@ Your app is ready to be deployed!
 ### Deployment
 
 This application is deployed on heroku. Please check the app [here](https://myhappyfund.herokuapp.com/). [![Screenshot-2021-11-01-at-19-41-16-My-Happy-Fund-Fund-raising-MERN-App.png](https://i.postimg.cc/hPtHpHyV/Screenshot-2021-11-01-at-19-41-16-My-Happy-Fund-Fund-raising-MERN-App.png)](https://postimg.cc/6TFjQ1NQ)
+
+You can use this user account or create the new one if you'd like:
+
+```
+email: jane@gmail.com
+password: 123456789
+```
+
+You can use admin account to check the whole application, investigate, approve or reject campaigns which have been submitted from users.
+
+```
+email: quocanh1990bach@gmail.com
+password: 123456789
+```
+
+Thank you and have fun. :)
